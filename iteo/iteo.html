@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="header">
-<h1 class="title">ITEO</h1>
+<h1 class="title">IT-System Engineering \& Operation</h1>
 <h2 class="author">Patrick Bucher</h2>
 </div>
 <div id="TOC">
@@ -20,7 +20,7 @@
 <li><a href="#klimatisierung"><span class="toc-section-number">1.2</span> Klimatisierung</a></li>
 <li><a href="#edv-einbau"><span class="toc-section-number">1.3</span> EDV-Einbau</a></li>
 <li><a href="#kritische-punkte"><span class="toc-section-number">1.4</span> Kritische Punkte</a></li>
-<li><a href="#überwachung"><span class="toc-section-number">1.5</span> Überwachung</a></li>
+<li><a href="#überwachungsgebiete"><span class="toc-section-number">1.5</span> Überwachungsgebiete</a></li>
 <li><a href="#rechenzenter-effizienz-pue-faktor"><span class="toc-section-number">1.6</span> Rechenzenter-Effizienz, PUE-Faktor</a></li>
 <li><a href="#repetitionsfragen"><span class="toc-section-number">1.7</span> Repetitionsfragen</a></li>
 </ul></li>
@@ -161,17 +161,69 @@
 <li>Pumpanlagen zum Abpumpen bei Überschwemmungen</li>
 </ul></li>
 </ul>
-<h2 id="überwachung"><span class="header-section-number">1.5</span> Überwachung</h2>
-<p>(TODO Folie 13 und 14)</p>
+<h2 id="überwachungsgebiete"><span class="header-section-number">1.5</span> Überwachungsgebiete</h2>
 <ul>
-<li>Gebäude</li>
-<li>Räume</li>
-<li>Energieversorgung</li>
-<li>Geräte</li>
-<li>Generator</li>
-<li>Klimageräte</li>
-<li>USV-Anlagen</li>
-<li>Brandmelde- und Löschanlage</li>
+<li>Gebäude
+<ul>
+<li>Türen (offen/geschlossen)</li>
+<li>Kameras</li>
+<li>Bewegungsmelder</li>
+<li>Zutritte</li>
+</ul></li>
+<li>Räume
+<ul>
+<li>Temperatur</li>
+<li>Luftfeuchtigkeit</li>
+<li>Bewegung</li>
+<li>Rauch</li>
+<li>Brand</li>
+<li>Wasserlecks</li>
+</ul></li>
+<li>Energieversorgung
+<ul>
+<li>Netzausfall</li>
+<li>Strom, Spannung, Leistung</li>
+<li>Leistungsfaktor (Kosinus Phi)</li>
+</ul></li>
+<li>Geräte
+<ul>
+<li>Niederspannungsverteilungen</li>
+<li>Schalterstellungen (Ein/Aus)</li>
+<li>Stromverbrauch einzerlner Bereiche</li>
+<li>Sicherungsausfall</li>
+<li>Kurzschluss</li>
+<li>Überlast</li>
+</ul></li>
+<li>Generator
+<ul>
+<li>Kraftstoffstand (Dieseltank)</li>
+<li>Funktionsbereitschaft</li>
+<li>Temperatur</li>
+<li>Überlast</li>
+</ul></li>
+<li>Klimageräte
+<ul>
+<li>Temperaturen</li>
+<li>Luftfeuchtigkeit</li>
+<li>Übertemperatur</li>
+<li>Filterwiderstand</li>
+<li>Störungen</li>
+</ul></li>
+<li>USV-Anlagen
+<ul>
+<li>Normalbetrieb</li>
+<li>Batteriebetrieb</li>
+<li>Bypass-Betrieb</li>
+<li>Ladezustand</li>
+<li>Batterietemperatur</li>
+</ul></li>
+<li>Brandmelde- und Löschanlage (Zustandsanzeigen)
+<ul>
+<li>Löschanlage ausgelöst</li>
+<li>Übertragungseinrichtung ausgeschaltet</li>
+<li>Störung</li>
+<li>Service</li>
+</ul></li>
 </ul>
 <h2 id="rechenzenter-effizienz-pue-faktor"><span class="header-section-number">1.6</span> Rechenzenter-Effizienz, PUE-Faktor</h2>
 <ul>
@@ -181,9 +233,7 @@
 <ul>
 <li>1.0: optimal (in kalten Regionen möglich)</li>
 <li>1.2: guter Wert (normale Rechenzentren)</li>
-<li><blockquote>
-<p>1.4: Optimierungsbedarf</p>
-</blockquote></li>
+<li>über 1.4: Optimierungsbedarf</li>
 </ul></li>
 <li>Stichwort “Green IT”</li>
 </ul>
@@ -193,10 +243,10 @@
 </ol>
 <table>
 <colgroup>
-<col width="17%" />
-<col width="22%" />
-<col width="27%" />
-<col width="33%" />
+<col width="21%" />
+<col width="21%" />
+<col width="25%" />
+<col width="31%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -233,15 +283,31 @@
 </tr>
 <tr class="odd">
 <td>Eingangskontrolle</td>
-<td>Gewährung bzw. Verweigerung von Einlass</td>
-<td>nicht-autorisierte Personen mit bösen Absichten</td>
+<td>Gewährung und Verweigerung von Einlass</td>
+<td>unautorisierte Personen</td>
 <td>Biometrie, Überwachungskameras, Chipkarten, Passwörter, Personenkontrolle</td>
 </tr>
 </tbody>
 </table>
 <ol start="2" style="list-style-type: decimal">
-<li>Versuchen Sie den Kostenanteil pro Baustein am gesamten RZ abzuschätzen</li>
-<li>Was ist der PUE Faktor und was sind die erreichbaren und effektiv erreichten Werte?</li>
+<li>Versuchen Sie den Kostenanteil pro Baustein am gesamten RZ abzuschätzen.
+<ul>
+<li>Gebäude: ca. 10 Millionen CHF (92%)</li>
+<li>Klimatisierung: ca. 250’000 CHF (2.3%)</li>
+<li>Stromversorgung: ca. 100’000 CHF (1%)</li>
+<li>Netzwerk: ca. 500’000 CHF (4.6%)</li>
+<li>Eingangskontrolle: 25’000 CHF (0.2%)</li>
+<li>Summe: 10’875’000 CHF (100%)</li>
+</ul></li>
+<li>Was ist der PUE Faktor und was sind die erreichbaren und effektiv erreichten Werte?
+<ul>
+<li>PUE bedeutet Power Usage Effectiveness und Massstab für die Effizienz eines Rechenzentrums. Er errechnet sich aus der gesamthaft durch das Rechenzentrum verbrauchten Energiemenge geteilt durch die gesamthaft von den IT-Geräten verbrauchte Energie.
+<ul>
+<li>1.0: optimal (in kalten Regionen möglich)</li>
+<li>1.2: guter Wert (normale Rechenzentren)</li>
+<li>über 1.4: Optimierungsbedarf</li>
+</ul></li>
+</ul></li>
 </ol>
 <h1 id="glossar"><span class="header-section-number">2</span> Glossar</h1>
 <ul>

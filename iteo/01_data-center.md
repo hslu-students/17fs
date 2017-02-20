@@ -95,18 +95,53 @@
     - Standortwahl (nicht in Nähe von Gewässern oder mit Steinschlag und Lawinen)
     - Pumpanlagen zum Abpumpen bei Überschwemmungen
 
-## Überwachung
-
-(TODO Folie 13 und 14)
+## Überwachungsgebiete
 
 - Gebäude
+    - Türen (offen/geschlossen)
+    - Kameras
+    - Bewegungsmelder
+    - Zutritte
 - Räume
+    - Temperatur
+    - Luftfeuchtigkeit
+    - Bewegung
+    - Rauch
+    - Brand
+    - Wasserlecks
 - Energieversorgung
+    - Netzausfall
+    - Strom, Spannung, Leistung
+    - Leistungsfaktor (Kosinus Phi)
 - Geräte
+    - Niederspannungsverteilungen
+    - Schalterstellungen (Ein/Aus)
+    - Stromverbrauch einzerlner Bereiche
+    - Sicherungsausfall
+    - Kurzschluss
+    - Überlast
 - Generator
+    - Kraftstoffstand (Dieseltank)
+    - Funktionsbereitschaft
+    - Temperatur
+    - Überlast
 - Klimageräte
+    - Temperaturen
+    - Luftfeuchtigkeit
+    - Übertemperatur
+    - Filterwiderstand
+    - Störungen
 - USV-Anlagen
-- Brandmelde- und Löschanlage
+    - Normalbetrieb
+    - Batteriebetrieb
+    - Bypass-Betrieb
+    - Ladezustand
+    - Batterietemperatur
+- Brandmelde- und Löschanlage (Zustandsanzeigen)
+    - Löschanlage ausgelöst
+    - Übertragungseinrichtung ausgeschaltet
+    - Störung
+    - Service
 
 ## Rechenzenter-Effizienz, PUE-Faktor
 
@@ -115,20 +150,31 @@
 - PUE = gesamte vom Rechenzentrum verbrauchte Energie / Verbrauch der IT-Geräte
     - 1.0: optimal (in kalten Regionen möglich)
     - 1.2: guter Wert (normale Rechenzentren)
-    - >1.4: Optimierungsbedarf
+    - über 1.4: Optimierungsbedarf
 - Stichwort "Green IT"
 
 ## Repetitionsfragen
 
 1. Notieren Sie zu 5 beliebigen Bausteinen eines Rechenzentrums die folgenden Punkte:
 
-| Baustein      | Funktionen        | Gefährdet durch       | Abhilfe gegen Gefährdungen |
-| ------------- | ----------------- | --------------------- | -------------------------- |
-| Gebäude       | Schutz der Server vor äusseren Einflüssen | Umweltkatastrophen | Resistente Bauweise |
-| Klimatisierung | Schutz vor Überhitzung | Verunreinigung der Filter, Kondenswasser | Filterservice, Abpumpvorrichtung |
-| Stromversorgung | Bereitstellung von elektrischer Energie | Stromausfälle, Netzschwankungen | USV mit Batterie, Diesel-Generatoren |
-| Netzwerk | Verbindung der Komponenten | Ausfall, Überlastung, Überhitzung, Brand | Redundanz, Datensicherung, Lastverteilung, Kühlung, Löschanlage |
-| Eingangskontrolle | Gewährung bzw. Verweigerung von Einlass | nicht-autorisierte Personen mit bösen Absichten | Biometrie, Überwachungskameras, Chipkarten, Passwörter, Personenkontrolle |
+| Baustein          | Funktionen        | Gefährdet durch       | Abhilfe gegen Gefährdungen |
+| ----------------- | ----------------- | --------------------- | -------------------------- |
+| Gebäude           | Schutz der Server vor äusseren Einflüssen | Umweltkatastrophen | Resistente Bauweise |
+| Klimatisierung    | Schutz vor Überhitzung | Verunreinigung der Filter, Kondenswasser | Filterservice, Abpumpvorrichtung |
+| Stromversorgung   | Bereitstellung von elektrischer Energie | Stromausfälle, Netzschwankungen | USV mit Batterie, Diesel-Generatoren |
+| Netzwerk          | Verbindung der Komponenten | Ausfall, Überlastung, Überhitzung, Brand | Redundanz, Datensicherung, Lastverteilung, Kühlung, Löschanlage |
+| Eingangskontrolle | Gewährung und Verweigerung von Einlass | unautorisierte Personen | Biometrie, Überwachungskameras, Chipkarten, Passwörter, Personenkontrolle |
 
-2. Versuchen Sie den Kostenanteil pro Baustein am gesamten RZ abzuschätzen
+2. Versuchen Sie den Kostenanteil pro Baustein am gesamten RZ abzuschätzen.
+    - Gebäude: ca. 10 Millionen CHF (92%)
+    - Klimatisierung: ca. 250'000 CHF (2.3%)
+    - Stromversorgung: ca. 100'000 CHF (1%)
+    - Netzwerk: ca. 500'000 CHF (4.6%)
+    - Eingangskontrolle: 25'000 CHF (0.2%)
+    - Summe: 10'875'000 CHF (100%)
+
 3. Was ist der PUE Faktor und was sind die erreichbaren und effektiv erreichten Werte?
+    - PUE bedeutet Power Usage Effectiveness und Massstab für die Effizienz eines Rechenzentrums. Er errechnet sich aus der gesamthaft durch das Rechenzentrum verbrauchten Energiemenge geteilt durch die gesamthaft von den IT-Geräten verbrauchte Energie.
+        - 1.0: optimal (in kalten Regionen möglich)
+        - 1.2: guter Wert (normale Rechenzentren)
+        - über 1.4: Optimierungsbedarf
