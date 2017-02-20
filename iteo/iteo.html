@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">ITEO</h1>
+<h2 class="author">Patrick Bucher</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#das-data-center"><span class="toc-section-number">1</span> Das Data Center</a><ul>
+<li><a href="#bestandteile-data-center"><span class="toc-section-number">1.1</span> Bestandteile Data Center</a></li>
+<li><a href="#klimatisierung"><span class="toc-section-number">1.2</span> Klimatisierung</a></li>
+<li><a href="#edv-einbau"><span class="toc-section-number">1.3</span> EDV-Einbau</a></li>
+<li><a href="#kritische-punkte"><span class="toc-section-number">1.4</span> Kritische Punkte</a></li>
+<li><a href="#überwachung"><span class="toc-section-number">1.5</span> Überwachung</a></li>
+<li><a href="#rechenzenter-effizienz-pue-faktor"><span class="toc-section-number">1.6</span> Rechenzenter-Effizienz, PUE-Faktor</a></li>
+<li><a href="#repetitionsfragen"><span class="toc-section-number">1.7</span> Repetitionsfragen</a></li>
+</ul></li>
+<li><a href="#glossar"><span class="toc-section-number">2</span> Glossar</a></li>
+</ul>
+</div>
+<h1 id="das-data-center"><span class="header-section-number">1</span> Das Data Center</h1>
+<h2 id="bestandteile-data-center"><span class="header-section-number">1.1</span> Bestandteile Data Center</h2>
+<ul>
+<li>Lüftung (Zu- und Abluft, Wärmetauscher)</li>
+<li>Hochwasserschutz (erhöhte Bauweise)</li>
+<li>Zutrittskontrolle an den Eingängen, Überwachungskameras</li>
+<li>Stromversorgung
+<ul>
+<li>USV: unterbrechungsfreie Stromversorgung (Energiespeicher: Batterien)</li>
+<li>Dieselgenerator als Notstromaggregat (Energiespeicher: Dieseltank), mit Kühlung und Abluft</li>
+</ul></li>
+<li>Server in Serverracks</li>
+<li>Stromverteilung</li>
+<li>Datenleitung/Netzwerk</li>
+<li>Löschanlagen</li>
+<li>Administration/Überwachung</li>
+</ul>
+<h2 id="klimatisierung"><span class="header-section-number">1.2</span> Klimatisierung</h2>
+<ul>
+<li>optimale Temperatur: 26°C
+<ul>
+<li>keine Schäden bei leicht erhöhter Raumtemperatur (gegenüber 21°C)</li>
+<li>Wärmeenergie geht von selber an die Umgebung (Heizung benachbarter Räumlichkeiten)</li>
+<li>im optimalen Leistungsbereich der Klimaanlagen</li>
+<li>Kondenswasser bei zu tiefen Temperaturen</li>
+</ul></li>
+<li>Staub und Pollen können schädlich sein
+<ul>
+<li>verstopfen Ventilatoren (gesteigerter Stromverbrauch durch erhöhte Kühlleistung)</li>
+<li>Metallpartikel können Schäden an Hardware verursachen</li>
+</ul></li>
+<li>Probleme
+<ul>
+<li>Kondenswasser: Ablauf kann verstopfen, Kondenswasser auslaufen</li>
+<li>Filterkontrolle: verstopfte Filter verursachen erhöhte Leistungsaufnahme</li>
+<li>zusätzlicher Energieverbrauch</li>
+<li>Luftverteilung</li>
+<li>Überwachung</li>
+</ul></li>
+<li>Kühlluftverteilung
+<ol style="list-style-type: decimal">
+<li>Free-Flow-Systeme
+<ul>
+<li>Warme Luft steigt auf, kalte Luft sinkt ab</li>
+<li>Gemischte Lufttemperatur</li>
+<li>einfach</li>
+<li>Problem: möglicher Wärmekurzschluss (warme Abluft wird als Kühlluft angesogen)</li>
+</ul></li>
+<li>Kalt- oder Warmgang-Einhausung
+<ul>
+<li>Trennung von Warm- und Kaltluft</li>
+<li>dadurch bessere Energieeffizienz</li>
+<li>aber teurer im Aufbau</li>
+<li>Front der Racks sollten komplett abgeschlossen sein, um Warm- und Kaltluft voneinander zu trennen</li>
+</ul></li>
+</ol></li>
+<li>Immersion Cooling: flüssigkeitsgekühlte Systeme
+<ul>
+<li>mit Wärmetauscher und Flüssigkeit in Leitungskabel</li>
+<li>oder komplett in Öl eingelegt</li>
+</ul></li>
+</ul>
+<h2 id="edv-einbau"><span class="header-section-number">1.3</span> EDV-Einbau</h2>
+<ul>
+<li>Serverracks
+<ul>
+<li>verschiedene Höhen (21-49U), Breiten (0.6-1m) und Tiefen (0.8-1.2m)
+<ul>
+<li>1 HE = 1 U = 1.75 Zoll = 44.45 mm</li>
+</ul></li>
+<li>auch mit integrierter Kühlung</li>
+<li>Zuleitungen: oben, unten, seitlich</li>
+<li>Standard: 19 Zoll (48.26 cm)</li>
+</ul></li>
+<li>Netzwerk
+<ul>
+<li>Kupfer (gegenwärtig stark verbreitet)</li>
+<li>Glasfaser (löst Kupfer derzeit ab)</li>
+</ul></li>
+<li>Klimageräte, USV und Batterieschränke
+<ul>
+<li>Batterien sind sehr schwer, spezielle Racks/Bodenverstärkung erforderlich</li>
+</ul></li>
+<li>Kühlleitungen und Überwachungsgeräte</li>
+</ul>
+<h2 id="kritische-punkte"><span class="header-section-number">1.4</span> Kritische Punkte</h2>
+<ul>
+<li>Einbruch, Diebstahl, Vandalismus, Sturmschäden, Trümmer
+<ul>
+<li>bauliche Massnahmen: stabile Aussenhülle</li>
+<li>verschlossen mit Zaun</li>
+<li>teilweise fernab von anderen Gebäuden</li>
+<li>keine oder kaum Fenster</li>
+</ul></li>
+<li>Fremdzugriff
+<ul>
+<li>Zutrittskontrolle (biometrisch, Chip-Karten, Passwörtern)</li>
+<li>Abhörsicherheit (elektromagnetische Abschirmung, keine mobilen Endgeräte mit Netzwerkverbingungen zulassen, keinen WiFi-Access-Point)</li>
+<li>Firewall</li>
+</ul></li>
+<li>Feuer und Rauch
+<ul>
+<li>Branderkennung</li>
+<li>Löschanlage: CO2 (Vorwarnzeit zur Flucht nötig!), Verringerung des Sauerstoffanteils der Luft auf ca. 10% (nicht tödlich, aber das Feuer verlöscht) durch Stickstoff (gefährlicher und günstig) oder Inergen (weniger gefährlich und teurer)</li>
+<li>Handfeuerlöscher: CO2
+<ul>
+<li>Feuer benötigt: Sauerstoff, Hitze und Brennstoff</li>
+</ul></li>
+<li>Abschottung einzelner Zellen</li>
+<li>automatische Abschaltung der Klimaanlage damit der Rauch nicht verteilt wird</li>
+<li>kein PVC (bildet Salzsäure!) verwenden</li>
+</ul></li>
+<li>Netzausfälle, Netzstörungen
+<ul>
+<li>Netzfilter (in Netzteilen integriert)</li>
+<li>vorgeschaltete USV mit Batterien</li>
+<li>Diesel-Generatoren</li>
+</ul></li>
+<li>Elektromagnetische Störfelder
+<ul>
+<li>EMP: elektromagnetische Impulse (durch Atombomben oder spezielle Generatoren verursacht), kann Geräte zerstören</li>
+<li>Abschirmung (kann teuer sein)</li>
+<li>metallische Aussenfassade</li>
+<li>Blitzableiter</li>
+</ul></li>
+<li>Staub, Schmutz, Wasser
+<ul>
+<li>Filteranlagen</li>
+<li>Schmutzschleusen, spezielle Teppiche</li>
+<li>erhöhte Bauweise</li>
+<li>Standortwahl (nicht in Nähe von Gewässern oder mit Steinschlag und Lawinen)</li>
+<li>Pumpanlagen zum Abpumpen bei Überschwemmungen</li>
+</ul></li>
+</ul>
+<h2 id="überwachung"><span class="header-section-number">1.5</span> Überwachung</h2>
+<p>(TODO Folie 13 und 14)</p>
+<ul>
+<li>Gebäude</li>
+<li>Räume</li>
+<li>Energieversorgung</li>
+<li>Geräte</li>
+<li>Generator</li>
+<li>Klimageräte</li>
+<li>USV-Anlagen</li>
+<li>Brandmelde- und Löschanlage</li>
+</ul>
+<h2 id="rechenzenter-effizienz-pue-faktor"><span class="header-section-number">1.6</span> Rechenzenter-Effizienz, PUE-Faktor</h2>
+<ul>
+<li>PUE: Power Usage Effectiveness</li>
+<li>Massstab für die Effizienz eines Rechenzentrums</li>
+<li>PUE = gesamte vom Rechenzentrum verbrauchte Energie / Verbrauch der IT-Geräte
+<ul>
+<li>1.0: optimal (in kalten Regionen möglich)</li>
+<li>1.2: guter Wert (normale Rechenzentren)</li>
+<li><blockquote>
+<p>1.4: Optimierungsbedarf</p>
+</blockquote></li>
+</ul></li>
+<li>Stichwort “Green IT”</li>
+</ul>
+<h2 id="repetitionsfragen"><span class="header-section-number">1.7</span> Repetitionsfragen</h2>
+<ol style="list-style-type: decimal">
+<li>Notieren Sie zu 5 beliebigen Bausteinen eines Rechenzentrums die folgenden Punkte:</li>
+</ol>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="22%" />
+<col width="27%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Baustein</th>
+<th>Funktionen</th>
+<th>Gefährdet durch</th>
+<th>Abhilfe gegen Gefährdungen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gebäude</td>
+<td>Schutz der Server vor äusseren Einflüssen</td>
+<td>Umweltkatastrophen</td>
+<td>Resistente Bauweise</td>
+</tr>
+<tr class="even">
+<td>Klimatisierung</td>
+<td>Schutz vor Überhitzung</td>
+<td>Verunreinigung der Filter, Kondenswasser</td>
+<td>Filterservice, Abpumpvorrichtung</td>
+</tr>
+<tr class="odd">
+<td>Stromversorgung</td>
+<td>Bereitstellung von elektrischer Energie</td>
+<td>Stromausfälle, Netzschwankungen</td>
+<td>USV mit Batterie, Diesel-Generatoren</td>
+</tr>
+<tr class="even">
+<td>Netzwerk</td>
+<td>Verbindung der Komponenten</td>
+<td>Ausfall, Überlastung, Überhitzung, Brand</td>
+<td>Redundanz, Datensicherung, Lastverteilung, Kühlung, Löschanlage</td>
+</tr>
+<tr class="odd">
+<td>Eingangskontrolle</td>
+<td>Gewährung bzw. Verweigerung von Einlass</td>
+<td>nicht-autorisierte Personen mit bösen Absichten</td>
+<td>Biometrie, Überwachungskameras, Chipkarten, Passwörter, Personenkontrolle</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" style="list-style-type: decimal">
+<li>Versuchen Sie den Kostenanteil pro Baustein am gesamten RZ abzuschätzen</li>
+<li>Was ist der PUE Faktor und was sind die erreichbaren und effektiv erreichten Werte?</li>
+</ol>
+<h1 id="glossar"><span class="header-section-number">2</span> Glossar</h1>
+<ul>
+<li>ITIL: IT Infrastructure Library, Standard für IT-Belange v.a. für Grossunternehmen, für KMU übertrieben</li>
+<li>PUE: Power Usage Effectiveness, Massstab für die Effizienz eines Rechenzentrums</li>
+</ul>
+</body>
+</html>
