@@ -33,6 +33,11 @@
 <li><a href="#iterativer-ansatz"><span class="toc-section-number">2.1.1</span> Iterativer Ansatz</a></li>
 <li><a href="#rekursiver-ansatz"><span class="toc-section-number">2.1.2</span> Rekursiver Ansatz</a></li>
 </ul></li>
+<li><a href="#mächtigkeit-der-rekursion"><span class="toc-section-number">2.2</span> Mächtigkeit der Rekursion</a><ul>
+<li><a href="#beispiel-fibonacci-zahl"><span class="toc-section-number">2.2.1</span> Beispiel: Fibonacci-Zahl</a></li>
+</ul></li>
+<li><a href="#typen-von-rekursion"><span class="toc-section-number">2.3</span> Typen von Rekursion</a></li>
+<li><a href="#beispiel-permutation"><span class="toc-section-number">2.4</span> Beispiel: Permutation</a></li>
 </ul></li>
 <li><a href="#glossar"><span class="toc-section-number">3</span> Glossar</a></li>
 </ul>
@@ -284,6 +289,87 @@
         return n * factorial(n - 1);
     }
 }</code></pre>
+<h2 id="mächtigkeit-der-rekursion"><span class="header-section-number">2.2</span> Mächtigkeit der Rekursion</h2>
+<ul>
+<li>Rekursion und Iteration sind <em>gleich mächtig</em>.</li>
+<li>Die Menge der berechenbaren Problemstellungen bei Verwendung von Rekursion und Iteration ist gleich.</li>
+<li>Eine iterative Implementierung lässt sich immer in eine rekursive Implementierung überführen (und umgekehrt).</li>
+<li>Vorteile der Rekursion:
+<ul>
+<li>Rekursive Ansätze sind oft einfach und elegant.</li>
+<li>Die Korrektheit rekursiver Definitionen lässt sich oft einfacher aufzeigen.</li>
+<li>Es gibt rein rekursive Programmiersprachen, z.B. LISP und Prolog</li>
+</ul></li>
+<li>Nachteile der Rekursion:
+<ul>
+<li>Es ergeben sich schnell sehr viele Methodenaufrufe.</li>
+<li>Die Programmausführung ist dadurch tendenziell langsamer.</li>
+<li>Es besteht grosser Speicherbedarf auf dem Call-Stack und die Gefahr für einen Stack Overflow.</li>
+</ul></li>
+</ul>
+<h3 id="beispiel-fibonacci-zahl"><span class="header-section-number">2.2.1</span> Beispiel: Fibonacci-Zahl</h3>
+<ul>
+<li>Fibonacci-Zahlen sind in der Mathematik rekursiv definiert:
+<ul>
+<li><code>f(0)=0</code></li>
+<li><code>f(1)=1</code></li>
+<li><code>f(n)=f(n-1)+f(n-2)</code>, für <code>n&gt;=2</code></li>
+</ul></li>
+</ul>
+<p>Rekursive Implementierung:</p>
+<pre><code>public int fib(n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+}</code></pre>
+<p>Probleme einer rekursiven Implementierung:</p>
+<ul>
+<li>Viele rekursive Aufrufe: Komplexitätsklasse <code>O(2^n)</code>.</li>
+<li>Mehrfache Berechnung der gleichen Zahlen. (Lösungsansatz: Caching)</li>
+<li>Besser eine iterative Lösung finden!</li>
+<li><em>Nicht jedes Problem, das sich rekursiv präsentiert, sollte rekursiv umgesetzt werden!</em></li>
+</ul>
+<h2 id="typen-von-rekursion"><span class="header-section-number">2.3</span> Typen von Rekursion</h2>
+<ul>
+<li>linear vs. nichtlinear:
+<ul>
+<li><em>lineare Rekursion</em>: eine Methode ruft sich intern selber auf (z.B. Fakultät)
+<ul>
+<li><code>m() -&gt; m()</code></li>
+</ul></li>
+<li><em>nichtlineare Rekursion</em>: ein Methodenaufruf führt zu mehreren rekursiven Aufrufen (z.B. Fibonacci)
+<ul>
+<li>nicht geschachtelt (Fibonacci): <em>primitiv rekursiv</em>, <code>m() -&gt; m(); m();</code></li>
+<li>geschachtelt: <em>nicht primitiv rekursiv</em>, <code>m() -&gt; m(m())</code></li>
+</ul></li>
+</ul></li>
+<li>direkt vs. indirekt:
+<ul>
+<li><em>Direkte Rekursion</em>: eine Methode ruft sich <em>direkt</em> selber auf.</li>
+<li><em>Indirekte Rekursion</em>: eine rekursive Methode ruft sich <em>indirekt</em> selber auf, <code>m() -&gt; m(n(m()))</code></li>
+</ul></li>
+</ul>
+<h2 id="beispiel-permutation"><span class="header-section-number">2.4</span> Beispiel: Permutation</h2>
+<p>Ein sechs Zeichen langes Passwort bestehend aus den Buchstaben von <code>A</code> bis <code>F</code>, wobei jeder Buchstabe nur einmal vorkommt, ist gesucht. Gefragt sind die <em>Permutationen</em> (alle möglichen Kombinationen) dieser Buchstaben. Es gibt <code>6!=720</code> mögliche Kombinationen:</p>
+<ul>
+<li><code>ABCDEF</code></li>
+<li><code>BACDEF</code></li>
+<li>…</li>
+<li><code>FEDCBA</code></li>
+</ul>
+<p>Lösungsansatz: Rückführung des Problems (Permutation von <code>n</code> Zeichen auf Permutation von einem Zeichen)!</p>
+<ul>
+<li><code>A</code> kombiniert mit den Permutationen von <code>BCDEF</code>
+<ul>
+<li><code>B</code> kombiniert mit den Permutationen von <code>CDEF</code>
+<ul>
+<li><code>C</code> kombiniert mit den Permutationen von <code>DEF</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>TODO: Beispielimplementierung</p>
 <h1 id="glossar"><span class="header-section-number">3</span> Glossar</h1>
 <ul>
 <li>Algorithmus: präzise festgelegtes Verfahren zur Lösung eines Problems bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung)-Operator)</li>
