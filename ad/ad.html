@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Algorithmen \& Datenstrukturen</h1>
+<h2 class="author">Patrick Bucher</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#einführung"><span class="toc-section-number">1</span> Einführung</a><ul>
+<li><a href="#was-ist-ein-algorithmus"><span class="toc-section-number">1.1</span> Was ist ein Algorithmus?</a></li>
+<li><a href="#was-ist-eine-datenstruktur"><span class="toc-section-number">1.2</span> Was ist eine Datenstruktur?</a></li>
+<li><a href="#was-ist-ein-programm"><span class="toc-section-number">1.3</span> Was ist ein Programm?</a></li>
+<li><a href="#fragen-betreffend-algorithmendatenstrukturen"><span class="toc-section-number">1.4</span> Fragen betreffend Algorithmen/Datenstrukturen</a></li>
+<li><a href="#beispiel-berechnung-des-ggt"><span class="toc-section-number">1.5</span> Beispiel: Berechnung des ggT</a></li>
+<li><a href="#gleichwertigkeit"><span class="toc-section-number">1.6</span> Gleichwertigkeit</a></li>
+<li><a href="#komplexität"><span class="toc-section-number">1.7</span> Komplexität</a><ul>
+<li><a href="#beispiel"><span class="toc-section-number">1.7.1</span> Beispiel</a></li>
+<li><a href="#big-o-notation"><span class="toc-section-number">1.7.2</span> Big-O-Notation</a></li>
+<li><a href="#abschliessende-bemerkungen"><span class="toc-section-number">1.7.3</span> Abschliessende Bemerkungen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#rekursion"><span class="toc-section-number">2</span> Rekursion</a><ul>
+<li><a href="#rekursion-vs.iteration-am-beispiel-der-fakultät"><span class="toc-section-number">2.1</span> Rekursion vs. Iteration (am Beispiel der Fakultät)</a><ul>
+<li><a href="#iterativer-ansatz"><span class="toc-section-number">2.1.1</span> Iterativer Ansatz</a></li>
+<li><a href="#rekursiver-ansatz"><span class="toc-section-number">2.1.2</span> Rekursiver Ansatz</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#glossar"><span class="toc-section-number">3</span> Glossar</a></li>
+</ul>
+</div>
+<h1 id="einführung"><span class="header-section-number">1</span> Einführung</h1>
+<h2 id="was-ist-ein-algorithmus"><span class="header-section-number">1.1</span> Was ist ein Algorithmus?</h2>
+<p>Ein Algorithmus ist ein präzise festgelegtes <em>Verfahren zur Lösung eines Problems</em> bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung).</p>
+<p>Eigenschaften eines Algorithmus:</p>
+<ol style="list-style-type: decimal">
+<li>schrittweises Verfahren</li>
+<li>ausführbare Schritte</li>
+<li>eindeutiger nächster Schritt (determiniert)</li>
+<li>endet nach endlich vielen Schritten (terminiert)</li>
+</ol>
+<p>Beispiele für Algorithmen:</p>
+<ul>
+<li>Berechnung des ggT</li>
+<li>Zeichnen von Verbindungslinien</li>
+<li>Sortierung von Zahlen</li>
+<li>Finden des kürzesten Weges zwischen zwei Punkten</li>
+<li>Primzahltest</li>
+<li>Berechnung eines Integrals</li>
+<li>Finden einer Lösung in einem Lösungsraum</li>
+</ul>
+<p>Themenbereiche von Algorithmen:</p>
+<ul>
+<li>Algorithmentheorie: Finden guter Lösungsalgorithmen für bestimmte Problemstellungen</li>
+<li>Komplexitätstheorie: Ressourcenverbrauch (Rechenzeit, Speicherbedarf)</li>
+<li>Berechenbarkeitstheorie: Was ist mit einer Maschine lösbar/nicht lösbar?</li>
+</ul>
+<h2 id="was-ist-eine-datenstruktur"><span class="header-section-number">1.2</span> Was ist eine Datenstruktur?</h2>
+<p>Eine Datenstruktur ist ein Konzept zur <em>Speicherung und Organisation von Daten</em>. Sie ist durch die Operationen charakterisiert, welche Zugriffe und Verwaltung realisieren.</p>
+<p>Beispiele für Datenstrukturen:</p>
+<ul>
+<li>Array: direkter Zugriff, fixe Grösse</li>
+<li>Liste: sequentieller Zugriff, flexible Grösse</li>
+</ul>
+<h2 id="was-ist-ein-programm"><span class="header-section-number">1.3</span> Was ist ein Programm?</h2>
+<p>Ein Programm kombiniert Algorithmen und Datenstrukturen.</p>
+<p>Der Ressourcenverbrauch eines Algorithmus (Laufzeit und Speicherbedarf) hängt von der Verwendung geeigneter Datenstrukturen ab.</p>
+<p>Algorithmen operieren auf Datenstrukturen und Datenstrukturen bedingen spezifische Algorithmen.</p>
+<h2 id="fragen-betreffend-algorithmendatenstrukturen"><span class="header-section-number">1.4</span> Fragen betreffend Algorithmen/Datenstrukturen</h2>
+<ol style="list-style-type: decimal">
+<li>Für kleine oder grosse Probleme adäquat?</li>
+<li>Selber entwickeln oder aus einer Bibliothek?</li>
+<li>Einfach oder schwierig zu verstehen, implementieren und warten?</li>
+<li>Geringe Laufzeit mit grossem Speicherbedarf oder umgekehrt?</li>
+</ol>
+<h2 id="beispiel-berechnung-des-ggt"><span class="header-section-number">1.5</span> Beispiel: Berechnung des ggT</h2>
+<p>Gegeben sind zwei Zahlen, A und B.</p>
+<ol style="list-style-type: decimal">
+<li>A sei die grössere der beiden Zahlen (andernfalls tauschen).</li>
+<li>Setze <code>A = A - B</code></li>
+<li>Wenn <code>A != B</code>: Schritt 1, wenn <code>A = B</code>: Fertig</li>
+</ol>
+<p>Iterative Lösung (mit impliziter Vertauschung):</p>
+<pre><code>public static int ggT(int a, int b) {
+    while (a != b) {
+        if (a &gt; b) {
+            a = a - b;
+        } else {
+            b = b - a;
+        }
+    }
+    return a;
+}</code></pre>
+<p>Iterative Lösung (mit Modulo-Operator “abgekürzt”):</p>
+<pre><code>public static int ggT(int a, int b) {
+    while ((a != b) &amp;&amp; (b != 0)) {
+        if (a &gt; b) {
+            a = a % b;
+        } else {
+            b = b % a;
+        }
+    }
+    return (a + b);
+}</code></pre>
+<p>Rekursive Lösung:</p>
+<pre><code>public static int ggT(int a, int b) {
+    if (a &gt; b) {
+        ggT(a - b, b);
+    } else {
+        if (a &lt; b) {
+            return ggT(a, b - a);
+        } else {
+            return a;
+        }
+    }
+}</code></pre>
+<h2 id="gleichwertigkeit"><span class="header-section-number">1.6</span> Gleichwertigkeit</h2>
+<ul>
+<li>Alle Implementierungen führen zum Ziel und liefern die gleichen Resultate. Sie sind <em>gleichwertig</em>.</li>
+<li>Die Anzahl Schleifendurchläufe, arithmetische Operationen und Methodenaufrufe – und somit Laufzeit und Speicherbedarf – unterscheiden sich jedoch.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Zu jeder Problemklasse gibt es verschiedene konkrete Probleme.</li>
+<li>Zu jedem konkreten Problem gibt es verschiedene Algorithmen.</li>
+<li>Zu jedem Algorithmus gibt es verschiedene Implementierungen.</li>
+</ol>
+<p>Die Gleichwertigkeit von Algorithmen kann nicht bewiesen werden (Halting-Problem).</p>
+<h2 id="komplexität"><span class="header-section-number">1.7</span> Komplexität</h2>
+<ul>
+<li>Die Komplexität (oder Aufwand, Kosten) eines Algorithmus besagt, wie der Ressourcenbedarf von den Eingabedaten abhängt.</li>
+<li>Der Ressourcenbedarf ist eine Funktion der Eingabedaten: <code>R=f(E)</code>
+<ul>
+<li>Rechenzeit: <em>Zeitkomplexität</em></li>
+<li>Speicherbedarf: <em>Speicherkomplexität</em></li>
+</ul></li>
+<li>Abhängigkeit von Eingabedaten:
+<ul>
+<li>Grösse der <em>Datenmenge</em> (z.B. Anzahl zu sortierender Elemente)</li>
+<li>Grösse der <em>Datenwerte</em> (z.B. Grössse zu prüfender Primzahlen)</li>
+</ul></li>
+</ul>
+<p>Bei der Komplexität eines Algorithmus geht es nicht um die exakte Rechenzeit (einer Implementierung), sondern um das <em>Anwachsen des Ressourcenbedarfs</em> in Abhängigkeit von wachsenden Eingabedaten.</p>
+<h3 id="beispiel"><span class="header-section-number">1.7.1</span> Beispiel</h3>
+<p>Laufzeit eines Programms abhängig vom Eingabeparameter <code>n</code>:</p>
+<pre><code>public static void task(int n) {
+    task1();
+    task1();
+    task1();
+    task1();
+    for (int i = 0; i &lt; n; i++) {
+        task2();
+        task2();
+        task2();
+        for (int j = 0; j &lt; n; j++) {
+            task3();
+            task3();
+        }
+    }
+}</code></pre>
+<p>Annahmen:</p>
+<ul>
+<li>Die Methoden <code>task1</code>, <code>task2</code> und <code>task3</code> haben eine konstante und vergleichbare Rechenzeit und sind <em>nicht</em> vom Eingabeparameter <code>n</code> abhängig.</li>
+<li>Die Ausführungszeiten der Schleifensteuerung sind vernachlässigbar.</li>
+</ul>
+<p>Berechnung: Die Rechenzeit <code>T</code> von <code>task(n)</code> beträgt <code>T=f(n)~4+3n+2n²</code></p>
+<p>Folgerung:</p>
+<ul>
+<li>Für grosse <code>n</code> dominiert der Anteil von <code>n²</code>.</li>
+<li>Die Funktion ist von der Ordnung <code>O(n²)</code></li>
+</ul>
+<h3 id="big-o-notation"><span class="header-section-number">1.7.2</span> Big-O-Notation</h3>
+<ul>
+<li><code>O</code>, das landausche Symbol, bringt zum Ausdruck, dass eine Funktion <code>f(n)</code> höchstens so schnell wächst wie eine andere Funktion <code>g(n)</code>.</li>
+<li>Wird <code>n</code> genügend gross gewählt, unterscheiden sich <code>f(n)</code> und <code>g(n)</code> nur noch durch eine Konstante.</li>
+</ul>
+<p>Wichtige Ordnungsfunktionen:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Bezeichnung</th>
+<th>Notation</th>
+<th>Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Konstant</td>
+<td><code>O(1)</code></td>
+<td>Hashing</td>
+</tr>
+<tr class="even">
+<td>Logarithmisch</td>
+<td><code>O(ln(n))</code></td>
+<td>binäres Suchen</td>
+</tr>
+<tr class="odd">
+<td>Linear</td>
+<td><code>O(n)</code></td>
+<td>Suchen in Text</td>
+</tr>
+<tr class="even">
+<td><code>n*log(n)</code></td>
+<td><code>O(n*log(n))</code></td>
+<td>schlaues Sortieren</td>
+</tr>
+<tr class="odd">
+<td>Polynominal</td>
+<td><code>O(n^m)</code></td>
+<td>einfaches Sortieren</td>
+</tr>
+<tr class="even">
+<td>Exponential</td>
+<td><code>O(m^n)</code></td>
+<td>Optimierungen</td>
+</tr>
+<tr class="odd">
+<td>Fakultät</td>
+<td><code>O(n!)</code></td>
+<td>Permutationen, Travelling Salesman</td>
+</tr>
+</tbody>
+</table>
+<h3 id="abschliessende-bemerkungen"><span class="header-section-number">1.7.3</span> Abschliessende Bemerkungen</h3>
+<ul>
+<li>Die Ordnung macht keine Aussage über das Verhalten bei kleinen <code>n</code>.</li>
+<li>Konstante Faktoren können bei kleinen <code>n</code> relevant sein.</li>
+<li>Die exakte mathematische Analyse vieler Algorithmen ist schwierig oder sogar unmöglich.</li>
+<li>Bei der Analyse muss darum differenziert werden:
+<ul>
+<li>bester Fall (best case)</li>
+<li>schlechtester Fall (worst case)</li>
+<li>mittlerer Fall (average case)</li>
+</ul></li>
+</ul>
+<h1 id="rekursion"><span class="header-section-number">2</span> Rekursion</h1>
+<p>Viele Algorithmen und Datenstrukturen sind von Natur aus <em>selbstähnlich</em> bzw. <em>selbstbezüglich</em>.</p>
+<ul>
+<li>Der ggT von 21 und 15 ist gleich dem ggt von 21-15 und 15.</li>
+<li>Ein Verzeichnis enthält Daten und andere Verzeichnisse.</li>
+<li>Ein Ausschnitt einer Matrix, einer Liste, eines Baumes, eines Graphen ist wiederum eine Matrix, eine Liste, ein Baum, ein Graph.</li>
+</ul>
+<h2 id="rekursion-vs.iteration-am-beispiel-der-fakultät"><span class="header-section-number">2.1</span> Rekursion vs. Iteration (am Beispiel der Fakultät)</h2>
+<h3 id="iterativer-ansatz"><span class="header-section-number">2.1.1</span> Iterativer Ansatz</h3>
+<p>Iterative Definition: <code>n! = 1*2*3*...*n</code></p>
+<p>Iterative Implementierung:</p>
+<pre><code>public static factorial(int n) {
+    int result = 1;
+    for (int i = 0; i &lt;= n; i++) {
+        result *= i;
+    }
+    return result;
+}</code></pre>
+<h3 id="rekursiver-ansatz"><span class="header-section-number">2.1.2</span> Rekursiver Ansatz</h3>
+<p>Rekursive Definition:</p>
+<ul>
+<li>Rekursionsbasis:
+<ul>
+<li><code>0! = 1</code></li>
+<li><code>1! = 1</code></li>
+</ul></li>
+<li>Rekursionsvorschrift: <code>n!=n*(n-1)!</code></li>
+<li>Rekursion: Aufzeigen eines Lösungsweges, wie ein schwieriges Problem auf ein gleichartiges aber einfacheres Problem zurückgeführt werden kann.</li>
+</ul>
+<p>Beispiel: <code>5!</code> wird auf die Rekursionsbasis zurückgeführt:</p>
+<pre><code>- `5!=5*4!`
+- `5!=5*(4*3!)`
+- `5!=5*(4*(3*2!))`
+- `5!=5*(4*(3*(2*1!)))=5*(4*(3*(2*1)))=120`</code></pre>
+<p>Rekursive Implementierung:</p>
+<pre><code>public static factorial(int n) {
+    if (n == 0 || n == 1) {
+        // Iterationsbasis
+        return 1;
+    } else {
+        // Rekursionsvorschrift (Rückführung)
+        return n * factorial(n - 1);
+    }
+}</code></pre>
+<h1 id="glossar"><span class="header-section-number">3</span> Glossar</h1>
+<ul>
+<li>Algorithmus: präzise festgelegtes Verfahren zur Lösung eines Problems bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung)-Operator)</li>
+<li>Datenstruktur: ein Konzept zur <em>Speicherung und Organisation von Daten</em>. Sie ist durch die Operationen charakterisiert, welche Zugriffe und Verwaltung realisieren.</li>
+<li>Rekursion: Aufzeigen eines Lösungsweges, wie ein schwieriges Problem auf ein gleichartiges aber einfacheres Problem zurückgeführt werden kann.</li>
+</ul>
+</body>
+</html>

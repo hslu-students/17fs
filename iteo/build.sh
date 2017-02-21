@@ -1,5 +1,5 @@
-rm -f git.html
-rm -f git.pdf
+rm -f iteo.html
+rm -f iteo.pdf
 
 pandoc -N -S -s -c style.css --toc \
     --variable title="IT-System Engineering \& Operation"\
