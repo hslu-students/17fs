@@ -178,3 +178,136 @@
         - 1.0: optimal (in kalten Regionen möglich)
         - 1.2: guter Wert (normale Rechenzentren)
         - über 1.4: Optimierungsbedarf
+
+## Verfügbarkeitsverbesserungen
+
+Kosten der Downtime pro Stunde:
+
+- Fertigung: 28'000.-
+- Logistik: 90'000.-
+- Einzelhandel: 90'000.-
+- Home-Shopping: 113'000.-
+- Medien (pay per view): 1'100'000.-
+- Bank (Rechenzentrum): 2'500'000.-
+- Kreditkartenverarbeitung: 2'600'000.-
+- Broker: 6'500'000.-
+
+### Service Level Agreement
+
+Verfügbarkeit bei `7*24h`:
+
+| Uptime in %   | Downtime pro Jahr |
+| ------------- | ----------------- |
+| 90%           | 876 h (36.5 d)    |
+| 95%           | 438 h (18.25 d)   |
+| 99%           | 87.6 h (3.65 d)   |
+
+TODO: p.19
+
+Verfügbarkeit bei `5*9h` (zu Bürozeiten):
+
+TODO: p.20
+
+Massnahmen zur Erhöhung der Verfügbarkeit:
+
+- Spiegelung (inkl. Synchronisation)
+- Failover Cluster: Ausfall eines Hosts, der vom Client nicht bemerkt wird
+    - zwei Hosts, die sich gegenseitig über Heartbeat kontrollieren
+    - Client spricht zu einem vorgeschalteten Virtual Host
+    - bei Ausfall springt der eine Host für den anderen ein
+    - Automatischer Lastausgleich bei vielen Hosts
+- Failover Datacenter: Ausfall eines ganzen Datacenters
+    - Spiegelung der Datacenters
+    - Backup und Produktivdaten über Kreuz, sodass bei einem Ausfall beide Datenbestände an einem Ort sind
+- Asynchrone und synchrone Replikation
+    - TODO: p.24
+
+### Availability Environment Classification
+
+AEC-0: Conventional
+...
+AEC-5: Disaster Tolerant
+
+TODO: p.25
+
+### Repetitionsfragen
+
+1. Welche Verfügbarkeit muss im SLA festgehalten werden, wenn ich 1h Ausfallzeit während den Bürozeiten nicht überschreiten will?
+    - 99.9572% Verfügbarkeit, 8-17 Uhr von Mo-Fr CET
+2. Was versteht man unter Failover-Cluster-Services?
+    - Eine automatische und für den Client transparente Umschaltung eines redundanten Hosts bei Störungen.
+3. Wenn z.B. das SAN gespiegelt werden soll, wie erhöhen sich die Kosten? 50%/100%/mehr als 100% und warum?
+    - Mehr als 100%, weil die Anzahl der Verbindungen zwischen den einzelnen Komponenten sich mehr als verdoppelt.
+
+## Tier-Levels
+
+- Tier I: Redundanz N: keine Redundanz, 28.8h Ausfallszeit pro Jahr
+- Tier II: Redundanz N+1: ein zusätzlicher Server, 22h Ausfallszeit pro Jahr
+- Tier III: Redundanz N+1: ein zusätzlicher Server, weitere Redundanzen in der Infrastruktur, 1.6h Ausfallszeit pro Jahr
+- Tier IV: Redundanz 2(N+1): ein zusätzlicher Server, alle Server doppelt, 0.8h Ausfallszeit pro Jahr
+
+### Rechercheaufgaben
+
+1. Suchen sie RZ-Services Anbieter mit Level 3, 3.5 und Level 4 Rechenzentren.
+    - Tier III: [infomaniak](https://www.infomaniak.com/de/datacenter-housing)
+    - Tier 3+: [greeendatacenter](https://www.greendatacenter.ch/colocation/colo-standard.html)
+    - Tier IV: [greendatacenter](https://www.greendatacenter.ch/)
+2. Versuchen sie die Kosten für den Service zu bestimmen (pro Rack, pro Server, ...).
+    - monatlich CHF 450.- pro Monat und Rack (10 Server)
+    - monatlich CHF 650.- pro Monat und Rack (? Server)
+    - monatlich CHF 1250.- pro Monat und Rack (? Server)
+
+TODO: in Datenaustausch
+
+## Informaton Lifecycle Management
+
+Datenzyklus:
+
+- Create
+- Store
+- Use
+- Share
+- Archive
+- Destroy
+
+ILM: Speicherstrategie zur Speicherung von Informationen _entsprechend ihrem Wert_ auf dem jeweils günstigsten Speichermedium.
+
+TODO: p.32
+
+- Tier 1: SSD, Server-Festplatten (Fiber Channel Disc 15k rpm)
+- Tier 2: HDD, 
+- Tier n: SATA-Festplatten
+- spezialisiert: Archivierung, Tapes, langsame Festplatten (disc to disc)
+
+TODO: p.33
+
+ILM-Management:
+
+- Storage Management
+- Document Lifecycle Management
+- Content Lifecycle Management
+- Records Management
+
+Regeln:
+
+TODO: p.35, 36
+
+### Repetitionsfragen
+
+1. Was versteht man unter Records Management?
+    - Was soll wo und wie lange gespeichert und von wem eingesehen oder bearbeitet werden (rechtliche Aspekte).
+2. Welche (gesetzlichen) Vorschriften für die Datenaufbewahrungszeit kennen sie?
+    - 3 Jahre für intern relevante Daten
+    - 10 Jahre für Rechnungen, Geschäftsabschlüsse
+    - 20 Jahre bei börsenkotierten Unternehmen
+3. Wer soll das Records-Management (RM) anordnen und durchsetzen?
+    - Rechtsabteilung: sanktionieren
+    - Geschäftsleitung: anordnen
+    - Abteilungsleiter: durchsetzen
+    - Administratoren: ausführen
+4. Kennen sie aus der eigenen Umgebung Beispiele?
+    - keine Positivbeispiele
+
+## Tiered Storage
+
+...
