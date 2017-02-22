@@ -6,17 +6,20 @@ Was ist der Zweck der (internen) IT?
 - Geschäftsprozesse (Einkauf, Produktion, Vertrieb) stellen Anforderungen an die IT
 - die IT _entwickelt_ und _betreibt_ Anwendungen und Services
 
-Was ist ein Prozess?
+Definitionen:
 
-- Naive Sicht: Ein Prozess, welcher in einem Unternehmen abläuft.
-    - Was ist ein Unternehmen?
-        - Eine Einheit zusammenwirkender Personen und Produktionsmittel zur Hervorbringung von Gütern/Dienstleistungen (Output) aus Eingangsmaterialien (Input) für Dritte zum Zweck der Gewinnerzielung
-    - Was ist ein Prozess?
-        - Ein Vorgang oder Verlauf (von lat. processus: "Fortschreiten, Fortgang, Verlauf", lat. procedere: "vorwärts schreiten") oder Ablauf mehrer Schritte, wobei es sich um Aufgaben, Ausführungen, Arbeitsschritte u. dgl. handeln kann.
-        - Zwischen diesen Prozessabschnitten bestehen bestimmte Abhängigkeiten.
-        - Input - Verarbeitung - Output
-
-TODO: p.13 (Definition)
+- Unternehmen
+    - Eine Einheit zusammenwirkender Personen und Produktionsmittel zur Hervorbringung von Gütern/Dienstleistungen (Output) aus Eingangsmaterialien (Input) für Dritte zum Zweck der Gewinnerzielung
+- Prozess
+    - Naive Sicht: Ein Prozess, welcher in einem Unternehmen abläuft.
+    - Ein Vorgang oder Verlauf (von lat. processus: "Fortschreiten, Fortgang, Verlauf", lat. procedere: "vorwärts schreiten") oder Ablauf mehrer Schritte, wobei es sich um Aufgaben, Ausführungen, Arbeitsschritte u. dgl. handeln kann.
+    - Zwischen diesen Prozessabschnitten bestehen bestimmte Abhängigkeiten.
+    - Input - Verarbeitung - Output
+- Geschäftsprozess
+    - Ablauf von Aktivitäten zur Erzeugung eines Produktes/einer Dienstleistung für Dritte
+    - durch ein oder mehrere Ereignisse gestartet und abgeschlossen
+    - es liegt eine Organisationsstruktur zu Grunde
+    - Synonyme: Ablauf, Vorgang, Prozess, Unternehmensprozess
 
 ## Die Prozesslandkarte
 
@@ -48,4 +51,58 @@ Unterstützungsprozesse:
 
 ## Aufgabe 2.2: Produktautomat
 
-TODO: Testataufgabe!
+Prozesslandkarte "Produktautomat":
+
+- Verkauf von Automaten
+    * Marketing
+    * Transport
+    * Inbetriebnahme
+- Einkauf von Waren
+    * Beschaffung des Inhaltes wie zum Beispiel Snacks oder Getränke
+- Betrieb von Automaten
+    * Nachfüllen des Inhaltes (Waren & Geld)
+    * Kontrolle des Geldinhaltes (inkl. Gewinnentnahme)
+    * Kontrolle des Inhaltes auf Haltbarkeit
+    * Kontrolle der HW
+    * Rückmeldung & Analyse des Verbrauchserfolges
+- Reperatur & Wartung
+    * Fehlererkennung & -behebung
+    * Softwareupdates
+    * HW Reperaturen
+- Automatenrücknahme
+    * evt. Ersatz durch Nachfolgermodell
+    * Verschrottung
+
+Use-Cases:
+
+- Kunde
+    * Automat erkennen & nähern
+    * Produktpalette betrachten
+    * Kaufentscheid treffen
+    * Geld einwerfen
+    * Produktnummer eingeben
+    * Ware entnehmen
+    * evt. Rückgeld entnehmen
+- Service-Personal
+    * Automat aufsuchen
+    * Automat in Servicezustand versetzen
+    * Frontseite öffnen
+    * Betriebsrückmeldung notieren (Geld- & Warenbestand)
+    * Geldbestand herstellen (Nachfüllen & Entnehmen)
+    * Produktbestand herstellen inkl. Produktinformationseingabe (Entnahme von altem & hinzufügen/auffüllen von Neuem)
+    * evt. geplante Änderungen durchführen. (Produktbestand)
+    * evt. Reinigung, Kontrolle, Rückmeldung
+
+Weitere relevante Prozesse:
+
+- Forschung & Entwicklung
+- Marketing
+- Wareneinkauf
+- Logistik
+- Produktion
+- Kontrolle
+- Buchhaltung
+- Personalmanagement
+- Softwareentwicklung
+- Zieldefinition
+- Facilitymanagement

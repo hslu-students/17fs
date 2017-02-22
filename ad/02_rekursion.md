@@ -115,7 +115,3 @@ Lösungsansatz: Rückführung des Problems (Permutation von `n` Zeichen auf Perm
 - `A` kombiniert mit den Permutationen von `BCDEF`
     - `B` kombiniert mit den Permutationen von `CDEF`
         - `C` kombiniert mit den Permutationen von `DEF`
-
-## Beispiel: Türme von Hanoi
-
-TODO

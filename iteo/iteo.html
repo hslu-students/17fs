@@ -23,6 +23,18 @@
 <li><a href="#überwachungsgebiete"><span class="toc-section-number">1.5</span> Überwachungsgebiete</a></li>
 <li><a href="#rechenzenter-effizienz-pue-faktor"><span class="toc-section-number">1.6</span> Rechenzenter-Effizienz, PUE-Faktor</a></li>
 <li><a href="#repetitionsfragen"><span class="toc-section-number">1.7</span> Repetitionsfragen</a></li>
+<li><a href="#verfügbarkeitsverbesserungen"><span class="toc-section-number">1.8</span> Verfügbarkeitsverbesserungen</a><ul>
+<li><a href="#service-level-agreement"><span class="toc-section-number">1.8.1</span> Service Level Agreement</a></li>
+<li><a href="#availability-environment-classification"><span class="toc-section-number">1.8.2</span> Availability Environment Classification</a></li>
+<li><a href="#repetitionsfragen-1"><span class="toc-section-number">1.8.3</span> Repetitionsfragen</a></li>
+</ul></li>
+<li><a href="#tier-levels"><span class="toc-section-number">1.9</span> Tier-Levels</a><ul>
+<li><a href="#rechercheaufgaben"><span class="toc-section-number">1.9.1</span> Rechercheaufgaben</a></li>
+</ul></li>
+<li><a href="#informaton-lifecycle-management"><span class="toc-section-number">1.10</span> Informaton Lifecycle Management</a><ul>
+<li><a href="#repetitionsfragen-2"><span class="toc-section-number">1.10.1</span> Repetitionsfragen</a></li>
+</ul></li>
+<li><a href="#tiered-storage"><span class="toc-section-number">1.11</span> Tiered Storage</a></li>
 </ul></li>
 <li><a href="#glossar"><span class="toc-section-number">2</span> Glossar</a></li>
 </ul>
@@ -308,6 +320,262 @@
 <li>über 1.4: Optimierungsbedarf</li>
 </ul></li>
 </ul></li>
+</ol>
+<h2 id="verfügbarkeitsverbesserungen"><span class="header-section-number">1.8</span> Verfügbarkeitsverbesserungen</h2>
+<p>Kosten der Downtime pro Stunde:</p>
+<ul>
+<li>Fertigung: 28’000.-</li>
+<li>Logistik: 90’000.-</li>
+<li>Einzelhandel: 90’000.-</li>
+<li>Home-Shopping: 113’000.-</li>
+<li>Medien (pay per view): 1’100’000.-</li>
+<li>Bank (Rechenzentrum): 2’500’000.-</li>
+<li>Kreditkartenverarbeitung: 2’600’000.-</li>
+<li>Broker: 6’500’000.-</li>
+</ul>
+<h3 id="service-level-agreement"><span class="header-section-number">1.8.1</span> Service Level Agreement</h3>
+<p>Verfügbarkeit bei <code>7*24h</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Uptime in %</th>
+<th>Downtime pro Jahr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>90%</td>
+<td>876 h (36.5 d)</td>
+</tr>
+<tr class="even">
+<td>95%</td>
+<td>438 h (18.25 d)</td>
+</tr>
+<tr class="odd">
+<td>99%</td>
+<td>87.6 h (3.65 d)</td>
+</tr>
+<tr class="even">
+<td>99.9%</td>
+<td>8.76 h</td>
+</tr>
+<tr class="odd">
+<td>99.99%</td>
+<td>52.56 min</td>
+</tr>
+<tr class="even">
+<td>99.999%</td>
+<td>5.256 min</td>
+</tr>
+<tr class="odd">
+<td>99.9999%</td>
+<td>31.536 sec</td>
+</tr>
+</tbody>
+</table>
+<p>Verfügbarkeit bei <code>5*9h</code> (zu Bürozeiten):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Uptime in %</th>
+<th>Downtime pro Jahr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>90%</td>
+<td>234.90 h (26.1 d)</td>
+</tr>
+<tr class="even">
+<td>95%</td>
+<td>117.45 h (13.05 d)</td>
+</tr>
+<tr class="odd">
+<td>99%</td>
+<td>23.49 h (2.61 d)</td>
+</tr>
+<tr class="even">
+<td>99.9%</td>
+<td>2.35 h</td>
+</tr>
+<tr class="odd">
+<td>99.99%</td>
+<td>14.09 min</td>
+</tr>
+<tr class="even">
+<td>99.999%</td>
+<td>1.14 min</td>
+</tr>
+<tr class="odd">
+<td>99.9999%</td>
+<td>8.46 sec</td>
+</tr>
+</tbody>
+</table>
+<p>Massnahmen zur Erhöhung der Verfügbarkeit:</p>
+<ul>
+<li>Spiegelung (inkl. Synchronisation)</li>
+<li>Failover Cluster: Ausfall eines Hosts, der vom Client nicht bemerkt wird
+<ul>
+<li>zwei Hosts, die sich gegenseitig über Heartbeat kontrollieren</li>
+<li>Client spricht zu einem vorgeschalteten Virtual Host</li>
+<li>bei Ausfall springt der eine Host für den anderen ein</li>
+<li>Automatischer Lastausgleich bei vielen Hosts</li>
+</ul></li>
+<li>Failover Datacenter: Ausfall eines ganzen Datacenters
+<ul>
+<li>Spiegelung der Datacenters</li>
+<li>Backup und Produktivdaten über Kreuz, sodass bei einem Ausfall beide Datenbestände an einem Ort sind</li>
+</ul></li>
+<li>Asynchrone und synchrone Replikation
+<ul>
+<li>in Rechenzenter A wird eine Datenbank synchron auf eine lokale Instanz gespiegelt</li>
+<li>in Rechenzenter B wird die Datenübertragung dann asynchron vorgenommen</li>
+<li>Rechenzenter B ist im Standby-Betrieb</li>
+</ul></li>
+</ul>
+<h3 id="availability-environment-classification"><span class="header-section-number">1.8.2</span> Availability Environment Classification</h3>
+<ul>
+<li>AEC-0: Conventional
+<ul>
+<li>Funktion kann unterbrochen werden</li>
+<li>Datenintegrität nicht essentiell</li>
+</ul></li>
+<li>AEC-1: Highly Reliable
+<ul>
+<li>Funktion kann unterbrochen werden</li>
+<li>Datenintegrität muss gewährtleistet sein</li>
+</ul></li>
+<li>AEC-2: High Availability
+<ul>
+<li>Funktion darf nur zu festgelegten Zeiten unterbrochen werden</li>
+<li>Zu Hauptbetriebszeiten sind minimale Unterbrüche zulässig</li>
+</ul></li>
+<li>AEC-3: Fault Resilient
+<ul>
+<li>Funktion muss zu Hauptbetriebszeiten ununterbrochen aufrecht erhalten werden</li>
+</ul></li>
+<li>AEC-4: Fault Tolerant
+<ul>
+<li>Funktion muss ununterbrochen (24/7) aufrecht erhalten werden</li>
+</ul></li>
+<li>AEC-5: Disaster Tolerant
+<ul>
+<li>Funktion muss unter allen Umständen verfügbar sein</li>
+</ul></li>
+</ul>
+<h3 id="repetitionsfragen-1"><span class="header-section-number">1.8.3</span> Repetitionsfragen</h3>
+<ol style="list-style-type: decimal">
+<li>Welche Verfügbarkeit muss im SLA festgehalten werden, wenn ich 1h Ausfallzeit während den Bürozeiten nicht überschreiten will?
+<ul>
+<li>99.9572% Verfügbarkeit, 8-17 Uhr von Mo-Fr CET</li>
+</ul></li>
+<li>Was versteht man unter Failover-Cluster-Services?
+<ul>
+<li>Eine automatische und für den Client transparente Umschaltung eines redundanten Hosts bei Störungen.</li>
+</ul></li>
+<li>Wenn z.B. das SAN gespiegelt werden soll, wie erhöhen sich die Kosten? 50%/100%/mehr als 100% und warum?
+<ul>
+<li>Mehr als 100%, weil die Anzahl der Verbindungen zwischen den einzelnen Komponenten sich mehr als verdoppelt.</li>
+</ul></li>
+</ol>
+<h2 id="tier-levels"><span class="header-section-number">1.9</span> Tier-Levels</h2>
+<ul>
+<li>Tier I: Redundanz N: keine Redundanz, 28.8h Ausfallszeit pro Jahr</li>
+<li>Tier II: Redundanz N+1: ein zusätzlicher Server, 22h Ausfallszeit pro Jahr</li>
+<li>Tier III: Redundanz N+1: ein zusätzlicher Server, weitere Redundanzen in der Infrastruktur, 1.6h Ausfallszeit pro Jahr</li>
+<li>Tier IV: Redundanz 2(N+1): ein zusätzlicher Server, alle Server doppelt, 0.8h Ausfallszeit pro Jahr</li>
+</ul>
+<h3 id="rechercheaufgaben"><span class="header-section-number">1.9.1</span> Rechercheaufgaben</h3>
+<ol style="list-style-type: decimal">
+<li>Suchen sie RZ-Services Anbieter mit Level 3, 3.5 und Level 4 Rechenzentren.
+<ul>
+<li>Tier III: <a href="https://www.infomaniak.com/de/datacenter-housing">infomaniak</a></li>
+<li>Tier 3+: <a href="https://www.greendatacenter.ch/colocation/colo-standard.html">greeendatacenter</a></li>
+<li>Tier IV: <a href="https://www.greendatacenter.ch/">greendatacenter</a></li>
+</ul></li>
+<li>Versuchen sie die Kosten für den Service zu bestimmen (pro Rack, pro Server, …).
+<ul>
+<li>monatlich CHF 450.- pro Monat und Rack (10 Server)</li>
+<li>monatlich CHF 650.- pro Monat und Rack (? Server)</li>
+<li>monatlich CHF 1250.- pro Monat und Rack (? Server)</li>
+</ul></li>
+</ol>
+<h2 id="informaton-lifecycle-management"><span class="header-section-number">1.10</span> Informaton Lifecycle Management</h2>
+<p>Datenzyklus:</p>
+<ul>
+<li>Create (erstellen)</li>
+<li>Store (abspeichern)</li>
+<li>Use (verwenden: einsehen, anpassen)</li>
+<li>Share (weitergeben)</li>
+<li>Archive (archivieren)</li>
+<li>Destroy (löschen)</li>
+</ul>
+<p>ILM: Speicherstrategie zur Speicherung von Informationen <em>entsprechend ihrem Wert</em> auf dem jeweils günstigsten Speichermedium.</p>
+<ul>
+<li>Verwaltung und Speicherung orientieren sich an <em>Wichtigkeit</em>, <em>Wertigkeit</em> und <em>Kosten</em> der Daten.</li>
+<li>Daten, Quellen und Speichersysteme werden <em>klassifiziert</em> (Speicherhierarchie).
+<ul>
+<li>Tier 1: SSD, Server-Festplatten (Fiber Channel Disc 15k rpm)</li>
+<li>Tier 2: HDD,</li>
+<li>Tier n: SATA-Festplatten</li>
+<li>spezialisiert: Archivierung, Tapes, langsame Festplatten (disc to disc)</li>
+</ul></li>
+</ul>
+<p>ILM-Management:</p>
+<ul>
+<li>Storage Management</li>
+<li>Document Lifecycle Management</li>
+<li>Content Lifecycle Management</li>
+<li>Records Management</li>
+</ul>
+<p>Regeln legen fest, wie und wo Daten gespeichert werden:</p>
+<ul>
+<li>Änderungshäufigkeit</li>
+<li>Zugriffsgeschwindigkeit</li>
+<li>Zugriffshäufigkeit</li>
+<li>Kosten</li>
+<li>ökonimischer Wert</li>
+<li>gesetzliche Bestimmungen</li>
+</ul>
+<p>Inaktive Daten:</p>
+<ul>
+<li>konsumieren Speicherplatz</li>
+<li>werden gepflegt, gesichert, repliziert usw.</li>
+<li>unterliegen rechtlichen und Datenhaltungsansprüchen</li>
+<li>müssen im Katastrophenfall wiederhergestellt werden</li>
+</ul>
+<h3 id="repetitionsfragen-2"><span class="header-section-number">1.10.1</span> Repetitionsfragen</h3>
+<ol style="list-style-type: decimal">
+<li>Was versteht man unter Records Management?
+<ul>
+<li>Was soll wo und wie lange gespeichert und von wem eingesehen oder bearbeitet werden (rechtliche Aspekte).</li>
+</ul></li>
+<li>Welche (gesetzlichen) Vorschriften für die Datenaufbewahrungszeit kennen sie?
+<ul>
+<li>3 Jahre für intern relevante Daten</li>
+<li>10 Jahre für Rechnungen, Geschäftsabschlüsse</li>
+<li>20 Jahre bei börsenkotierten Unternehmen</li>
+</ul></li>
+<li>Wer soll das Records-Management (RM) anordnen und durchsetzen?
+<ul>
+<li>Rechtsabteilung: sanktionieren</li>
+<li>Geschäftsleitung: anordnen</li>
+<li>Abteilungsleiter: durchsetzen</li>
+<li>Administratoren: ausführen</li>
+</ul></li>
+<li>Kennen sie aus der eigenen Umgebung Beispiele?
+<ul>
+<li>keine Positivbeispiele</li>
+</ul></li>
+</ol>
+<h2 id="tiered-storage"><span class="header-section-number">1.11</span> Tiered Storage</h2>
+<p>Verschiedene Datenklassen werden auf verschiedene Speicherklassen gespeichert:</p>
+<ol style="list-style-type: decimal">
+<li>mission critical data</li>
+<li>business critical data</li>
+<li>nearline or historical data</li>
+<li>offline data</li>
 </ol>
 <h1 id="glossar"><span class="header-section-number">2</span> Glossar</h1>
 <ul>
