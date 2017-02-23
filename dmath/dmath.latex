@@ -3,6 +3,7 @@
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{verbatimbox}
 
 \begin{document}
 
@@ -33,20 +34,23 @@
 
 \subsubsection{Negation}
 
-$\neg p$: «Es ist nicht der Fall, dass $p$ gilt.» Wahrheitstabelle:\\
+$\neg p$: «Es ist nicht der Fall, dass $p$ gilt.» Wahrheitstabelle:
 
-\begin{tabular}{r|r}
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c}
 $p$ & $\neg p$ \\
 \hline
 $w$ & $f$ \\
 $f$ & $w$ \\
 \end{tabular}
+}
 
 \subsubsection{Konjunktion}
 
-$p \land q$: «Es gelten $p$ und $q$.» Wahrheitstabelle:\\
+$p \land q$: «Es gelten $p$ und $q$.» Wahrheitstabelle:
 
-\begin{tabular}{r|r|r}
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
 $p$ & $q$ & $p \land q$ \\
 \hline
 $w$ & $w$ & $w$ \\
@@ -54,12 +58,14 @@ $w$ & $f$ & $f$ \\
 $f$ & $w$ & $f$ \\
 $f$ & $f$ & $f$ \\
 \end{tabular}
+}
 
 \subsubsection{Disjunktion}
 
-$p \lor q$: «Es gilt $p$ oder $q$ oder es gelten beide.» Wahrheitstabelle:\\
+$p \lor q$: «Es gilt $p$ oder $q$ oder es gelten beide.» Wahrheitstabelle:
 
-\begin{tabular}{r|r|r}
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
 $p$ & $q$ & $p \lor q$ \\
 \hline
 $w$ & $w$ & $w$ \\
@@ -67,17 +73,152 @@ $w$ & $f$ & $w$ \\
 $f$ & $w$ & $w$ \\
 $f$ & $f$ & $f$ \\
 \end{tabular}
+}
 
 \subsubsection{EXOR}
 
-$p \oplus q$: «Es gilt $p$ oder $q$ aber nicht $p$ und $q$.»
+$p \oplus q$: «Es gilt $p$ oder $q$ aber nicht $p$ und $q$.» Wahrheitstabelle:
+
+\addvbuffer[9pt 0pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \oplus q$ \\
+\hline
+$w$ & $w$ & $f$ \\
+$w$ & $f$ & $w$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+}
 
 \subsubsection{Implikation}
 
-$p \rightarrow q$: «Wenn $p$ gilt, dann gilt $q$.»
+$p \rightarrow q$: «Wenn $p$ gilt, dann gilt $q$.» Wahrheitstabelle:
+
+\addvbuffer[9pt]{
+\begin{tabular}{c|c|c}
+$p$ & $q$ & $p \rightarrow q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $w$ \\
+\end{tabular}
+}
+
+Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politiker sagt: «Wenn ich gewählt werde, senke ich die Steuern.»
+
+\begin{itemize}
+\item{$p$: Politiker wird gewählt}
+\item{$q$: Politiker senkt die Steuern.}
+\item{$p \rightarrow q$}
+    \begin{enumerate}
+    \item{Der Politiker wird gewählt und senkt die Steuern: die Aussage trifft zu.}
+    \item{Der Politiker wird gewählt, senkt aber die Steuern nicht: die Aussage trifft nicht zu.}
+    \item{Der Politiker wird nicht gewählt; es ist egal, was er in diesem Fall tun will: die Aussage trifft zu.}
+    \end{enumerate}
+\end{itemize}
 
 \subsubsection{Bikonditional}
 
-$p \Leftrightarrow q$: «Es gilt $p$ genau dann, wann $q$ gilt.»
+$p \leftrightarrow q$: «Es gilt $p$ genau dann, wann $q$ gilt.» Wahrheitstabelle:
+
+\addvbuffer[9pt]{
+\begin{tabular}{r|r|r}
+$p$ & $q$ & $p \leftrightarrow q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $f$ \\
+$f$ & $f$ & $w$ \\
+\end{tabular}
+}
+
+Eine bikonditionale Präposition ist dann wahr, wenn $p$ und $q$ den gleichen Wahrheitswert haben, also das Gegenteil von EXOR:
+
+$p \leftrightarrow q \equiv \neg(p \oplus q)$
+
+\subsection{Priorität logischer Operationen}
+
+\begin{enumerate}
+\item{$\neg$ (Negation)}
+\item{$\land$ (Konjunktion), $\lor$ (Disjunktion)}
+\item{$\rightarrow$ (Implikation), $\leftrightarrow$ (Bikonditional)}
+\end{enumerate}
+
+\subsection{Präpositionale Äquivalenzen}
+
+\subsubsection{Tautologie}
+
+Die Aussage ist immer wahr. Beispiel: $p \lor \neg q$
+
+\subsubsection{Kontradiktion/Widerspruch}
+
+Die Aussage ist immer falsch. Beispiel: $p \land \neg q$
+
+\subsection{Logische Äquivalenz}
+
+Zwei Aussagen ($p$ und $q$) sind logisch äquivalent, wenn $p \leftrightarrow q$ eine Tautologie ist. Schreibweisen: $p \equiv q$, $p \sim  q$, $p \Leftrightarrow q$
+
+\subsection{Logische Äquivalenzgesetze}
+
+$T$: True (wahr), $F$: False (falsch)
+
+\subsubsection{Identität}
+
+$p \land T \equiv p$
+\\
+$p \lor F \equiv p$
+
+\subsubsection{Dominanz}
+
+$p \lor T \equiv T$
+\\
+$p \land F \equiv F$
+
+\subsubsection{Idempotenz}
+
+$p \lor p \equiv p$
+\\
+$p \land p \equiv p$
+
+\subsubsection{Doppelnegation}
+
+$\neg(\neg p) \equiv p$
+
+\subsubsection{Negation}
+
+$p \lor \neg p \equiv T$
+\\
+$p \land \neg p \equiv F$
+
+\subsubsection{Kommutativität}
+
+$p \lor q \equiv q \lor p$
+\\
+$p \land q \equiv q \land p$
+
+\subsubsection{Absorption}
+
+$p \lor (p \land q) \equiv p$
+\\
+$p \land (p \lor q) \equiv p$
+
+\subsubsection{Assoziativ 1 und 2}
+
+$(p \lor q) \lor r \equiv p \lor (q \lor r)$
+\\
+$(p \land q) \land r \equiv p \land (q \land r)$
+
+\subsubsection{Distributiv 1 und 2}
+
+$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$
+\\
+$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+
+\subsubsection{De Morgan 1 und 2}
+
+$\neg(p \land q) \equiv \neg p \lor \neg q$
+\\
+$\neg(p \lor q) \equiv \neg p \land \neg q$
 
 \end{document}
