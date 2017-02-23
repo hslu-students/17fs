@@ -201,12 +201,22 @@ Verfügbarkeit bei `7*24h`:
 | 90%           | 876 h (36.5 d)    |
 | 95%           | 438 h (18.25 d)   |
 | 99%           | 87.6 h (3.65 d)   |
-
-TODO: p.19
+| 99.9%         | 8.76 h            |
+| 99.99%        | 52.56 min         |
+| 99.999%       | 5.256 min         |
+| 99.9999%      | 31.536 sec        |
 
 Verfügbarkeit bei `5*9h` (zu Bürozeiten):
 
-TODO: p.20
+| Uptime in %   | Downtime pro Jahr |
+| ------------- | ----------------- |
+| 90%           | 234.90 h (26.1 d) |
+| 95%           | 117.45 h (13.05 d)|
+| 99%           | 23.49 h (2.61 d)  |
+| 99.9%         | 2.35 h            |
+| 99.99%        | 14.09 min         |
+| 99.999%       | 1.14 min          |
+| 99.9999%      | 8.46 sec          |
 
 Massnahmen zur Erhöhung der Verfügbarkeit:
 
@@ -220,15 +230,27 @@ Massnahmen zur Erhöhung der Verfügbarkeit:
     - Spiegelung der Datacenters
     - Backup und Produktivdaten über Kreuz, sodass bei einem Ausfall beide Datenbestände an einem Ort sind
 - Asynchrone und synchrone Replikation
-    - TODO: p.24
+    - in Rechenzenter A wird eine Datenbank synchron auf eine lokale Instanz gespiegelt
+    - in Rechenzenter B wird die Datenübertragung dann asynchron vorgenommen
+    - Rechenzenter B ist im Standby-Betrieb
 
 ### Availability Environment Classification
 
-AEC-0: Conventional
-...
-AEC-5: Disaster Tolerant
-
-TODO: p.25
+- AEC-0: Conventional
+    - Funktion kann unterbrochen werden
+    - Datenintegrität nicht essentiell
+- AEC-1: Highly Reliable
+    - Funktion kann unterbrochen werden
+    - Datenintegrität muss gewährtleistet sein
+- AEC-2: High Availability
+    - Funktion darf nur zu festgelegten Zeiten unterbrochen werden
+    - Zu Hauptbetriebszeiten sind minimale Unterbrüche zulässig
+- AEC-3: Fault Resilient
+    - Funktion muss zu Hauptbetriebszeiten ununterbrochen aufrecht erhalten werden
+- AEC-4: Fault Tolerant
+    - Funktion muss ununterbrochen (24/7) aufrecht erhalten werden
+- AEC-5: Disaster Tolerant
+    - Funktion muss unter allen Umständen verfügbar sein
 
 ### Repetitionsfragen
 
@@ -257,29 +279,25 @@ TODO: p.25
     - monatlich CHF 650.- pro Monat und Rack (? Server)
     - monatlich CHF 1250.- pro Monat und Rack (? Server)
 
-TODO: in Datenaustausch
-
 ## Informaton Lifecycle Management
 
 Datenzyklus:
 
-- Create
-- Store
-- Use
-- Share
-- Archive
-- Destroy
+- Create (erstellen)
+- Store (abspeichern)
+- Use (verwenden: einsehen, anpassen)
+- Share (weitergeben)
+- Archive (archivieren)
+- Destroy (löschen)
 
 ILM: Speicherstrategie zur Speicherung von Informationen _entsprechend ihrem Wert_ auf dem jeweils günstigsten Speichermedium.
 
-TODO: p.32
-
-- Tier 1: SSD, Server-Festplatten (Fiber Channel Disc 15k rpm)
-- Tier 2: HDD, 
-- Tier n: SATA-Festplatten
-- spezialisiert: Archivierung, Tapes, langsame Festplatten (disc to disc)
-
-TODO: p.33
+- Verwaltung und Speicherung orientieren sich an _Wichtigkeit_, _Wertigkeit_ und _Kosten_ der Daten.
+- Daten, Quellen und Speichersysteme werden _klassifiziert_ (Speicherhierarchie).
+    - Tier 1: SSD, Server-Festplatten (Fiber Channel Disc 15k rpm)
+    - Tier 2: HDD, 
+    - Tier n: SATA-Festplatten
+    - spezialisiert: Archivierung, Tapes, langsame Festplatten (disc to disc)
 
 ILM-Management:
 
@@ -288,9 +306,21 @@ ILM-Management:
 - Content Lifecycle Management
 - Records Management
 
-Regeln:
+Regeln legen fest, wie und wo Daten gespeichert werden:
 
-TODO: p.35, 36
+- Änderungshäufigkeit
+- Zugriffsgeschwindigkeit
+- Zugriffshäufigkeit
+- Kosten
+- ökonimischer Wert
+- gesetzliche Bestimmungen
+
+Inaktive Daten:
+
+- konsumieren Speicherplatz
+- werden gepflegt, gesichert, repliziert usw.
+- unterliegen rechtlichen und Datenhaltungsansprüchen
+- müssen im Katastrophenfall wiederhergestellt werden
 
 ### Repetitionsfragen
 
@@ -310,4 +340,9 @@ TODO: p.35, 36
 
 ## Tiered Storage
 
-...
+Verschiedene Datenklassen werden auf verschiedene Speicherklassen gespeichert:
+
+1. mission critical data
+2. business critical data
+3. nearline or historical data
+4. offline data

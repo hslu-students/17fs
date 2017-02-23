@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Modellierung Grundlagen</h1>
+<h2 class="author">Patrick Bucher</h2>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#einführung"><span class="toc-section-number">1</span> Einführung</a><ul>
+<li><a href="#aufgabe-1.2-explosion-der-rakete-ariane-5"><span class="toc-section-number">1.1</span> Aufgabe 1.2: Explosion der Rakete Ariane 5</a></li>
+</ul></li>
+<li><a href="#prozess-modellierung"><span class="toc-section-number">2</span> Prozess-Modellierung</a><ul>
+<li><a href="#die-prozesslandkarte"><span class="toc-section-number">2.1</span> Die Prozesslandkarte</a></li>
+<li><a href="#aufgabe-2.1-tante-emma-laden"><span class="toc-section-number">2.2</span> Aufgabe 2.1: Tante-Emma-Laden</a></li>
+<li><a href="#aufgabe-2.2-produktautomat"><span class="toc-section-number">2.3</span> Aufgabe 2.2: Produktautomat</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="einführung"><span class="header-section-number">1</span> Einführung</h1>
+<ul>
+<li>Konstruktionsfehler können katastrophale Auswirkungen haben, auch bei Software.
+<ul>
+<li>Systembau durch Konzept vorbereiten</li>
+<li>Zugrunde liegende Modelle genau recherchieren</li>
+<li>Kontept sorgfältig und nachvollziehbar ausarbeiten</li>
+</ul></li>
+</ul>
+<h2 id="aufgabe-1.2-explosion-der-rakete-ariane-5"><span class="header-section-number">1.1</span> Aufgabe 1.2: Explosion der Rakete Ariane 5</h2>
+<p>Welche Fehlentscheidungen führten letztlich zur Katastrophe?</p>
+<ul>
+<li>Übernahme von Code von der Ariane 4</li>
+<li>Fehlende Ausnahmebehandlung</li>
+<li>Fehlende Spezifikationen</li>
+<li>Unzureichende Test des Flugkontrollsystems</li>
+</ul>
+<p>Welches war der entscheidende Design- respektive Konstruktionsfehler, ohne welchen der Flug wahrscheinlich trotz den anderen Fehlern hätte fortgesetzt werden können</p>
+<ul>
+<li>Variable für die horizontale Geschwindigkeit war zu klein bemessen (hat Limiten überschritten)</li>
+<li>Diagnosedaten wurden als Flugdaten interpretiert auf dem Hauptcomputer</li>
+</ul>
+<h1 id="prozess-modellierung"><span class="header-section-number">2</span> Prozess-Modellierung</h1>
+<p>Was ist der Zweck der (internen) IT?</p>
+<ul>
+<li>Unterstützung von Geschäftsprozessen</li>
+<li>Geschäftsprozesse (Einkauf, Produktion, Vertrieb) stellen Anforderungen an die IT</li>
+<li>die IT <em>entwickelt</em> und <em>betreibt</em> Anwendungen und Services</li>
+</ul>
+<p>Definitionen:</p>
+<ul>
+<li>Unternehmen
+<ul>
+<li>Eine Einheit zusammenwirkender Personen und Produktionsmittel zur Hervorbringung von Gütern/Dienstleistungen (Output) aus Eingangsmaterialien (Input) für Dritte zum Zweck der Gewinnerzielung</li>
+</ul></li>
+<li>Prozess
+<ul>
+<li>Naive Sicht: Ein Prozess, welcher in einem Unternehmen abläuft.</li>
+<li>Ein Vorgang oder Verlauf (von lat. processus: “Fortschreiten, Fortgang, Verlauf”, lat. procedere: “vorwärts schreiten”) oder Ablauf mehrer Schritte, wobei es sich um Aufgaben, Ausführungen, Arbeitsschritte u. dgl. handeln kann.</li>
+<li>Zwischen diesen Prozessabschnitten bestehen bestimmte Abhängigkeiten.</li>
+<li>Input - Verarbeitung - Output</li>
+</ul></li>
+<li>Geschäftsprozess
+<ul>
+<li>Ablauf von Aktivitäten zur Erzeugung eines Produktes/einer Dienstleistung für Dritte</li>
+<li>durch ein oder mehrere Ereignisse gestartet und abgeschlossen</li>
+<li>es liegt eine Organisationsstruktur zu Grunde</li>
+<li>Synonyme: Ablauf, Vorgang, Prozess, Unternehmensprozess</li>
+</ul></li>
+</ul>
+<h2 id="die-prozesslandkarte"><span class="header-section-number">2.1</span> Die Prozesslandkarte</h2>
+<ul>
+<li>Zweck: Übersicht über Prozesse gewinnen</li>
+<li>stellt alle Prozesse eines Unternehmens oder für ein IT-Projekt relevanten Prozesse</li>
+<li>Prozesse als Rechteck dargestellt, verbunden (Informationsflüsse)</li>
+</ul>
+<h2 id="aufgabe-2.1-tante-emma-laden"><span class="header-section-number">2.2</span> Aufgabe 2.1: Tante-Emma-Laden</h2>
+<p>Kernprozess:</p>
+<ul>
+<li>[Anfang]
+<ul>
+<li>feststellen, was zu beschaffen ist</li>
+</ul></li>
+<li>Einkauf
+<ul>
+<li>Ankunft der Ware im Geschäft</li>
+</ul></li>
+<li>Lager
+<ul>
+<li>Die Ware ist im Laden bereitgestellt und mit Preisen beschriftet</li>
+</ul></li>
+<li>Verkauf
+<ul>
+<li>Der Käufer hat die Ware bezahlt</li>
+</ul></li>
+<li>[Ende]</li>
+</ul>
+<p>Unterstützungsprozesse:</p>
+<ul>
+<li>Facility Management</li>
+<li>Buchhaltung</li>
+<li>Marketing (evtl. auch Kernprozess)</li>
+<li>Beschwerdemanagement (evtl. auch Kernprozess)</li>
+<li>Personalmanagement</li>
+</ul>
+<h2 id="aufgabe-2.2-produktautomat"><span class="header-section-number">2.3</span> Aufgabe 2.2: Produktautomat</h2>
+<p>Prozesslandkarte “Produktautomat”:</p>
+<ul>
+<li>Verkauf von Automaten
+<ul>
+<li>Marketing</li>
+<li>Transport</li>
+<li>Inbetriebnahme</li>
+</ul></li>
+<li>Einkauf von Waren
+<ul>
+<li>Beschaffung des Inhaltes wie zum Beispiel Snacks oder Getränke</li>
+</ul></li>
+<li>Betrieb von Automaten
+<ul>
+<li>Nachfüllen des Inhaltes (Waren &amp; Geld)</li>
+<li>Kontrolle des Geldinhaltes (inkl. Gewinnentnahme)</li>
+<li>Kontrolle des Inhaltes auf Haltbarkeit</li>
+<li>Kontrolle der HW</li>
+<li>Rückmeldung &amp; Analyse des Verbrauchserfolges</li>
+</ul></li>
+<li>Reperatur &amp; Wartung
+<ul>
+<li>Fehlererkennung &amp; -behebung</li>
+<li>Softwareupdates</li>
+<li>HW Reperaturen</li>
+</ul></li>
+<li>Automatenrücknahme
+<ul>
+<li>evt. Ersatz durch Nachfolgermodell</li>
+<li>Verschrottung</li>
+</ul></li>
+</ul>
+<p>Use-Cases:</p>
+<ul>
+<li>Kunde
+<ul>
+<li>Automat erkennen &amp; nähern</li>
+<li>Produktpalette betrachten</li>
+<li>Kaufentscheid treffen</li>
+<li>Geld einwerfen</li>
+<li>Produktnummer eingeben</li>
+<li>Ware entnehmen</li>
+<li>evt. Rückgeld entnehmen</li>
+</ul></li>
+<li>Service-Personal
+<ul>
+<li>Automat aufsuchen</li>
+<li>Automat in Servicezustand versetzen</li>
+<li>Frontseite öffnen</li>
+<li>Betriebsrückmeldung notieren (Geld- &amp; Warenbestand)</li>
+<li>Geldbestand herstellen (Nachfüllen &amp; Entnehmen)</li>
+<li>Produktbestand herstellen inkl. Produktinformationseingabe (Entnahme von altem &amp; hinzufügen/auffüllen von Neuem)</li>
+<li>evt. geplante Änderungen durchführen. (Produktbestand)</li>
+<li>evt. Reinigung, Kontrolle, Rückmeldung</li>
+</ul></li>
+</ul>
+<p>Weitere relevante Prozesse:</p>
+<ul>
+<li>Forschung &amp; Entwicklung</li>
+<li>Marketing</li>
+<li>Wareneinkauf</li>
+<li>Logistik</li>
+<li>Produktion</li>
+<li>Kontrolle</li>
+<li>Buchhaltung</li>
+<li>Personalmanagement</li>
+<li>Softwareentwicklung</li>
+<li>Zieldefinition</li>
+<li>Facilitymanagement</li>
+</ul>
+</body>
+</html>
