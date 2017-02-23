@@ -4,5 +4,6 @@
 
 - ad: Algorithmen & Datenstrukturen
 - dmath: Diskrete Mathematik
+- fkom: Fachkommunikation
 - iteo: IT-System Engineering & Operation
 - mod: Modellierung Grundlagen
