@@ -1,0 +1,83 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage{times}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\author{Patrick Bucher}
+\title{Diskrete Mathematik}
+\maketitle
+
+\tableofcontents
+
+\section{Logik und Beweise}
+
+\begin{itemize}
+\item{Proposition: eine Aussage oder ein Satz ist:}
+    \begin{itemize}
+    \item{wahr (w: wahr, t: true, 1)}
+    \item{falsch (f: falsch/false, 0)}
+    \end{itemize}
+\item{Fragen und Gleichungen mit einer Unbekannten sind keine Aussagen}
+\item{Bezeichnung von Aussagen: $p, q, r, s$}
+\item{Beispiele für Präpositionen:}
+    \begin{itemize}
+    \item{$p$ = «Es regnet draussen.»}
+    \item{$q$ = «Der Platz draussen ist nass.»}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Logische Operationen}
+
+\subsubsection{Negation}
+
+$\neg p$: «Es ist nicht der Fall, dass $p$ gilt.» Wahrheitstabelle:\\
+
+\begin{tabular}{r|r}
+$p$ & $\neg p$ \\
+\hline
+$w$ & $f$ \\
+$f$ & $w$ \\
+\end{tabular}
+
+\subsubsection{Konjunktion}
+
+$p \land q$: «Es gelten $p$ und $q$.» Wahrheitstabelle:\\
+
+\begin{tabular}{r|r|r}
+$p$ & $q$ & $p \land q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $f$ \\
+$f$ & $w$ & $f$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+
+\subsubsection{Disjunktion}
+
+$p \lor q$: «Es gilt $p$ oder $q$ oder es gelten beide.» Wahrheitstabelle:\\
+
+\begin{tabular}{r|r|r}
+$p$ & $q$ & $p \lor q$ \\
+\hline
+$w$ & $w$ & $w$ \\
+$w$ & $f$ & $w$ \\
+$f$ & $w$ & $w$ \\
+$f$ & $f$ & $f$ \\
+\end{tabular}
+
+\subsubsection{EXOR}
+
+$p \oplus q$: «Es gilt $p$ oder $q$ aber nicht $p$ und $q$.»
+
+\subsubsection{Implikation}
+
+$p \rightarrow q$: «Wenn $p$ gilt, dann gilt $q$.»
+
+\subsubsection{Bikonditional}
+
+$p \Leftrightarrow q$: «Es gilt $p$ genau dann, wann $q$ gilt.»
+
+\end{document}
