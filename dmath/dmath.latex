@@ -123,7 +123,7 @@ Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politik
 $p \leftrightarrow q$: «Es gilt $p$ genau dann, wann $q$ gilt.» Wahrheitstabelle:
 
 \addvbuffer[9pt]{
-\begin{tabular}{r|r|r}
+\begin{tabular}{c|c|c}
 $p$ & $q$ & $p \leftrightarrow q$ \\
 \hline
 $w$ & $w$ & $w$ \\
