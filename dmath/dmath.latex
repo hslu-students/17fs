@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{scrartcl}
+\documentclass[a4paper,11pt,twocolumn,smallheadings]{scrartcl}
 \usepackage{times}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
@@ -15,19 +15,15 @@
 
 \section{Logik und Beweise}
 
+Proposition: eine Aussage oder ein Satz ist:
 \begin{itemize}
-\item{Proposition: eine Aussage oder ein Satz ist:}
-    \begin{itemize}
-    \item{wahr (w: wahr, t: true, 1)}
-    \item{falsch (f: falsch/false, 0)}
-    \end{itemize}
-\item{Fragen und Gleichungen mit einer Unbekannten sind keine Aussagen}
-\item{Bezeichnung von Aussagen: $p, q, r, s$}
-\item{Beispiele für Präpositionen:}
-    \begin{itemize}
-    \item{$p$ = «Es regnet draussen.»}
-    \item{$q$ = «Der Platz draussen ist nass.»}
-    \end{itemize}
+\item{wahr (w: wahr, t: true, 1)}
+\item{falsch (f: falsch/false, 0)}
+\end{itemize}
+Fragen und Gleichungen mit einer Unbekannten sind keine Aussagen. Aussagen werden meist mit $p$, $q$, $r$, $s$ bezeichnet. Beispiele für Propositionen
+\begin{itemize}
+\item{$p$ = «Es regnet draussen.»}
+\item{$q$ = «Der Platz draussen ist nass.»}
 \end{itemize}
 
 \subsection{Logische Operationen}
@@ -75,7 +71,7 @@ $f$ & $f$ & $f$ \\
 \end{tabular}
 }
 
-\subsubsection{EXOR}
+\subsubsection{Exklusives Oder (EXOR)}
 
 $p \oplus q$: «Es gilt $p$ oder $q$ aber nicht $p$ und $q$.» Wahrheitstabelle:
 
@@ -110,13 +106,13 @@ Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politik
 \begin{itemize}
 \item{$p$: Politiker wird gewählt}
 \item{$q$: Politiker senkt die Steuern.}
-\item{$p \rightarrow q$}
-    \begin{enumerate}
-    \item{Der Politiker wird gewählt und senkt die Steuern: die Aussage trifft zu.}
-    \item{Der Politiker wird gewählt, senkt aber die Steuern nicht: die Aussage trifft nicht zu.}
-    \item{Der Politiker wird nicht gewählt; es ist egal, was er in diesem Fall tun will: die Aussage trifft zu.}
-    \end{enumerate}
 \end{itemize}
+$p \rightarrow q$
+\begin{enumerate}
+\item{Der Politiker wird gewählt und senkt die Steuern: die Aussage trifft zu.}
+\item{Der Politiker wird gewählt, senkt aber die Steuern nicht: die Aussage trifft nicht zu.}
+\item{Der Politiker wird nicht gewählt; es ist egal, was er in diesem Fall tun will: die Aussage trifft zu.}
+\end{enumerate}
 
 \subsubsection{Bikonditional}
 
@@ -151,7 +147,7 @@ $p \leftrightarrow q \equiv \neg(p \oplus q)$
 
 Die Aussage ist immer wahr. Beispiel: $p \lor \neg q$
 
-\subsubsection{Kontradiktion/Widerspruch}
+\subsubsection{Kontradiktion (Widerspruch)}
 
 Die Aussage ist immer falsch. Beispiel: $p \land \neg q$
 
@@ -220,5 +216,42 @@ $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
 $\neg(p \land q) \equiv \neg p \lor \neg q$
 \\
 $\neg(p \lor q) \equiv \neg p \land \neg q$
+
+\subsubsection{Weitere Equivalenzgesetze}
+
+$p \rightarrow q \equiv \neg p \lor q$
+\\
+$p \rightarrow q \equiv \neg q \neg p$
+\\
+$p \lor q \equiv \neg p \rightarrow q$
+\\
+$p \land q \equiv \neg(p \rightarrow \neg q)$
+\\
+$\neg(p \rightarrow q) \equiv p \land \neg q$
+\\
+\\
+$p \leftrightarrow q \equiv (p \rightarrow q) \land (q \rightarrow p)$
+\\
+$p \leftrightarrow q \equiv \neg p \leftrightarrow \neg q$
+\\
+$p \leftrightarrow q \equiv (p \land q) \lor (\neg p \land \neg q)$
+\\
+$\neg(p \leftrightarrow q) \equiv p \leftrightarrow \neg q$
+\\
+\\
+$(p \rightarrow q) \land (p \rightarrow r) \equiv p \rightarrow (q \land r)$
+\\
+$(p \rightarrow r) \land (q \rightarrow r) \equiv (p \lor q) \rightarrow r$
+\\
+$(p \rightarrow q) \lor (p \rightarrow r) \equiv p \rightarrow (q \lor r)$
+\\
+$(p \rightarrow r) \land (q \rightarrow r) \equiv (p \land q) \rightarrow r$
+\\
+\\
+$p \oplus q \equiv (p \lor q) \land (\neg p \lor \neg q)$
+\\
+$\neg (p \oplus q) \equiv (p \land q) \lor (\neg p \land \neg q)$
+\\
+$\neg (p \oplus q) \equiv p \leftrightarrow q$
 
 \end{document}
