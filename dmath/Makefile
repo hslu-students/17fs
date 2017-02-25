@@ -1,6 +1,6 @@
 FILE=dmath
 
-all: $(FILE).pdf
+dmath: $(FILE).pdf
 
 clean:
 	rm -f *.log

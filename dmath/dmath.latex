@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{verbatimbox}
+\usepackage[autostyle=true,german=quotes]{csquotes}
 
 \begin{document}
 
@@ -22,15 +23,15 @@ Proposition: eine Aussage oder ein Satz ist:
 \end{itemize}
 Fragen und Gleichungen mit einer Unbekannten sind keine Aussagen. Aussagen werden meist mit $p$, $q$, $r$, $s$ bezeichnet. Beispiele für Propositionen
 \begin{itemize}
-\item{$p$ = «Es regnet draussen.»}
-\item{$q$ = «Der Platz draussen ist nass.»}
+\item{$p$ = \enquote{Es regnet draussen.}}
+\item{$q$ = \enquote{Der Platz draussen ist nass.}}
 \end{itemize}
 
 \subsection{Logische Operationen}
 
 \subsubsection{Negation}
 
-$\neg p$: «Es ist nicht der Fall, dass $p$ gilt.» Wahrheitstabelle:
+$\neg p$: \enquote{Es ist nicht der Fall, dass $p$ gilt.} Wahrheitstabelle:
 
 \addvbuffer[9pt 0pt]{
 \begin{tabular}{c|c}
@@ -43,7 +44,7 @@ $f$ & $w$ \\
 
 \subsubsection{Konjunktion}
 
-$p \land q$: «Es gelten $p$ und $q$.» Wahrheitstabelle:
+$p \land q$: \enquote{Es gelten $p$ und $q$.} Wahrheitstabelle:
 
 \addvbuffer[9pt 0pt]{
 \begin{tabular}{c|c|c}
@@ -58,7 +59,7 @@ $f$ & $f$ & $f$ \\
 
 \subsubsection{Disjunktion}
 
-$p \lor q$: «Es gilt $p$ oder $q$ oder es gelten beide.» Wahrheitstabelle:
+$p \lor q$: \enquote{Es gilt $p$ oder $q$ oder es gelten beide.} Wahrheitstabelle:
 
 \addvbuffer[9pt 0pt]{
 \begin{tabular}{c|c|c}
@@ -73,7 +74,7 @@ $f$ & $f$ & $f$ \\
 
 \subsubsection{Exklusives Oder (EXOR)}
 
-$p \oplus q$: «Es gilt $p$ oder $q$ aber nicht $p$ und $q$.» Wahrheitstabelle:
+$p \oplus q$: \enquote{Es gilt $p$ oder $q$ aber nicht $p$ und $q$.} Wahrheitstabelle:
 
 \addvbuffer[9pt 0pt]{
 \begin{tabular}{c|c|c}
@@ -88,7 +89,7 @@ $f$ & $f$ & $f$ \\
 
 \subsubsection{Implikation}
 
-$p \rightarrow q$: «Wenn $p$ gilt, dann gilt $q$.» Wahrheitstabelle:
+$p \rightarrow q$: \enquote{Wenn $p$ gilt, dann gilt $q$.} Wahrheitstabelle:
 
 \addvbuffer[9pt]{
 \begin{tabular}{c|c|c}
@@ -101,7 +102,7 @@ $f$ & $f$ & $w$ \\
 \end{tabular}
 }
 
-Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politiker sagt: «Wenn ich gewählt werde, senke ich die Steuern.»
+Aus einem Falschen kann etwas Beliebiges gefolgert werden! Beispiel: Ein Politiker sagt: \enquote{Wenn ich gewählt werde, senke ich die Steuern.}
 
 \begin{itemize}
 \item{$p$: Politiker wird gewählt}
@@ -116,7 +117,7 @@ $p \rightarrow q$
 
 \subsubsection{Bikonditional}
 
-$p \leftrightarrow q$: «Es gilt $p$ genau dann, wann $q$ gilt.» Wahrheitstabelle:
+$p \leftrightarrow q$: \enquote{Es gilt $p$ genau dann, wann $q$ gilt.} Wahrheitstabelle:
 
 \addvbuffer[9pt]{
 \begin{tabular}{c|c|c}
@@ -253,5 +254,65 @@ $p \oplus q \equiv (p \lor q) \land (\neg p \lor \neg q)$
 $\neg (p \oplus q) \equiv (p \land q) \lor (\neg p \land \neg q)$
 \\
 $\neg (p \oplus q) \equiv p \leftrightarrow q$
+
+\subsection{Prädikate und Quantoren}
+
+Prädikat: eine Folge von Wörtern, die Variablen enthalten, und für jede (erlaubte) Belegung dieser Variablen zu einer Aussage werden. Die Aussage hat nur dann einen eindeutigen Wahrheitswert, wenn für die Variable ein eindeutiger Wahrheitswert eingesetzt wird. Beispiel:
+\\
+\\
+$P(x) = "`x > 3"'$
+\\
+$P(4) = "`4 > 3"'$ (wahr)
+\\
+$P(2) = "`2 > 3"'$ (falsch)
+\\
+\\
+Aussage $P(x)$: Wert der propositionalen Funktion $P$ für $x$. 
+
+\subsubsection{Der Allquantor}
+
+Ist $P(x)$ wahr für \textit{alle} $x$ aus einer bestimmten Universalmenge, schreibt man:
+\\
+\\
+$\forall x P(x)$
+\\
+\\
+\enquote{Für alle $x$ aus der Universalmenge gilt $P(x)$.}
+
+\subsection{Der Existenzquantor}
+
+Ist $(P(x)$ wahr für \textit{mindestens ein} $x$ aus einer bestimmten Universalmenge, schreibt man:
+\\
+\\
+$\exists x P(x)$
+\\
+\\
+\enquote{Es existiert ein $x$ in der Universalmenge, für das $P(x)$ gilt.}
+
+\subsection{Freie und gebundene Variablen}
+
+Wird ein Quantor auf eine Variable angewandt, so ist diese Variable \textit{gebunden}. Wird ein Quantor nicht auf eine Variable angewendt, so ist diese Variable \textit{frei}. Beispiel:
+\\
+\\
+Bei $\forall x Q(x,y)$ ist die Variable $x$ gebunden, die Variable $y$ frei.
+
+\subsection{Negation}
+
+Für die Negierung der Quantoren gelten folgende Regeln:
+
+\begin{itemize}
+\item{$\neg \forall P(x)$ bedeutet: $P(x)$ gilt nicht für alle $x$.
+    \begin{itemize}
+    \item{Das Äquivalent $\exists x \neg P(x)$ bedeutet: Es existiert mindestens ein $x$, für das $P(x)$ nicht gilt.}
+    \end{itemize}}
+\item{$\neg \exists P(x)$ bedeutet: Es gibt kein $x$, für das $P(x)$ gilt.
+    \begin{itemize}
+    \item{Das Äquivalent $\forall x \neg P(x)$ bedeutet: Für alle $x$ gilt $P(x)$ nicht.}
+    \end{itemize}}
+\end{itemize}
+
+\subsection{Verschachtelte Quantoren}
+
+TODO: p. 41, 42
 
 \end{document}
