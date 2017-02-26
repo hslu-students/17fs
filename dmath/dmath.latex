@@ -1,10 +1,11 @@
-\documentclass[a4paper,11pt,twocolumn,smallheadings]{scrartcl}
+\documentclass[a4paper,11pt,smallheadings]{scrartcl}
 \usepackage{times}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{verbatimbox}
 \usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage{amsmath}
 
 \begin{document}
 
@@ -313,6 +314,79 @@ Für die Negierung der Quantoren gelten folgende Regeln:
 
 \subsection{Verschachtelte Quantoren}
 
-TODO: p. 41, 42
+Werden mehrere unterschiedliche Quantoren verwendet, ist deren Reihenfolge zu beachten. Beispiel:
+\\
+\\
+$\forall x \exists y (x*y = 1)$: Für jedes $x$ der Universalmenge existiert ein $y$, das mit $x$ multipliziert $1$ ergibt.
+\\
+\\
+Negation des Ausdrucks (ohne Negationszeichen):
+\\
+\\
+$\neg \forall x \exists y (x*y = 1)$
+\\
+$\exists x \neg \exists y (x*y = 1)$
+\\
+$\exists x \forall y \neg (x*y = 1)$
+\\
+$\exists x \forall y \neg (x*y \neq 1)$
+
+\subsection{Beweise}
+
+\begin{itemize}
+\item{Satz/Theorem: Aussage, von der man zeigen kann, dass sie wahr ist}
+\item{Beweis: Abfolge (Sequenz) von Aussagen zum Zeigen, dass ein Satz/Theorem wahr ist}
+\item{Axiom/Postulat: grundlegende Annahmen, die in Aussagen verwendet werden können, ohne sie weiter begründen zu müssen}
+\item{logisches Schliessen: Folgerungen nach bestimmten Regeln machen, die einen Beweis ergeben}
+\item{Lemma: einfacher Satz, der in Beweisen von komplizierteren Sätzen verwendet wird}
+\item{Korollar: einfache Folgerung eines Satzes}
+\end{itemize}
+
+\subsubsection{Direkter Beweis}
+
+Die Implikation $p \rightarrow q$ kann bewiesen werden, indem man zeigt, dass aus der Richtigkeit von $p$ die von $q$ folgt. Beispiel:
+\\
+\\
+Behauptung: Das Quadrat einer geraden natürlichen Zahl $n$ ist gerade.
+\\
+\\
+Beweis: Ist $n$ eine gerade natürliche Zahl, existiert genau eine natürliche Zahl $k$, sodass gilt: $n = 2k$. Daraus folgt:
+\\
+\\
+$n^{2} = (2k)^{2} = 4k^{2} = 2*2k^{2}$
+\\
+\\
+Und $n^{2}$ ist das Doppelte einer natürlichen Zahl, also gerade. q.e.d.
+
+\subsubsection{Indirekter Beweis}
+
+Beim indirekten Beweis (dem Beweis durch Kontraposition) der Aussage $p \rightarrow q$ verwendet man deren logisch äquivalente Aussage $\neg q \rightarrow \neg p$. Beispiel:
+\\
+\\
+Behauptung: Ist das Quadrat einer natürlichen Zahl ($n^{2}$) gerade, ist auch $n$ gerade.
+\\
+\\
+Beweis: $n^{2} \text{ gerade } \rightarrow n \text{ gerade } \equiv n \text{ nicht gerade } \rightarrow n^{2} \text{ nicht gerade }$ Ist $n$ eine ungerade natürliche Zahl, existiert genau eine ungerade natürliche Zahl $k$, sodass gilt: $2*(2k^{2}+2k)+1$. Daraus folgt:
+\\
+\\
+$n^{2} = (2k+1)^{2} = 4k^{2}+4k+1=2(2k^{2}+2k)+1$
+\\
+\\
+$2(2k^{2}+2k)$ ist gerade und wird durch die Addition von $1$ gerade, also ist $n^{2}$ ist ungerade. q.e.d.
+
+\subsubsection{Beweis durch Kontradiktion}
+
+Beim Beweis durch Kontradiktion (Widerspruch) wird für die Aussage $\neg p \rightarrow q$ eine widersprüchliche Aussage $q$ gefunden, sodass $\neg p \rightarrow F$ gilt, $\neg p$ falsch und somit $p$ wahr ist.
+\\
+\\
+Behauptung: Schwere Objekte fallen schneller als leichte Objekte.
+\\
+\\
+Beweis: Wenn man ein schweres und ein leichtes Objekt zusammenklebt, dann müsste dieses Objekt:
+\begin{itemize}
+\item{einerseits eine Fallgeschwindigkeit haben, die zwischen der Fallgeschwindigkeit der Ausgangsobjekte liegt (das leichte Objekt bremst den Fall des schweren Objekts ab)}
+\item{andererseits aufgrund des höheren Gesamtgewichts eine höhere Fallgeschwindigkeit als das schwerere Objekt haben}
+\end{itemize}
+Beide (logischen) Überlegungen widersprechen sich, die Annahme muss falsch sein.
 
 \end{document}
