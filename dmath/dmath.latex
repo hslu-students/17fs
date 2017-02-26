@@ -1,4 +1,5 @@
-\documentclass[a4paper,11pt,smallheadings]{scrartcl}
+\documentclass[a4paper,11pt,smallheadings,twocolumn]{scrartcl}
+
 \usepackage{times}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
@@ -6,6 +7,9 @@
 \usepackage{verbatimbox}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \usepackage{amsmath}
+\usepackage[top=2cm,right=2cm,bottom=3cm,left=2cm]{geometry}
+
+\setlength{\columnsep}{1cm}
 
 \begin{document}
 
@@ -223,7 +227,7 @@ $\neg(p \lor q) \equiv \neg p \land \neg q$
 
 $p \rightarrow q \equiv \neg p \lor q$
 \\
-$p \rightarrow q \equiv \neg q \neg p$
+$p \rightarrow q \equiv \neg q \rightarrow \neg p$
 \\
 $p \lor q \equiv \neg p \rightarrow q$
 \\
