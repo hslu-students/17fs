@@ -340,9 +340,31 @@ Inaktive Daten:
 
 ## Tiered Storage
 
+Daten können nach Nutzung auf verschiedener Hardware gespeichert werden:
+
+- SSD: fast
+- DAS/SAN: active
+- HDFS/NAS: historical
+- Amazon S3/HDFS/NAS: archived (on- or offline)
+
 Verschiedene Datenklassen werden auf verschiedene Speicherklassen gespeichert:
 
-1. mission critical data
-2. business critical data
-3. nearline or historical data
-4. offline data
+1. mission critical data (z.B. Online-Datenbank mit Bestellwesen)
+2. business critical data (Daten, die immer zur Verfügung stehen müssen)
+3. nearline or historical data (z.B. alte Pläne in einem Architekturbüro zum gelegentlichen Nachschauen)
+4. offline data (z.B. Backups und Daten, die nur aufgrund gesetzlicher Bestimmung aufbewahrt werden)
+
+TODO p.41-44
+
+MAID: massive array of idle disks (Festplatten können zum Stromsparen heruntergefahren werden und/oder langsamer laufen)
+
+RTO: recovery time objectives (Ziele betreffend Dauer der Rückspielbarkeit einer Datensicherun einer Datensicherung)
+RPO: recovery point objectives (Ziele betreffend Dauer zwischen Datensicherungen)
+
+### Übung Allocation Efficiency
+
+Alloziert: Allokation von 80% bedeutet, dass bei 5 RAID-Platten 4 verwendet und 1 für Redundanz benötigt wird
+
+Je höher die Belegung, desto höher der Yield (die Ausbeute). TODO: p.47
+
+[Siehe Tabelle mit Berechnung]

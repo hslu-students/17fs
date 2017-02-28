@@ -34,9 +34,12 @@
 <li><a href="#informaton-lifecycle-management"><span class="toc-section-number">1.10</span> Informaton Lifecycle Management</a><ul>
 <li><a href="#repetitionsfragen-2"><span class="toc-section-number">1.10.1</span> Repetitionsfragen</a></li>
 </ul></li>
-<li><a href="#tiered-storage"><span class="toc-section-number">1.11</span> Tiered Storage</a></li>
+<li><a href="#tiered-storage"><span class="toc-section-number">1.11</span> Tiered Storage</a><ul>
+<li><a href="#übung-allocation-efficiency"><span class="toc-section-number">1.11.1</span> Übung Allocation Efficiency</a></li>
 </ul></li>
-<li><a href="#glossar"><span class="toc-section-number">2</span> Glossar</a></li>
+</ul></li>
+<li><a href="#netzwerke-im-rechenzentrum"><span class="toc-section-number">2</span> Netzwerke im Rechenzentrum</a></li>
+<li><a href="#glossar"><span class="toc-section-number">3</span> Glossar</a></li>
 </ul>
 </div>
 <h1 id="das-data-center"><span class="header-section-number">1</span> Das Data Center</h1>
@@ -570,17 +573,165 @@
 </ul></li>
 </ol>
 <h2 id="tiered-storage"><span class="header-section-number">1.11</span> Tiered Storage</h2>
+<p>Daten können nach Nutzung auf verschiedener Hardware gespeichert werden:</p>
+<ul>
+<li>SSD: fast</li>
+<li>DAS/SAN: active</li>
+<li>HDFS/NAS: historical</li>
+<li>Amazon S3/HDFS/NAS: archived (on- or offline)</li>
+</ul>
 <p>Verschiedene Datenklassen werden auf verschiedene Speicherklassen gespeichert:</p>
 <ol style="list-style-type: decimal">
-<li>mission critical data</li>
-<li>business critical data</li>
-<li>nearline or historical data</li>
-<li>offline data</li>
+<li>mission critical data (z.B. Online-Datenbank mit Bestellwesen)</li>
+<li>business critical data (Daten, die immer zur Verfügung stehen müssen)</li>
+<li>nearline or historical data (z.B. alte Pläne in einem Architekturbüro zum gelegentlichen Nachschauen)</li>
+<li>offline data (z.B. Backups und Daten, die nur aufgrund gesetzlicher Bestimmung aufbewahrt werden)</li>
 </ol>
-<h1 id="glossar"><span class="header-section-number">2</span> Glossar</h1>
+<p>TODO p.41-44</p>
+<p>MAID: massive array of idle disks (Festplatten können zum Stromsparen heruntergefahren werden und/oder langsamer laufen)</p>
+<p>RTO: recovery time objectives (Ziele betreffend Dauer der Rückspielbarkeit einer Datensicherun einer Datensicherung) RPO: recovery point objectives (Ziele betreffend Dauer zwischen Datensicherungen)</p>
+<h3 id="übung-allocation-efficiency"><span class="header-section-number">1.11.1</span> Übung Allocation Efficiency</h3>
+<p>Alloziert: Allokation von 80% bedeutet, dass bei 5 RAID-Platten 4 verwendet und 1 für Redundanz benötigt wird</p>
+<p>Je höher die Belegung, desto höher der Yield (die Ausbeute). TODO: p.47</p>
+<p>[Siehe Tabelle mit Berechnung]</p>
+<h1 id="netzwerke-im-rechenzentrum"><span class="header-section-number">2</span> Netzwerke im Rechenzentrum</h1>
+<p>Netzwerktopologie:</p>
+<ul>
+<li>Provider
+<ul>
+<li>Angebot</li>
+<li>Speed</li>
+<li>Technik</li>
+</ul></li>
+<li>Grenze
+<ul>
+<li>Router</li>
+<li>Firewall</li>
+<li>IDP (Intrusion Detection and Protection)</li>
+<li>Redundanz</li>
+</ul></li>
+<li>DMZ (Demilitarized Zone)
+<ul>
+<li>Web-Services</li>
+<li>Authentifizierung</li>
+<li>Dienste</li>
+</ul></li>
+<li>Lokales Netzwerk (LAN)
+<ul>
+<li>Topologien</li>
+<li>Speed</li>
+<li>Trennungen</li>
+<li>Services</li>
+</ul></li>
+</ul>
+<p>Private IP-Bereiche:</p>
+<ul>
+<li>10.0.0.0/8</li>
+<li>172.16.0.0/12</li>
+<li><p>192.168.0.0/16</p></li>
+<li>Router
+<ul>
+<li>oft in Firewall oder Layer-3-Switches eingebaut</li>
+<li>Arbeitet mit IP-Paketen, setzt öffentliche in private Adressen um (NAT)</li>
+<li>Anbendung verschiedener Netze</li>
+<li>optionale Weiterleitung bei redundanten Leitungen</li>
+<li>Aufrechterhaltung von QOS durch spezifische Weiterleitungen (aufgrund Pakettyp, Protokoll)</li>
+<li>kann VPN-Endpunkt sein</li>
+<li>Anpassung an unterschiedliche Netzwerktechniken</li>
+</ul></li>
+<li>Firewall
+<ul>
+<li>Sicherheitsbaustein, Teil des Sicherheitskonzepts</li>
+<li>Übernimmt meist auch Routing-Funktionen</li>
+<li>regelbasierte Sperrung/Weiterleitung von Paketen</li>
+<li>VPN-Endpunkt mit Authentifizierung</li>
+<li>kann auf allen OSI-Schichten arbeiten</li>
+</ul></li>
+<li>IDP
+<ul>
+<li>IDS (Intrusion Detection System) + IDP (Intrusion Prevention System) = IDP (Intrusion Detection and Protection)</li>
+<li>Eindringungsversuche erkennen (Muster, DOS, Fakes, Portscan, IP-Spoofing)</li>
+<li>Rechenintensiv, oft separate Hardware</li>
+<li>über 1Gbit/s-Netzwerke können nicht komplett überwacht werden (mehrere Geräte oder Heuristik)</li>
+</ul></li>
+<li>DMZ
+<ul>
+<li>demilitarized zone</li>
+<li>Geschützer Bereich, in dem bestimmte Zugriffe (www, Mail, FTP) erlaubt weden</li>
+<li>1 oder 2 Firewalls</li>
+<li>Model 1: eine Firewall, an der Internet, DMZ und Inside-Zone hängen</li>
+<li>Model 2: zwei Firewalls: Internet, Firewall, DMZ, Firwall, Inside Zone</li>
+<li>bei Banken müssen die beiden Firewalls verschiedener Hersteller sein</li>
+</ul></li>
+<li>Netzwerk-Redundanz
+<ul>
+<li>1 Provider/2 Zugänge</li>
+<li>2 Provider/je 1 Zugang</li>
+<li>Ausfallüberwachung nötig</li>
+<li>Getrennte Wege</li>
+<li>verschiedene Medien</li>
+<li>Loadbalancing</li>
+</ul></li>
+<li>LAN-Strukturen (physisch)
+<ul>
+<li>TOR: top of rack (jedes Rack hat seine eigenen Switches)
+<ul>
+<li>neue Switches für jedes neue Rack notwendig</li>
+</ul></li>
+<li>EOR: end of row (Racks nur über Patchpanels verbunden)
+<ul>
+<li>einfacher, solange genügend Ports vorhanden sind (aber mehr Verkabelungsaufwand nötig)</li>
+</ul></li>
+</ul></li>
+<li>LAN-Strukturen
+<ul>
+<li>mehrere Switch-Ebenen</li>
+<li>peering/peripherie</li>
+<li>backbone/spine/core</li>
+<li>leaf (Anschluss für Server)</li>
+</ul></li>
+<li>MPLS: multiprotocol label switching
+<ul>
+<li>VPN-ähnliche Strukturen zur Verbindung zusammengehöriger Netzwerke ohne Rücksicht auf IP-Segmente</li>
+<li>Paketvermittlung durch den Provider aufgrund von Labels in den Paketen
+<ul>
+<li>QOS (quality of service)</li>
+<li>COS (class of service)
+<ul>
+<li>realtime (voice)</li>
+<li>best effort</li>
+<li>bulk (grosse Mengen)</li>
+<li>business critical</li>
+<li>video</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>SDN: Software Defined Networking
+<ul>
+<li>zwei Ebenen
+<ul>
+<li>Control Plane</li>
+<li>Data Plane</li>
+</ul></li>
+<li>Netzwerke werden via Management-Software erstellt</li>
+<li>Netze sind teilweise virtuell basierend auf einem Trägernetzwerk und werden mit speziellen Protokollen konfiguriert und verbunden (möglicher Standard: Openflow)</li>
+</ul></li>
+<li>VLAN: virtual LAN
+<ul>
+<li>Bildung getrennter Netze auf gemeinsamer Hardware</li>
+<li>tagged oder untagged</li>
+<li>Trunk: Verbindung zweier Switches</li>
+</ul></li>
+</ul>
+<h1 id="glossar"><span class="header-section-number">3</span> Glossar</h1>
 <ul>
 <li>ITIL: IT Infrastructure Library, Standard für IT-Belange v.a. für Grossunternehmen, für KMU übertrieben</li>
 <li>PUE: Power Usage Effectiveness, Massstab für die Effizienz eines Rechenzentrums</li>
+<li>DNS: Domain Name System</li>
+<li>IPAM: IP Address Management</li>
+<li>DHCP: Dynamic Host Configuration Protocoll</li>
+<li>NAP: Network Access Protection</li>
+<li>NAC: Network Access Control</li>
 </ul>
 </body>
 </html>
