@@ -124,9 +124,9 @@ Ja, bei einer Verdoppelung des Parameters `n` werden erhöht sich die Anzahl der
 
 ### d)
 
-1. 1s
+1. 0.1s
 2. 10s
-3. 2.3s
+3. 1.25s (Proportionalität berechnen!)
 
 ### e)
 
@@ -138,4 +138,152 @@ Ja, bei einer Verdoppelung des Parameters `n` werden erhöht sich die Anzahl der
 
 ### f)
 
-TODO
+1. O(n)
+2. O(n)
+3. O(n^3)
+
+# 4
+
+## 4.3
+
+### a) und b)
+
+Implementierung:
+
+    public static int fiboRec1(int n) {
+        // Rekursionsbasis
+        if (n < 2) {
+            return 1;
+        } else {
+            // Rekursionsvorschrift (n >= 2)
+            return fiboRec1(n - 2) + fiboRec1(n - 1);
+        }
+    }
+
+Testfall:
+
+    @Test
+    public void testFibonacciNumbmers() {
+        int fib[] = { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 };
+        for (int n = 0; n < fib.length; n++) {
+            Assert.assertEquals(fib[n], Fibonacci.fiboRec1(n));
+        }
+    }
+
+### c)
+
+Lösung mit Cache (Map statt Array):
+
+    private static Map<Integer, Integer> fibCache = new TreeMap<>();
+    public static int fiboRec2(int n) {
+        if (fibCache.containsKey(n)) {
+            return fibCache.get(n);
+        }
+        int fib = 0;
+        if (n < 2) {
+            fib = 1;
+        } else {
+            fib = fiboRec2(n - 2) + fiboRec2(n - 1);
+        }
+        fibCache.put(n, fib);
+        return fib;
+    }
+
+### d)
+
+    public static int fiboIter(int n) {
+        if (n < 2) {
+            return 1;
+        }
+        int twoBack = 1;
+        int oneBack = 1;
+        int fib = 1;
+        while (n >= 2) {
+            fib = twoBack + oneBack;
+            twoBack = oneBack;
+            oneBack = fib;
+            n--;
+        }
+        return fib;
+    }
+
+### e)
+
+Methode   Laufzeit
+-------- ---------
+fiboRec1    641 ms
+fiboRec2      1 ms
+fiboIter      0 ms
+
+# 5
+
+## 5.3
+
+### a)
+
+n:  0   1   2   3
+m:  4   2   2   1
+
+    ack(0,4): 4 + 1 = 5
+
+    ack(1,2) -> ack(0, ack(1,1))
+        ack(1,1) -> ack(0, ack(1,0))
+            ack(1,0) -> ack(0,1)
+                ack(0,1) -> 2
+            ack(1,0) -> 2
+        ack(1,1) -> ack(0,2)
+            ack(0,2) -> 3
+        ack(1,1) -> 3
+    ack(1,2) -> ack(0,3)
+        ack(0,3) -> 4
+    ack(1,2) -> 4
+
+    ack(2,2) -> ack(1,ack(2,1))
+        ack(2,1) -> ack(1,ack(1,1))
+            ack(1,1) -> ack(0, ack(1,0))
+                ack(1,0) -> ack(0,1)
+                    ack(0,1) -> 2
+                ack(1,0) -> 2
+            ack(1,1) -> ack(0,2)
+                ack(0,2) -> 3
+            ack(1,1) -> 3
+        ack(2,1) -> ack(1,3)
+            ack(1,3) -> ack(0, ack(1,2))
+                ack(1,2) -> 4 [siehe oben!]
+            ack(1,3) -> ack(0,4)
+                ack(0,4) -> 5
+            ack(1,3) -> ack(0, ack(1,2))
+                ack(1,2) -> 4 [siehe oben!]
+            ack(1,3) -> ack(0,4)
+                ack(0,4) -> 5
+            ack(1,3) -> 5
+        ack(2,1) -> 5
+    ack(2,2) -> ack(1,5)
+        ack(1,5) -> ack(0, ack(1,4))
+            ack(1,4) -> TODO
+
+    ack(3,1) -> 13
+
+### b)
+
+Der Call Stack hat eine maximale Tiefe von 5, die Ackermann-Funktion wird 27 mal aufgerufen.
+
+### c)
+
+Ein Funktionsaufruf verwendet für den rekursiven Aufruf seiner selbst einen weiteren rekursiven Aufruf als Parameter.
+
+    public static int ack(int n, int m) {
+        if (n == 0) {
+            return m + 1;
+        } else if (m == 0) {
+            return ack(n - 1, 1);
+        } else {
+            return ack(n - 1, ack(n, m - 1));
+        }
+    }
+
+# 6
+
+## 6.3
+
+![colorArea](01-colorArea.png)

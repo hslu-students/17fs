@@ -39,7 +39,13 @@
 <li><a href="#typen-von-rekursion"><span class="toc-section-number">2.3</span> Typen von Rekursion</a></li>
 <li><a href="#beispiel-permutation"><span class="toc-section-number">2.4</span> Beispiel: Permutation</a></li>
 </ul></li>
-<li><a href="#glossar"><span class="toc-section-number">3</span> Glossar</a></li>
+<li><a href="#collections"><span class="toc-section-number">3</span> Collections</a></li>
+<li><a href="#datenstrukturen"><span class="toc-section-number">4</span> Datenstrukturen</a><ul>
+<li><a href="#eigneschaften-von-datenstrukturen"><span class="toc-section-number">4.1</span> Eigneschaften von Datenstrukturen</a></li>
+<li><a href="#operationen-auf-datenstrukturen"><span class="toc-section-number">4.2</span> Operationen auf Datenstrukturen</a></li>
+<li><a href="#array"><span class="toc-section-number">4.3</span> Array</a></li>
+</ul></li>
+<li><a href="#glossar"><span class="toc-section-number">5</span> Glossar</a></li>
 </ul>
 </div>
 <h1 id="einführung"><span class="header-section-number">1</span> Einführung</h1>
@@ -369,7 +375,173 @@
 </ul></li>
 </ul></li>
 </ul>
-<h1 id="glossar"><span class="header-section-number">3</span> Glossar</h1>
+<h1 id="collections"><span class="header-section-number">3</span> Collections</h1>
+<p>Datenstrukturen dienen zur effizienten Speicherung und Verarbeitung von <em>Mengen</em> von Daten.</p>
+<ul>
+<li>Verarbeitung: Funktionen, die einzelne Objekte bearbeiten, nach bestimmten Objeken suchen, sie zählen, filtern, nach bestimmten Kriterien sortieren usw.</li>
+</ul>
+<p>Beispiele:</p>
+<ul>
+<li>Array</li>
+<li>Tree</li>
+<li>List</li>
+<li>Map</li>
+<li>Queue</li>
+<li>Set</li>
+<li>Stack</li>
+</ul>
+<p>Es gibt keine universelle Datenstruktur, die alles perfekt kann, sondern für jede Aufgabe mehr oder weniger geeignete Datenstrukturen.</p>
+<p>Eigenschaften von Datenstrukturen:</p>
+<ul>
+<li>Grösse: dynamisch/statisch</li>
+<li>Zugriff: direkt oder sequenziell</li>
+<li>Sortierung: sortiert/unsortiert, mit/ohne Ordnung</li>
+<li>Suche: beschleunigt?</li>
+<li>Geschwindigkeit TODO p. 7</li>
+</ul>
+<p>Java Collection Framework:</p>
+<ul>
+<li>Schnittstellen: abstrakte Datentypen</li>
+<li>Implementierungen: konkrete Implementierungen der Schnittstellen</li>
+<li>Algorithmen: (meist) polymorph implementierte Methoden zur Behandlung von Datenstrukturen, z.B.:
+<ul>
+<li><code>iterator()</code>: sequenzieller Zugriff auf alle Elemente</li>
+<li><code>sort(List&lt;E&gt;)</code>: sortiert beliebige <code>List</code>-Implementierung</li>
+</ul></li>
+</ul>
+<p>Grundlegende Funktionen für das Funktionieren des Collection-Frameworks:</p>
+<ul>
+<li>Sortierung: <code>equals()</code>, <code>Comparable&lt;T&gt;</code> (beide durch Element-Klasse implementiert), <code>Comparator&lt;T&gt;</code> (durch Client implementiert)</li>
+<li>Hashing: <code>hashCode()</code> (durch Element-Klasse implementiert)</li>
+</ul>
+<p>Arten der Gleichheit:</p>
+<ul>
+<li>Typgleichheit (wenn <code>instanceof true</code> zurückliefert, Objekte Instanzen gleicher Klassen sind); lockere Form der Gleichheit</li>
+<li>Identität (das gleiche Objekt <code>==</code>); strengste Form der Gleichheit (gilt, wenn <code>equals()</code> nicht überschrieben wird)</li>
+<li>Wertegleichheit (gilt, wenn <code>equals()</code> überschrieben wrude); am häufigsten verwendete Form der Gleichheit</li>
+</ul>
+<p>Speicherverwaltung:</p>
+<ul>
+<li>Annahme (Vereinfachung): Speicher steht in linearem Adressraum zur Verfügung</li>
+<li>Verwaltung mittels Allokationen: jede Allokation speichert Startadresse und eine Grösse</li>
+<li>Problematik bei der Verschiebung von Speicherblöcken: Aktualisierung der darauf verweisenden Zeiger</li>
+<li>Freigegebener Speicher wird bloss als nicht besetzt markiert, aber nicht mit 0 überschrieben</li>
+</ul>
+<p>Anforderungen an Speicherverwaltung:</p>
+<ul>
+<li>Zuverlässigkeit (keine Leaks)</li>
+<li>Schnell: keine lange Suche nach passendem, freien Block bei Allokation; bei Freigabe</li>
+<li>Zusammenfassen nebeneinanderliegender Lücken</li>
+<li>Welche Datenstruktur eignet sich dazu am besten?</li>
+<li><p>TODO: p.17</p></li>
+<li>Belegungsstrategie
+<ul>
+<li>erster passender Block</li>
+<li>noch kleinster, passender Block</li>
+</ul></li>
+<li>Freigabestrategie</li>
+<li><p>Datenstruktur TODO</p></li>
+</ul>
+<h1 id="datenstrukturen"><span class="header-section-number">4</span> Datenstrukturen</h1>
+<h2 id="eigneschaften-von-datenstrukturen"><span class="header-section-number">4.1</span> Eigneschaften von Datenstrukturen</h2>
+<ul>
+<li>Datenstruktur als reine Sammlung: ungeordnete Ablage, nicht deterministische Reihenfolge (Analogie: Steinhaufen), keine Elemente dürfen verloren gehen</li>
+<li>Datenstruktur mit einer bestimmten Reihenfolge: Reihenfolge bleibt (Analogie: Bücherstapel)</li>
+<li>Datenstruktur, die Elemente (beim Einfügen) sortieren (Analogie: vollautomatisches Hochregallager)</li>
+</ul>
+<h2 id="operationen-auf-datenstrukturen"><span class="header-section-number">4.2</span> Operationen auf Datenstrukturen</h2>
+<p>Grundlegende Operationen:</p>
+<ul>
+<li>Einfügen von Elementen</li>
+<li>Suchen von Elementen</li>
+<li>Entfernen von Elementen</li>
+<li>Ersetzen von Elementen: Kombination von Suchen, Entfernen und Einfügen</li>
+</ul>
+<p>Operationen in Abhängigkeit von Reihenfolge oder Sortierung:</p>
+<ul>
+<li>Nachfolger</li>
+<li>Vorgänger</li>
+<li>Sortierung</li>
+<li>Minimum/Maximum</li>
+</ul>
+<p>statische und dynamische Datenstruktur:</p>
+<ul>
+<li>statisch: feste, bei der Initialisierung definierte Grösse (Analogie: Flasche, benötigt und bietet immer gleich viel Platz)
+<ul>
+<li>Vorteile:
+<ul>
+<li>Grösse immer bekannt (einfache Planbarkeit)</li>
+<li>einfache Implementierung</li>
+<li>einfache Adressierbarkeit (Direktzugriff auf Elemente)</li>
+</ul></li>
+<li>Nachteile:
+<ul>
+<li>Aufwändige Operationen erforderlich, wenn die Kapazität ausgeschöpft ist</li>
+<li>Verschwendung bei geringer Auslastung</li>
+</ul></li>
+</ul></li>
+<li>dynamisch: kann Grösse während Lebensdauer verändern und theoretisch beliebig viele Elemente aufnehmen (Analogie: Luftballon)
+<ul>
+<li>Vorteile:
+<ul>
+<li>Man braucht sich bei der Erstellung keine Gedanken darüber zu machen, wie viele Daten gespeichert werden müssen</li>
+<li>keine Platzverschwendung (besonders zu Beginn)</li>
+</ul></li>
+<li>Nachteile:
+<ul>
+<li>Schwieriger zu implementieren</li>
+<li>Aufwändigere Operationen (ständig neue Speicherallokationen notwendig)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>explizite oder implizite Beziehungen zwischen den Elementen:</p>
+<ul>
+<li>explizit (z.B. Kette): Elemente sind miteinander verknüpft; Elemente kennen ihre Nachbarglieder</li>
+<li>implizit: Beziehungen zwischen Elementen nicht von Elementen festgehalten, sondern von übergeordneter Struktur</li>
+</ul>
+<p>p. 8</p>
+<p>direkter vs. indirekter (sequenzieller) Zugriff:</p>
+<ul>
+<li>direkter Zugriff: sofort auf ein beliebiges Element zugreifen (mittels Index oder Key); Beispiel: Speicheradresse im Computuer</li>
+<li>indirekter Zugriff: es müssen Vorgängerelemente durchlaufen werden, um auf ein bestimmtes Element zu kommen; Beispiel: Magnetband, Audio-Kasette, Java Streams</li>
+</ul>
+<p>Aufwand von Operationen:</p>
+<ul>
+<li>variiert je nach Operation und Anzahl Elemente</li>
+<li>vor allem die Ordnung interessant</li>
+</ul>
+<p>Beispiel: Stack konstant beim Einordnen, n² beim sortieren</p>
+<h2 id="array"><span class="header-section-number">4.3</span> Array</h2>
+<ul>
+<li>in Java: Sprachelement</li>
+<li>statisch</li>
+<li>implizit</li>
+<li>direkter Zugriff</li>
+<li>Reihenfolge stabil</li>
+<li>Aufwand
+<ul>
+<li>durchsuchen: O(n)</li>
+<li>sortieren: O(log n)</li>
+</ul></li>
+<li>binäre Suche
+<ul>
+<li>in der Mitte teilen</li>
+<li>anhand Trennelelent unterscheiden: links oder rechts weitersuchen?</li>
+<li>rekursiv auf ausgewählte Hälfte wiederholen</li>
+<li>fertig, wenn nur noch ein Element vorhanden ist</li>
+</ul></li>
+<li>einfügen (unsortiert)
+<ul>
+<li>wenn man sich letzten freien Platz merkt: O(1)</li>
+<li>ohne diesen Trick: O(n)</li>
+</ul></li>
+<li>einfügen (sortiert)
+<ul>
+<li>TODO 16/17</li>
+</ul></li>
+</ul>
+<p>-entfernen: zunächst finden! O(n)</p>
+<h1 id="glossar"><span class="header-section-number">5</span> Glossar</h1>
 <ul>
 <li>Algorithmus: präzise festgelegtes Verfahren zur Lösung eines Problems bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung)-Operator)</li>
 <li>Datenstruktur: ein Konzept zur <em>Speicherung und Organisation von Daten</em>. Sie ist durch die Operationen charakterisiert, welche Zugriffe und Verwaltung realisieren.</li>
