@@ -7,6 +7,7 @@
 \usepackage{verbatimbox}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage[top=2cm,right=2cm,bottom=3cm,left=2cm]{geometry}
 
 \setlength{\columnsep}{1cm}
@@ -392,5 +393,32 @@ Beweis: Wenn man ein schweres und ein leichtes Objekt zusammenklebt, dann müsst
 \item{andererseits aufgrund des höheren Gesamtgewichts eine höhere Fallgeschwindigkeit als das schwerere Objekt haben}
 \end{itemize}
 Beide (logischen) Überlegungen widersprechen sich, die Annahme muss falsch sein.
+
+\section{Mengen, Funktionen, Folgen und Reihen}
+
+\subsection{Mengen}
+
+Eine \textit{Menge} ist eine ungeordnete Zusammenfassung, wohldefinierter, unterscheidbarer Objekte, genannt \textit{Elemente}, zu einem Ganzen. Für ein beliebiges Objekt $x$ gilt bezüglich der Menge $A$ entweder $x \in A$ oder $x \not \in A$.
+
+Beispiel: Für $A=\{1,2,\ldots,99,100\}$ gilt $99 \in A$ aber $101 \not \in A$.
+
+Alternative Schreibweise: $A = \{n \in \mathbb{N} | n < 101\}$ (\enquote{$A$ ist die Menge aller natürlicher Zahlen $n$, für die gilt, dass $n$ kleiner als $101$ ist.})
+
+Zwei Mengen $A$ und $B$ sind gleich ($A=B$), falls sie die selben Elemente enthalten.
+
+\subsubsection{Beispiele bekannter Mengen}
+
+\begin{itemize}
+\item{$\mathbb{N}=\{1,2,\ldots\}, \mathbb{N}_0=\{0,1,2,\ldots\}$}
+\item{$\mathbb{Z}=\{\ldots,-1,0,1,2,\ldots\}$}
+\item{$\mathbb{Z}^+\{1,2,\ldots\}$}
+\item{$\mathbb{Q}=\{p/q|p \in \mathbb{Z} \land q \in \mathbb{N}\}$}
+\item{$\mathbb{R}$: Menge der reellen Zahlen (z.B. Lösung der Gleichung $x=\sqrt{2}$}
+\item{$\mathbb{C}$: Menge der komplexen Zahlen (z.B. Lösung der Gleichung $x=\sqrt{-1}$}
+\end{itemize}
+
+\subsubsection{Teilmengen}
+
+$A$ ist \textit{Teilmenge} von $B$ ($A \subset B$) wenn $\forall x (x \in A \rightarrow x \in B)$ gilt.
 
 \end{document}
