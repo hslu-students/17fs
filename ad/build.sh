@@ -7,7 +7,7 @@ author="Patrick Bucher"
 pandoc -N -S -s -c style.css --toc \
     --variable title="$title"\
     --variable author="$author" \
-    --variable language=ngerman\
+    --variable lang=de\
     *.md -o ad.html
 
 pandoc -N -S -s --toc \
@@ -16,5 +16,5 @@ pandoc -N -S -s --toc \
     --variable papersize=a4 \
     --variable documentclass=scrartcl \
     --variable fontfamily=times \
-    --variable language=ngerman\
+    --variable lang=de\
     *.md -o ad.pdf

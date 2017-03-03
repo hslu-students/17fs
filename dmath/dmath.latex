@@ -419,6 +419,45 @@ Zwei Mengen $A$ und $B$ sind gleich ($A=B$), falls sie die selben Elemente entha
 
 \subsubsection{Teilmengen}
 
-$A$ ist \textit{Teilmenge} von $B$ ($A \subset B$) wenn $\forall x (x \in A \rightarrow x \in B)$ gilt.
+$A$ ist \textit{Teilmenge} von $B$ ($A \subset B$) wenn $\forall x (x \in A \rightarrow x \in B)$ gilt. Jede Menge ist Teilmenge von sich selber ($A \subset A$).
+
+\subsubsection{Leere Menge}
+
+Die \textit{leere Menge} $\emptyset$ enthält keine Elemente. Für jede Menge $A$ gilt $\emptyset \subset A$.
+
+\subsubsection{Kardinalität}
+
+Bei einer endlichen Menge $S$ bezeichnet $|S|$ \textit{Kardinalität} (die Anzahl Elemente) der Menge.
+
+\subsubsection{Potenzmenge}
+
+Die \textit{Potenzmenge} $P(S)$ oder $2^S$ der Menge $S$ besteht aus der Menge aller möglichen Teilmengen (inkl. der leeren Menge) $A \subset S$.
+
+Beispiel:Die Menge $S = \{1,2\}$ hat die Potenzmenge $P(S)=2^S=\{\emptyset,\{1\},\{2\},\{1,2\}\}$ Es gilt: $|2^S|=2^{|S|}$
+
+\subsubsection{Kreuzprodukt}
+
+Das \textit{Kreuzprodukt} oder \textit{kartesische Produkt} $A \times B$ zweier Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$, wobei $a \in A$ und $b \in B$, d.h. $A \times B = \{(a,b)|a \in A \land b \in B\}$.
+
+Beispiel: $A=\{1,2,3\}$, $B=\{a,b\}$
+
+$A \times B = \{(1,a),(2,a),(3,a),(1,b),(2,b),(3,b) \}$
+\\
+$B \times A = \{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3) \}$
+
+Es gilt $A \times B \neq B \times A$, da bei Tupeln die Reihenfolge wesentlich ist: $(1,a) \neq (a,1)$
+
+\subsubsection{Mengenoperationen}
+
+\begin{itemize}
+\item{Ist $A \subset M$, ist $A^C$ das \textit{Komplement} von $A$ in $M$: $A^C=\overline A=\{m \in M | m \not \in A \}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $A \cap B$ der \textit{Durchschnitt} (die Schnittmenge) von $A$ und $B$: $A \cap B = \{m \in M | m \in A \land m \in B\}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $A \cup B$ die \textit{Vereinigung} von $A$ und $B$: $A \cup B = \{m \in M | m \in A \lor m in B\}$}
+\item{Sind $A$ und $B$ Teilmengen von $M$, ist $B - A$ die \textit{Differenz} von $A$ und $B$: $B-A=\{m \in M | m \in B \land m \not \in A\}$}
+\end{itemize}
+\subsubsection{Rechenregeln}
+\subsection{Funktionen}
+\subsection{Folgen}
+\subsection{Reihen}
 
 \end{document}
