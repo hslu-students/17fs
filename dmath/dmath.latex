@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,smallheadings,twocolumn]{scrartcl}
+\documentclass[a4paper,10pt,smallheadings,twocolumn]{scrartcl}
 
 \usepackage{times}
 \usepackage[ngerman]{babel}
@@ -399,11 +399,14 @@ Beide (logischen) Überlegungen widersprechen sich, die Annahme muss falsch sein
 \subsection{Mengen}
 
 Eine \textit{Menge} ist eine ungeordnete Zusammenfassung, wohldefinierter, unterscheidbarer Objekte, genannt \textit{Elemente}, zu einem Ganzen. Für ein beliebiges Objekt $x$ gilt bezüglich der Menge $A$ entweder $x \in A$ oder $x \not \in A$.
-
+\\
+\\
 Beispiel: Für $A=\{1,2,\ldots,99,100\}$ gilt $99 \in A$ aber $101 \not \in A$.
-
-Alternative Schreibweise: $A = \{n \in \mathbb{N} | n < 101\}$ (\enquote{$A$ ist die Menge aller natürlicher Zahlen $n$, für die gilt, dass $n$ kleiner als $101$ ist.})
-
+\\
+\\
+Alternative Schreibweise: $A = \{n \in \mathbb{N} | n < 101\}$ (\enquote{$A$ ist die Menge aller natürlicher Zahlen $n$, für die gilt, dass $n$ kleiner als $101$ ist.}) 
+\\
+\\
 Zwei Mengen $A$ und $B$ sind gleich ($A=B$), falls sie die selben Elemente enthalten.
 
 \subsubsection{Beispiele bekannter Mengen}
@@ -431,20 +434,24 @@ Bei einer endlichen Menge $S$ bezeichnet $|S|$ \textit{Kardinalität} (die Anzah
 
 \subsubsection{Potenzmenge}
 
-Die \textit{Potenzmenge} $P(S)$ oder $2^S$ der Menge $S$ besteht aus der Menge aller möglichen Teilmengen (inkl. der leeren Menge) $A \subset S$.
-
+Die \textit{Potenzmenge} $P(S)$ oder $2^S$ der Menge $S$ besteht aus der Menge aller möglichen Teilmengen (inkl. der leeren Menge) $A \subset S$.  
+\\
+\\
 Beispiel:Die Menge $S = \{1,2\}$ hat die Potenzmenge $P(S)=2^S=\{\emptyset,\{1\},\{2\},\{1,2\}\}$ Es gilt: $|2^S|=2^{|S|}$
 
 \subsubsection{Kreuzprodukt}
 
-Das \textit{Kreuzprodukt} oder \textit{kartesische Produkt} $A \times B$ zweier Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$, wobei $a \in A$ und $b \in B$, d.h. $A \times B = \{(a,b)|a \in A \land b \in B\}$.
-
-Beispiel: $A=\{1,2,3\}$, $B=\{a,b\}$
-
+Das \textit{Kreuzprodukt} oder \textit{kartesische Produkt} $A \times B$ zweier Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$, wobei $a \in A$ und $b \in B$, d.h. $A \times B = \{(a,b)|a \in A \land b \in B\}$.  
+\\
+\\
+Beispiel: $A=\{1,2,3\}$, $B=\{a,b\}$ 
+\\
+\\
 $A \times B = \{(1,a),(2,a),(3,a),(1,b),(2,b),(3,b) \}$
 \\
-$B \times A = \{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3) \}$
-
+$B \times A = \{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3) \}$ 
+\\
+\\
 Es gilt $A \times B \neq B \times A$, da bei Tupeln die Reihenfolge wesentlich ist: $(1,a) \neq (a,1)$
 
 \subsubsection{Mengenoperationen}
@@ -455,8 +462,143 @@ Es gilt $A \times B \neq B \times A$, da bei Tupeln die Reihenfolge wesentlich i
 \item{Sind $A$ und $B$ Teilmengen von $M$, ist $A \cup B$ die \textit{Vereinigung} von $A$ und $B$: $A \cup B = \{m \in M | m \in A \lor m in B\}$}
 \item{Sind $A$ und $B$ Teilmengen von $M$, ist $B - A$ die \textit{Differenz} von $A$ und $B$: $B-A=\{m \in M | m \in B \land m \not \in A\}$}
 \end{itemize}
+
 \subsubsection{Rechenregeln}
+
+Für das Rechnen mit den Mengen $A, B, C \subset M$ gelten folgende Regeln:
+\\
+\\
+Kommutativgesetz:
+\\
+$A \cup B = B \cup A$
+\\
+$A \cap B = B \cap A$ 
+\\
+\\
+Assoziativgesetz:
+\\
+$A \cup (B \cup C) = (A \cup B) \cup C)$
+\\
+$A \cap (B \cap C) = (A \cap B) \cap C)$
+\\
+\\
+Distributivgesetz:
+\\
+$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+\\
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+\\
+\\
+De Morgan:
+\\
+$\overline{A \cup B} = \overline A \cap \overline B$ 
+\\
+$\overline{A \cap B} = \overline A \cup \overline B$
+
 \subsection{Funktionen}
+
+Wird jedem Element $x$ einer Menge $X$ (Definitionsbereich) genau ein Element $y$ einer Menge $Y$ zugeordnet, so heisst diese Zuordnung \textit{Funktion}.
+\\
+\\
+\textit{Wertebereich} oder \textit{Bildbereich}:
+\\
+\\
+$W = \{y \in Y | f(x) = y \text{ für ein } x \in X\}$
+\\
+$f:X \rightarrow Y$
+\\
+$x \mapsto f(x)$ oder $f:x \mapsto f(x)$
+
+\subsubsection{Injektive Funktionen}
+
+Bei einer \textit{injektiven} Funktion werden verschiedene $x_1,x_2 \in X$ stets auf verschiedene Werte im Bildbereich abgebildet.
+\\
+\\
+Für alle $x_1,x_2 \in X \text{ mit } x_1 \neq x_2 \text{ gilt } f(x_1) \neq f(x_2)$.
+\\
+Für alle $x_1,x_2 \in X \text{ mit } f(x_1) = f(x_2) \text{ gilt } x_1 = x_2$.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{höchstens} ein $x$.}
+\\
+\\
+Beispiele:
+\begin{itemize}
+\item{injektiv: $f:\mathbb{R} \rightarrow \mathbb{R}, x \mapsto 2x + 3$, da für alle $x_1,x_2 \in \mathbb{R}$ gilt $f(x_1)=f(x_2) \leftrightarrow 2x_1 + 3 = 2x_2 + 3 \leftrightarrow x_1 = x_2$ (nur gleiche $x$ haben gleiche $f(x)$)}
+\item{\textit{nicht} injektiv: $f:\mathbb{R} \rightarrow \mathbb{R}, x \mapsto x^2$, da $f(-2)=f(2)=4$ (ungleiche $x$ haben das gleiche $f(x)$)}
+\end{itemize}
+
+\subsubsection{Surjektive Funktionen}
+
+Bei einer \textit{surjektiven} Funktion existiert für jedes Element $y \in Y$ (mindestens) ein Element $x \in X$, sodass $f(x)=y$ gilt.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{mindestens} ein $x$.}
+
+\subsubsection{Bijektive Funktionen}
+
+Eine {bijektive} Funktion ist sowohl injektiv als auch surjektiv.
+\\
+\\
+\enquote{Auf jedes $y$ zeigt \textit{genau} ein $x$.}
+
+\subsubsection{Zusammenfassung}
+\begin{itemize}
+\item{injektiv: auf jedes $y$ zeigen $[0,1]$ $x$}
+\item{surjektiv: auf jedes $y$ zeigen $[1,\infty[$ $x$}
+\item{bijektiv: auf jedes $y$ zeigt $1$ $x$}
+\end{itemize}
+
+\subsubsection{Zusammengesetzte Funktionen}
+
+Liegt der Wertebereich ($U$) der Funktion $g$ im Definitionsbereich von $f$, \ldots
+\begin{align*}
+g:X & \rightarrow U
+\\
+x & \mapsto g(x)
+\\
+\\
+f:U & \rightarrow Y
+\\
+u & \mapsto f(u)
+\end{align*}
+\ldots kann die \textit{zusammengesetzte Funktion} oder \textit{Komposition} von $f$ und $g$ gebildet werden:
+\begin{align*}
+F = f \circ g : X & \rightarrow Y
+\\
+x & \mapsto f(g(x))
+\end{align*}
+
+\subsubsection{Die Umkehrfunktion}
+
+Von einer bijektiven Funktion $f$ kann die \textit{Umkehrfunktion} $f^{-1}$ gebildet werden, die jedem $y$ des Wertebereichts von $f$ ein eindeutig bestimmtes $x$ zuordnet. Beispiel: Gesucht ist die Umkehrfunktion von $f$, sowie ihr Definitions- und Wertebereich.
+\begin{align*}
+f:\mathbb{R} \setminus \{-2\} & \rightarrow \mathbb{R}
+\\
+x & \mapsto \frac{3x+4}{x+2}
+\\
+y = f(x) & = \frac{3x+4}{x+2}
+\end{align*}
+Die Funktion muss nach $x$ aufgelöst werden:
+\begin{align*}
+y & = \frac{3x+4}{x+2} &|& *(x+2) \\
+y(x+2) & = 3x+4 &|& \text{ ausmultiplizieren } \\
+xy+2y &= 3x+4 &|& -3x, -2y \\
+xy-3x &= 4-2y &|& \text{ x ausklammern } \\
+x(y-3) &= 4-2y &|& :(y-3) \\
+x &= \frac{4-2y}{y-3}, & & \text{ falls } y \neq 3
+\end{align*}
+Zum Schluss können $x$ und $y$ vertauscht werden:
+\begin{align*}
+f^{-1}:\mathbb{R}\setminus \{3\} & \rightarrow \mathbb{R} \\
+y & \mapsto \frac{4-2y}{y-3}
+\end{align*}
+Wendet man auf ein $x$ zunächst eine umkehrbare Funktion $f$ und dann deren Umkehrfunktion $f^{-1}$ auf $f(x)$ an, erhält man wieder $x$:
+\begin{align*}
+(f^{-1} \circ f)(x) & = f^{-1}(f(x)) = x \\
+(f \circ f^{-1})(y) & = f(f^{-1}(y)) = y
+\end{align*}
+
 \subsection{Folgen}
 \subsection{Reihen}
 
