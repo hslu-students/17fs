@@ -39,7 +39,29 @@
 </ul></li>
 </ul></li>
 <li><a href="#netzwerke-im-rechenzentrum"><span class="toc-section-number">2</span> Netzwerke im Rechenzentrum</a></li>
-<li><a href="#glossar"><span class="toc-section-number">3</span> Glossar</a></li>
+<li><a href="#virtualisierung-im-data-center"><span class="toc-section-number">3</span> Virtualisierung im Data Center</a><ul>
+<li><a href="#smp-symmetrische-multiprozessoren"><span class="toc-section-number">3.1</span> SMP: Symmetrische Multiprozessoren</a><ul>
+<li><a href="#vorteile-von-smp"><span class="toc-section-number">3.1.1</span> Vorteile von SMP</a></li>
+<li><a href="#smp-organisation"><span class="toc-section-number">3.1.2</span> SMP-Organisation</a></li>
+</ul></li>
+<li><a href="#multi-core-prozessoren"><span class="toc-section-number">3.2</span> Multi-Core-Prozessoren</a><ul>
+<li><a href="#architekturen"><span class="toc-section-number">3.2.1</span> Architekturen</a></li>
+</ul></li>
+<li><a href="#speicherorganisation"><span class="toc-section-number">3.3</span> Speicherorganisation</a><ul>
+<li><a href="#llc-last-level-cache"><span class="toc-section-number">3.3.1</span> LLC: last level cache</a></li>
+</ul></li>
+<li><a href="#simultanes-multi-threading"><span class="toc-section-number">3.4</span> Simultanes Multi-Threading</a><ul>
+<li><a href="#memory-stalls"><span class="toc-section-number">3.4.1</span> Memory Stalls</a></li>
+<li><a href="#superskalare-architektur"><span class="toc-section-number">3.4.2</span> Superskalare Architektur</a></li>
+<li><a href="#amdahls-gesetz"><span class="toc-section-number">3.4.3</span> Amdahls Gesetz</a></li>
+<li><a href="#cache-kohärenz"><span class="toc-section-number">3.4.4</span> Cache-Kohärenz</a></li>
+</ul></li>
+<li><a href="#verbindungsnetzwerke"><span class="toc-section-number">3.5</span> Verbindungsnetzwerke</a><ul>
+<li><a href="#bewertungskriterien-für-topologien"><span class="toc-section-number">3.5.1</span> Bewertungskriterien für Topologien</a></li>
+</ul></li>
+<li><a href="#skalierbare-applikationen"><span class="toc-section-number">3.6</span> Skalierbare Applikationen</a></li>
+</ul></li>
+<li><a href="#glossar"><span class="toc-section-number">4</span> Glossar</a></li>
 </ul>
 </div>
 <h1 id="das-data-center"><span class="header-section-number">1</span> Das Data Center</h1>
@@ -723,7 +745,177 @@
 <li>Trunk: Verbindung zweier Switches</li>
 </ul></li>
 </ul>
-<h1 id="glossar"><span class="header-section-number">3</span> Glossar</h1>
+<h1 id="virtualisierung-im-data-center"><span class="header-section-number">3</span> Virtualisierung im Data Center</h1>
+<h2 id="smp-symmetrische-multiprozessoren"><span class="header-section-number">3.1</span> SMP: Symmetrische Multiprozessoren</h2>
+<ul>
+<li>zwei oder mehr gleichartige Prozessoren mit vergleichbaren Möglichkeiten</li>
+<li>Prozessoren zeilen sich das Memory und sind über einen Bus oder andere interne Verbindungen zusammengeschaltet</li>
+<li>Prozessoren teilen sich I/O-Geräte</li>
+<li>Alle Prozessoren können die gleichen Funktionen ausführen (daher “symmetrisch”)</li>
+<li>System wird durch ein integriertes OS (Microcode auf dem Chip) kontrolliert
+<ul>
+<li>stellt Interaktion zwischen Prozessoren und deren Programmen her</li>
+<li>auf Stufe Job, Task, File und Daten-Elementen</li>
+</ul></li>
+</ul>
+<h3 id="vorteile-von-smp"><span class="header-section-number">3.1.1</span> Vorteile von SMP</h3>
+<ul>
+<li>Performance durch parallele Ausführung</li>
+<li>Skalierbarkeit durch Geräte mit unterschiedlichem Preis-Leistungs-Verhältnis</li>
+<li>Verfügbarkeit</li>
+<li>TODO p.6</li>
+</ul>
+<h3 id="smp-organisation"><span class="header-section-number">3.1.2</span> SMP-Organisation</h3>
+<ul>
+<li>L1- und L2-Cache auf dem Prozessor</li>
+<li>L3-Cache geteilt</li>
+<li>Prozessoren über Bussystem verbunden</li>
+</ul>
+<h2 id="multi-core-prozessoren"><span class="header-section-number">3.2</span> Multi-Core-Prozessoren</h2>
+<ul>
+<li>bekannt als Chip-Multiprozessor</li>
+<li>zwei oder mehr Cores auf einem Chip</li>
+<li>jeder Core beinhaltet alle Komponenten eines unabhängigen Prozessors
+<ul>
+<li>auch L1- und L2-Cache</li>
+</ul></li>
+</ul>
+<h3 id="architekturen"><span class="header-section-number">3.2.1</span> Architekturen</h3>
+<p>Mit steigender Anzahl Cores wird die Verbindung zwischen den Cores immer kritischer.</p>
+<ul>
+<li>Kommunikationsmodell
+<ul>
+<li>Message Passing: experimentell</li>
+<li>Shared Address</li>
+</ul></li>
+<li>Physische Verbindung
+<ul>
+<li>Network</li>
+<li>Bus: schlechte Skalierbarkeit</li>
+</ul></li>
+</ul>
+<h2 id="speicherorganisation"><span class="header-section-number">3.3</span> Speicherorganisation</h2>
+<ul>
+<li>UMA: unified memory architecture
+<ul>
+<li>mehrere CPUs an ein gemeinsames Memory angeschlossen</li>
+<li>alle CPUs haben Direktzugriff</li>
+<li>jede CPU hat einen lokalen Adressraum (schlechte Skalierbarkeit)</li>
+</ul></li>
+<li>NUMA: non-unified memory architecture (shared memory architecture)
+<ul>
+<li>zwei oder mehr SMPs physisch verbunden</li>
+<li>Shared Memory: ein globaler Adressraum</li>
+<li>SMP kann direkt auf das Memory anderer SMPs zugreifen</li>
+<li>nicht alle CPUs haben die gleiche Zugriffszeit auf das Memory
+<ul>
+<li>variiert je nach Speicheradresse</li>
+<li>je weiter weg das Memory, desto langsamer der Zugriff</li>
+</ul></li>
+<li>CC-NUMA: mit Cache-Kohärenz (cache coherence)</li>
+</ul></li>
+</ul>
+<h3 id="llc-last-level-cache"><span class="header-section-number">3.3.1</span> LLC: last level cache</h3>
+<p>TODO p. 17</p>
+<h2 id="simultanes-multi-threading"><span class="header-section-number">3.4</span> Simultanes Multi-Threading</h2>
+<p>Hauptprobleme bei Multi-Core-Architekturen:</p>
+<ol style="list-style-type: decimal">
+<li>Memory-Stalls</li>
+<li>Cache-Kohärenz</li>
+</ol>
+<h3 id="memory-stalls"><span class="header-section-number">3.4.1</span> Memory Stalls</h3>
+<p>Zeitanteil, der für das Warten auf die Daten ins Memory benötigt wird. Beispiel:</p>
+<ul>
+<li>Transaktionsdatenbank: ca. 75%</li>
+<li>Web-Server: ca. 50%</li>
+<li>Entscheidungsunterstützte (mittels Machine-Learning, “trainierte Algorithmen”) Datenbank: ca. 10-50%</li>
+</ul>
+<p>Analogie-Beispiel: betrüge ein einziger CPU-Zyklus eine Sekunde statt 0.3 Nanosekunden, so dauerte das Laden:</p>
+<ul>
+<li>aus dem L1-Cache: 3 Sekunden</li>
+<li>aus dem L3-Cache: 45 Sekunden</li>
+<li>aus dem DRAM: 6 Minuten</li>
+<li>von einer HD: Monate oder Jahre</li>
+</ul>
+<p>Lösungsansatz: Threads (kleinste Einheit, die ein OS auf Cores verteilen kann). Während ein Thread darauf wartet, dass Daten ins Memory geladen werden, kann derweil ein anderer Thread arbeiten, statt zu warten (Multithreading oder Pipelining); Reduktion um ca. 50% der Idle-Time.</p>
+<h3 id="superskalare-architektur"><span class="header-section-number">3.4.2</span> Superskalare Architektur</h3>
+<ul>
+<li>Es werden mehrere Instruktionen pro Taktzyklus abgearbeitet.</li>
+<li>Dazu müssen mehrere Ausführungseinheiten (z.B. ALU, Bit Shifter, Multiplier) pro Chip vorhanden sein.</li>
+<li>Im besten Fall sind zur gleichen Zeit alle Ausführungseinheiten beschäftigt.</li>
+<li>Das ist nach dem Aufbau/Füllen bzw. vor dem Abbau/Leeren der Pipeline möglich.</li>
+<li>Nachteil von Pipelining: bedingte Codeblöcke werden immer in die Pipeline geladen, auch wenn sie teilweise gar nicht gebraucht werden, und müssen teilweise geflusht werden.</li>
+<li>Hyper-Threading: Synomym für Pipelining</li>
+</ul>
+<h3 id="amdahls-gesetz"><span class="header-section-number">3.4.3</span> Amdahls Gesetz</h3>
+<ul>
+<li>Ab einer gewissen Anzahl Cores nimmt die zusätzliche Leistung pro weiterem Core ab
+<ul>
+<li>nicht parallelisierter Anteil <code>a</code>: ca. 20%</li>
+<li>parallelisierter Anteil <code>1-a</code>: ca. 80%</li>
+</ul>
+<p>a = nicht parallelisierter Anteil n = Anzahl Cores T = Ausführungszeit</p>
+<p>T=a+(a-a)/n</p></li>
+</ul>
+<p>T konvergiert für grosse n gegen 0.2 für einen nicht parallelisierten Anteil von 20%.</p>
+<h3 id="cache-kohärenz"><span class="header-section-number">3.4.4</span> Cache-Kohärenz</h3>
+<ul>
+<li>gemeinsames Datenobjekt in beiden Caches und im Memory</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>write through cache</li>
+<li>write back cache</li>
+</ol>
+<p>TODO: p.38-39</p>
+<p>Lösungsansätze:</p>
+<ol style="list-style-type: decimal">
+<li>Erweiterung der beiden genannten Algorithmen
+<ul>
+<li>Snoop-Protokoll
+<ul>
+<li>Zugriffe erfolgen über das gleiche Medium (Bus-System)</li>
+<li>Cache-Controller beobachten und erkennen Datenänderungen</li>
+<li>skaliert schlecht</li>
+<li>TODO: p.44</li>
+</ul></li>
+<li>Directory-Protokoll
+<ul>
+<li>zentrale Liste mit Status aller Cache-Blöcke (welche CPU hat was?)</li>
+<li>skaliert besser</li>
+<li>TODO: p.45-47</li>
+</ul></li>
+</ul></li>
+<li>Verwendung eines gemeinsamen Caches</li>
+<li>Unterteilung der Daten (auf Softwareebene)</li>
+</ol>
+<h2 id="verbindungsnetzwerke"><span class="header-section-number">3.5</span> Verbindungsnetzwerke</h2>
+<ul>
+<li>Bei 1000 Cores bräuchte es 10^6 Verbindungen zwischen den Cores.</li>
+<li>Jede Verbindung müsste 64 Bit breit sein.</li>
+<li>Es bräuchte <code>6.4*10^7</code> Leitungen.</li>
+<li>Bei einer 100-lagigen Platine ergäbe das eine Platinenbreite von 6 km.</li>
+<li>Es ist nicht praktikabel, alle Cores miteinander zu verbinden!</li>
+</ul>
+<p>TODO: p.50</p>
+<p>Lösung: Verbindungsnetzwerke. Die Cores werden über geschaltete Verbindungen (Switches) miteinander verbunden.</p>
+<p>TODO: p.52</p>
+<h3 id="bewertungskriterien-für-topologien"><span class="header-section-number">3.5.1</span> Bewertungskriterien für Topologien</h3>
+<p>TODO: p.53-62</p>
+<p>“Koppelnetze sind gekoppelte Netze” – “Nein” – “Doch” – “Ohh”</p>
+<h2 id="skalierbare-applikationen"><span class="header-section-number">3.6</span> Skalierbare Applikationen</h2>
+<p>Wie erstellt man skalierbare Applikationen?</p>
+<ul>
+<li>skalierbare Algorithmen</li>
+<li>feingranulare Locking-Mechanismen verwenden</li>
+<li>Worker-Thread-Pools verwenden</li>
+<li>Skalierungs-Tests durchführen</li>
+<li>Beobachtung der Applikation</li>
+<li>Stellen mit Wartezeiten identifizieren</li>
+<li>Synchronisations-Locks identifizieren</li>
+<li>nicht-skalierbare Algorithmen identifizieren</li>
+</ul>
+<p>TODO: p.65 ff</p>
+<h1 id="glossar"><span class="header-section-number">4</span> Glossar</h1>
 <ul>
 <li>ITIL: IT Infrastructure Library, Standard für IT-Belange v.a. für Grossunternehmen, für KMU übertrieben</li>
 <li>PUE: Power Usage Effectiveness, Massstab für die Effizienz eines Rechenzentrums</li>
