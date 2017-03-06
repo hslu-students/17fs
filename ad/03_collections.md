@@ -16,15 +16,15 @@ Beispiele:
 
 Es gibt keine universelle Datenstruktur, die alles perfekt kann, sondern für jede Aufgabe mehr oder weniger geeignete Datenstrukturen.
 
-Eigenschaften von Datenstrukturen:
+## Eigenschaften von Datenstrukturen
 
 - Grösse: dynamisch/statisch
 - Zugriff: direkt oder sequenziell
 - Sortierung: sortiert/unsortiert, mit/ohne Ordnung
 - Suche: beschleunigt?
-- Geschwindigkeit TODO p. 7
+- Geschwindigkeit (von Operationen auf die Datenstruktur): Suchen, Einfügen, Anhängen, Entfernen, Verschieben
 
-Java Collection Framework:
+## Das Java Collection Framework
 
 - Schnittstellen: abstrakte Datentypen
 - Implementierungen: konkrete Implementierungen der Schnittstellen
@@ -32,35 +32,35 @@ Java Collection Framework:
     - `iterator()`: sequenzieller Zugriff auf alle Elemente
     - `sort(List<E>)`: sortiert beliebige `List`-Implementierung
 
-Grundlegende Funktionen für das Funktionieren des Collection-Frameworks:
+### Grundlegende Funktionen für das Funktionieren des Collection-Frameworks
 
 - Sortierung: `equals()`, `Comparable<T>` (beide durch Element-Klasse implementiert), `Comparator<T>` (durch Client implementiert)
 - Hashing: `hashCode()` (durch Element-Klasse implementiert)
 
-Arten der Gleichheit:
+### Arten der Gleichheit
 
 - Typgleichheit (wenn `instanceof true` zurückliefert, Objekte Instanzen gleicher Klassen sind); lockere Form der Gleichheit
 - Identität (das gleiche Objekt `==`); strengste Form der Gleichheit (gilt, wenn `equals()` nicht überschrieben wird)
 - Wertegleichheit (gilt, wenn `equals()` überschrieben wrude); am häufigsten verwendete Form der Gleichheit
 
-Speicherverwaltung:
+## Beispiel: Speicherverwaltung
 
 - Annahme (Vereinfachung): Speicher steht in linearem Adressraum zur Verfügung
 - Verwaltung mittels Allokationen: jede Allokation speichert Startadresse und eine Grösse
 - Problematik bei der Verschiebung von Speicherblöcken: Aktualisierung der darauf verweisenden Zeiger
 - Freigegebener Speicher wird bloss als nicht besetzt markiert, aber nicht mit 0 überschrieben
 
-Anforderungen an Speicherverwaltung:
+### Anforderungen an die Speicherverwaltung
 
 - Zuverlässigkeit (keine Leaks)
 - Schnell: keine lange Suche nach passendem, freien Block bei Allokation; bei Freigabe
-- Zusammenfassen nebeneinanderliegender Lücken
-- Welche Datenstruktur eignet sich dazu am besten?
-- TODO: p.17
+- Zusammenfassen nebeneinanderliegender Lücken (Umgang mit Fragmentierung)
+- Welche Datenstruktur eignet sich dazu am besten? (eine Tabelle bzw. Map)
 
 - Belegungsstrategie
     - erster passender Block
     - noch kleinster, passender Block
 - Freigabestrategie
-- Datenstruktur
-TODO
+    - erkennen und verbinden benachbarter, freier Blöcke
+    - idealer Zeitpunkt zum Zusammenfügen
+- geeignete Datenstruktur

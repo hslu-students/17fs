@@ -1,6 +1,6 @@
 # Datenstrukturen
 
-## Eigneschaften von Datenstrukturen
+## Eigenschaften von Datenstrukturen
 
 - Datenstruktur als reine Sammlung: ungeordnete Ablage, nicht deterministische Reihenfolge (Analogie: Steinhaufen), keine Elemente dürfen verloren gehen 
 - Datenstruktur mit einer bestimmten Reihenfolge: Reihenfolge bleibt (Analogie: Bücherstapel)
@@ -22,7 +22,7 @@ Operationen in Abhängigkeit von Reihenfolge oder Sortierung:
 - Sortierung
 - Minimum/Maximum
 
-statische und dynamische Datenstruktur:
+## Statisch oder dynamisch
 
 - statisch: feste, bei der Initialisierung definierte Grösse (Analogie: Flasche, benötigt und bietet immer gleich viel Platz)
     - Vorteile:
@@ -40,19 +40,25 @@ statische und dynamische Datenstruktur:
         - Schwieriger zu implementieren
         - Aufwändigere Operationen (ständig neue Speicherallokationen notwendig)
 
-explizite oder implizite Beziehungen zwischen den Elementen:
+## Element-Beziehungen: explizit oder implizit
 
-- explizit (z.B. Kette): Elemente sind miteinander verknüpft; Elemente kennen ihre Nachbarglieder
+- explizit: Elemente sind miteinander verknüpft; Elemente kennen ihre Nachbarglieder
+    - Analogie: Fahrradkette
+    - Beispiel: (doppelt) verkettete Liste
 - implizit: Beziehungen zwischen Elementen nicht von Elementen festgehalten, sondern von übergeordneter Struktur
+    - Analogie: Bücherregal
+    - Beispiel: Array, Liste, Map
 
-p. 8
+## Zugriff: direkt oder indirekt (sequenziell)
 
-direkter vs. indirekter (sequenzieller) Zugriff:
+- direkter Zugriff
+    - sofort auf ein beliebiges Element zugreifen (mittels Index oder Key)
+    - Beispiel: Speicheradresse im Computuer
+- indirekter (sequenzieller) Zugriff
+    - es müssen Vorgängerelemente durchlaufen werden, um auf ein bestimmtes Element zu kommen
+    - Beispiel: Magnetband, Audio-Kasette, Java Streams
 
-- direkter Zugriff: sofort auf ein beliebiges Element zugreifen (mittels Index oder Key); Beispiel: Speicheradresse im Computuer
-- indirekter Zugriff: es müssen Vorgängerelemente durchlaufen werden, um auf ein bestimmtes Element zu kommen; Beispiel: Magnetband, Audio-Kasette, Java Streams
-
-Aufwand von Operationen:
+## Aufwand von Operationen
 
 - variiert je nach Operation und Anzahl Elemente
 - vor allem die Ordnung interessant
@@ -67,19 +73,54 @@ Beispiel: Stack konstant beim Einordnen, n² beim sortieren
 - direkter Zugriff
 - Reihenfolge stabil
 - Aufwand
-    - durchsuchen: O(n)
-    - sortieren: O(log n)
+    - durchsuchen: `O(n)`
+    - sortieren: `O(log n)`
 
-- binäre Suche
-    - in der Mitte teilen
-    - anhand Trennelelent unterscheiden: links oder rechts weitersuchen?
-    - rekursiv auf ausgewählte Hälfte wiederholen
-    - fertig, wenn nur noch ein Element vorhanden ist
+### Binäre Suche
 
-- einfügen (unsortiert)
-    - wenn man sich letzten freien Platz merkt: O(1)
-    - ohne diesen Trick: O(n)
-- einfügen (sortiert)   
-    - TODO 16/17
+- in der Mitte teilen
+- anhand Trennelelent unterscheiden: links oder rechts weitersuchen?
+- rekursiv auf ausgewählte Hälfte wiederholen
+- fertig, wenn nur noch ein Element vorhanden ist
 
--entfernen: zunächst finden! O(n)
+### Einfügen
+
+- unsortiert
+    - wenn man sich letzten freien Platz merkt: `O(1)`
+    - ohne diesen Trick: `O(n)`
+- sortiert
+    - Position suchen: `O(log n)`
+    - restliche Elemente nach rechts schieben: `O(n)`
+    - Aufwand: `O(n)`
+
+### Entfernen
+
+- unsortiert (fortlaufend befüllt)
+    - Position suchen: `O(n)`
+    - Entfernen und Lücke (mit beliebigem Element!) schliessen: `O(1)`
+    - Aufwand: `O(n)`
+- sortiert (fortlaufend befüllt)
+    - Position suchen: `O(log n)`
+    - Entfernen und Lücke (mittels nach links durchschieben!) schliessen: `O(n)`
+    - Aufwand: `O(n)`
+
+### Empfehlungen
+
+Arrays sollten eingesetzt werden, wenn:
+
+- die Datenmenge _beschränkt_, von anfang an _bekannt_ und eher _klein_ ist
+- die Datentypen _elementar_ sind, also eine bekannte und konstante Grösse haben
+
+Sonst sind Collections, wie z.B. eine  `ArrayList`, vorzuziehen.
+
+## Listen
+
+TODO: p.20-
+
+## Stack
+
+TODO: p.31-
+
+## Queue
+
+TODO: p.38-

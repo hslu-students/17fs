@@ -39,11 +39,32 @@
 <li><a href="#typen-von-rekursion"><span class="toc-section-number">2.3</span> Typen von Rekursion</a></li>
 <li><a href="#beispiel-permutation"><span class="toc-section-number">2.4</span> Beispiel: Permutation</a></li>
 </ul></li>
-<li><a href="#collections"><span class="toc-section-number">3</span> Collections</a></li>
+<li><a href="#collections"><span class="toc-section-number">3</span> Collections</a><ul>
+<li><a href="#eigenschaften-von-datenstrukturen"><span class="toc-section-number">3.1</span> Eigenschaften von Datenstrukturen</a></li>
+<li><a href="#das-java-collection-framework"><span class="toc-section-number">3.2</span> Das Java Collection Framework</a><ul>
+<li><a href="#grundlegende-funktionen-für-das-funktionieren-des-collection-frameworks"><span class="toc-section-number">3.2.1</span> Grundlegende Funktionen für das Funktionieren des Collection-Frameworks</a></li>
+<li><a href="#arten-der-gleichheit"><span class="toc-section-number">3.2.2</span> Arten der Gleichheit</a></li>
+</ul></li>
+<li><a href="#beispiel-speicherverwaltung"><span class="toc-section-number">3.3</span> Beispiel: Speicherverwaltung</a><ul>
+<li><a href="#anforderungen-an-die-speicherverwaltung"><span class="toc-section-number">3.3.1</span> Anforderungen an die Speicherverwaltung</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#datenstrukturen"><span class="toc-section-number">4</span> Datenstrukturen</a><ul>
-<li><a href="#eigneschaften-von-datenstrukturen"><span class="toc-section-number">4.1</span> Eigneschaften von Datenstrukturen</a></li>
+<li><a href="#eigenschaften-von-datenstrukturen-1"><span class="toc-section-number">4.1</span> Eigenschaften von Datenstrukturen</a></li>
 <li><a href="#operationen-auf-datenstrukturen"><span class="toc-section-number">4.2</span> Operationen auf Datenstrukturen</a></li>
-<li><a href="#array"><span class="toc-section-number">4.3</span> Array</a></li>
+<li><a href="#statisch-oder-dynamisch"><span class="toc-section-number">4.3</span> Statisch oder dynamisch</a></li>
+<li><a href="#element-beziehungen-explizit-oder-implizit"><span class="toc-section-number">4.4</span> Element-Beziehungen: explizit oder implizit</a></li>
+<li><a href="#zugriff-direkt-oder-indirekt-sequenziell"><span class="toc-section-number">4.5</span> Zugriff: direkt oder indirekt (sequenziell)</a></li>
+<li><a href="#aufwand-von-operationen"><span class="toc-section-number">4.6</span> Aufwand von Operationen</a></li>
+<li><a href="#array"><span class="toc-section-number">4.7</span> Array</a><ul>
+<li><a href="#binäre-suche"><span class="toc-section-number">4.7.1</span> Binäre Suche</a></li>
+<li><a href="#einfügen"><span class="toc-section-number">4.7.2</span> Einfügen</a></li>
+<li><a href="#entfernen"><span class="toc-section-number">4.7.3</span> Entfernen</a></li>
+<li><a href="#empfehlungen"><span class="toc-section-number">4.7.4</span> Empfehlungen</a></li>
+</ul></li>
+<li><a href="#listen"><span class="toc-section-number">4.8</span> Listen</a></li>
+<li><a href="#stack"><span class="toc-section-number">4.9</span> Stack</a></li>
+<li><a href="#queue"><span class="toc-section-number">4.10</span> Queue</a></li>
 </ul></li>
 <li><a href="#glossar"><span class="toc-section-number">5</span> Glossar</a></li>
 </ul>
@@ -391,15 +412,15 @@
 <li>Stack</li>
 </ul>
 <p>Es gibt keine universelle Datenstruktur, die alles perfekt kann, sondern für jede Aufgabe mehr oder weniger geeignete Datenstrukturen.</p>
-<p>Eigenschaften von Datenstrukturen:</p>
+<h2 id="eigenschaften-von-datenstrukturen"><span class="header-section-number">3.1</span> Eigenschaften von Datenstrukturen</h2>
 <ul>
 <li>Grösse: dynamisch/statisch</li>
 <li>Zugriff: direkt oder sequenziell</li>
 <li>Sortierung: sortiert/unsortiert, mit/ohne Ordnung</li>
 <li>Suche: beschleunigt?</li>
-<li>Geschwindigkeit TODO p. 7</li>
+<li>Geschwindigkeit (von Operationen auf die Datenstruktur): Suchen, Einfügen, Anhängen, Entfernen, Verschieben</li>
 </ul>
-<p>Java Collection Framework:</p>
+<h2 id="das-java-collection-framework"><span class="header-section-number">3.2</span> Das Java Collection Framework</h2>
 <ul>
 <li>Schnittstellen: abstrakte Datentypen</li>
 <li>Implementierungen: konkrete Implementierungen der Schnittstellen</li>
@@ -409,41 +430,44 @@
 <li><code>sort(List&lt;E&gt;)</code>: sortiert beliebige <code>List</code>-Implementierung</li>
 </ul></li>
 </ul>
-<p>Grundlegende Funktionen für das Funktionieren des Collection-Frameworks:</p>
+<h3 id="grundlegende-funktionen-für-das-funktionieren-des-collection-frameworks"><span class="header-section-number">3.2.1</span> Grundlegende Funktionen für das Funktionieren des Collection-Frameworks</h3>
 <ul>
 <li>Sortierung: <code>equals()</code>, <code>Comparable&lt;T&gt;</code> (beide durch Element-Klasse implementiert), <code>Comparator&lt;T&gt;</code> (durch Client implementiert)</li>
 <li>Hashing: <code>hashCode()</code> (durch Element-Klasse implementiert)</li>
 </ul>
-<p>Arten der Gleichheit:</p>
+<h3 id="arten-der-gleichheit"><span class="header-section-number">3.2.2</span> Arten der Gleichheit</h3>
 <ul>
 <li>Typgleichheit (wenn <code>instanceof true</code> zurückliefert, Objekte Instanzen gleicher Klassen sind); lockere Form der Gleichheit</li>
 <li>Identität (das gleiche Objekt <code>==</code>); strengste Form der Gleichheit (gilt, wenn <code>equals()</code> nicht überschrieben wird)</li>
 <li>Wertegleichheit (gilt, wenn <code>equals()</code> überschrieben wrude); am häufigsten verwendete Form der Gleichheit</li>
 </ul>
-<p>Speicherverwaltung:</p>
+<h2 id="beispiel-speicherverwaltung"><span class="header-section-number">3.3</span> Beispiel: Speicherverwaltung</h2>
 <ul>
 <li>Annahme (Vereinfachung): Speicher steht in linearem Adressraum zur Verfügung</li>
 <li>Verwaltung mittels Allokationen: jede Allokation speichert Startadresse und eine Grösse</li>
 <li>Problematik bei der Verschiebung von Speicherblöcken: Aktualisierung der darauf verweisenden Zeiger</li>
 <li>Freigegebener Speicher wird bloss als nicht besetzt markiert, aber nicht mit 0 überschrieben</li>
 </ul>
-<p>Anforderungen an Speicherverwaltung:</p>
+<h3 id="anforderungen-an-die-speicherverwaltung"><span class="header-section-number">3.3.1</span> Anforderungen an die Speicherverwaltung</h3>
 <ul>
 <li>Zuverlässigkeit (keine Leaks)</li>
 <li>Schnell: keine lange Suche nach passendem, freien Block bei Allokation; bei Freigabe</li>
-<li>Zusammenfassen nebeneinanderliegender Lücken</li>
-<li>Welche Datenstruktur eignet sich dazu am besten?</li>
-<li><p>TODO: p.17</p></li>
+<li>Zusammenfassen nebeneinanderliegender Lücken (Umgang mit Fragmentierung)</li>
+<li><p>Welche Datenstruktur eignet sich dazu am besten? (eine Tabelle bzw. Map)</p></li>
 <li>Belegungsstrategie
 <ul>
 <li>erster passender Block</li>
 <li>noch kleinster, passender Block</li>
 </ul></li>
-<li>Freigabestrategie</li>
-<li><p>Datenstruktur TODO</p></li>
+<li>Freigabestrategie
+<ul>
+<li>erkennen und verbinden benachbarter, freier Blöcke</li>
+<li>idealer Zeitpunkt zum Zusammenfügen</li>
+</ul></li>
+<li><p>geeignete Datenstruktur</p></li>
 </ul>
 <h1 id="datenstrukturen"><span class="header-section-number">4</span> Datenstrukturen</h1>
-<h2 id="eigneschaften-von-datenstrukturen"><span class="header-section-number">4.1</span> Eigneschaften von Datenstrukturen</h2>
+<h2 id="eigenschaften-von-datenstrukturen-1"><span class="header-section-number">4.1</span> Eigenschaften von Datenstrukturen</h2>
 <ul>
 <li>Datenstruktur als reine Sammlung: ungeordnete Ablage, nicht deterministische Reihenfolge (Analogie: Steinhaufen), keine Elemente dürfen verloren gehen</li>
 <li>Datenstruktur mit einer bestimmten Reihenfolge: Reihenfolge bleibt (Analogie: Bücherstapel)</li>
@@ -464,7 +488,7 @@
 <li>Sortierung</li>
 <li>Minimum/Maximum</li>
 </ul>
-<p>statische und dynamische Datenstruktur:</p>
+<h2 id="statisch-oder-dynamisch"><span class="header-section-number">4.3</span> Statisch oder dynamisch</h2>
 <ul>
 <li>statisch: feste, bei der Initialisierung definierte Grösse (Analogie: Flasche, benötigt und bietet immer gleich viel Platz)
 <ul>
@@ -494,24 +518,39 @@
 </ul></li>
 </ul></li>
 </ul>
-<p>explizite oder implizite Beziehungen zwischen den Elementen:</p>
+<h2 id="element-beziehungen-explizit-oder-implizit"><span class="header-section-number">4.4</span> Element-Beziehungen: explizit oder implizit</h2>
 <ul>
-<li>explizit (z.B. Kette): Elemente sind miteinander verknüpft; Elemente kennen ihre Nachbarglieder</li>
-<li>implizit: Beziehungen zwischen Elementen nicht von Elementen festgehalten, sondern von übergeordneter Struktur</li>
-</ul>
-<p>p. 8</p>
-<p>direkter vs. indirekter (sequenzieller) Zugriff:</p>
+<li>explizit: Elemente sind miteinander verknüpft; Elemente kennen ihre Nachbarglieder
 <ul>
-<li>direkter Zugriff: sofort auf ein beliebiges Element zugreifen (mittels Index oder Key); Beispiel: Speicheradresse im Computuer</li>
-<li>indirekter Zugriff: es müssen Vorgängerelemente durchlaufen werden, um auf ein bestimmtes Element zu kommen; Beispiel: Magnetband, Audio-Kasette, Java Streams</li>
+<li>Analogie: Fahrradkette</li>
+<li>Beispiel: (doppelt) verkettete Liste</li>
+</ul></li>
+<li>implizit: Beziehungen zwischen Elementen nicht von Elementen festgehalten, sondern von übergeordneter Struktur
+<ul>
+<li>Analogie: Bücherregal</li>
+<li>Beispiel: Array, Liste, Map</li>
+</ul></li>
 </ul>
-<p>Aufwand von Operationen:</p>
+<h2 id="zugriff-direkt-oder-indirekt-sequenziell"><span class="header-section-number">4.5</span> Zugriff: direkt oder indirekt (sequenziell)</h2>
+<ul>
+<li>direkter Zugriff
+<ul>
+<li>sofort auf ein beliebiges Element zugreifen (mittels Index oder Key)</li>
+<li>Beispiel: Speicheradresse im Computuer</li>
+</ul></li>
+<li>indirekter (sequenzieller) Zugriff
+<ul>
+<li>es müssen Vorgängerelemente durchlaufen werden, um auf ein bestimmtes Element zu kommen</li>
+<li>Beispiel: Magnetband, Audio-Kasette, Java Streams</li>
+</ul></li>
+</ul>
+<h2 id="aufwand-von-operationen"><span class="header-section-number">4.6</span> Aufwand von Operationen</h2>
 <ul>
 <li>variiert je nach Operation und Anzahl Elemente</li>
 <li>vor allem die Ordnung interessant</li>
 </ul>
 <p>Beispiel: Stack konstant beim Einordnen, n² beim sortieren</p>
-<h2 id="array"><span class="header-section-number">4.3</span> Array</h2>
+<h2 id="array"><span class="header-section-number">4.7</span> Array</h2>
 <ul>
 <li>in Java: Sprachelement</li>
 <li>statisch</li>
@@ -520,27 +559,59 @@
 <li>Reihenfolge stabil</li>
 <li>Aufwand
 <ul>
-<li>durchsuchen: O(n)</li>
-<li>sortieren: O(log n)</li>
+<li>durchsuchen: <code>O(n)</code></li>
+<li>sortieren: <code>O(log n)</code></li>
 </ul></li>
-<li>binäre Suche
+</ul>
+<h3 id="binäre-suche"><span class="header-section-number">4.7.1</span> Binäre Suche</h3>
 <ul>
 <li>in der Mitte teilen</li>
 <li>anhand Trennelelent unterscheiden: links oder rechts weitersuchen?</li>
 <li>rekursiv auf ausgewählte Hälfte wiederholen</li>
 <li>fertig, wenn nur noch ein Element vorhanden ist</li>
-</ul></li>
-<li>einfügen (unsortiert)
+</ul>
+<h3 id="einfügen"><span class="header-section-number">4.7.2</span> Einfügen</h3>
 <ul>
-<li>wenn man sich letzten freien Platz merkt: O(1)</li>
-<li>ohne diesen Trick: O(n)</li>
-</ul></li>
-<li>einfügen (sortiert)
+<li>unsortiert
 <ul>
-<li>TODO 16/17</li>
+<li>wenn man sich letzten freien Platz merkt: <code>O(1)</code></li>
+<li>ohne diesen Trick: <code>O(n)</code></li>
+</ul></li>
+<li>sortiert
+<ul>
+<li>Position suchen: <code>O(log n)</code></li>
+<li>restliche Elemente nach rechts schieben: <code>O(n)</code></li>
+<li>Aufwand: <code>O(n)</code></li>
 </ul></li>
 </ul>
-<p>-entfernen: zunächst finden! O(n)</p>
+<h3 id="entfernen"><span class="header-section-number">4.7.3</span> Entfernen</h3>
+<ul>
+<li>unsortiert (fortlaufend befüllt)
+<ul>
+<li>Position suchen: <code>O(n)</code></li>
+<li>Entfernen und Lücke (mit beliebigem Element!) schliessen: <code>O(1)</code></li>
+<li>Aufwand: <code>O(n)</code></li>
+</ul></li>
+<li>sortiert (fortlaufend befüllt)
+<ul>
+<li>Position suchen: <code>O(log n)</code></li>
+<li>Entfernen und Lücke (mittels nach links durchschieben!) schliessen: <code>O(n)</code></li>
+<li>Aufwand: <code>O(n)</code></li>
+</ul></li>
+</ul>
+<h3 id="empfehlungen"><span class="header-section-number">4.7.4</span> Empfehlungen</h3>
+<p>Arrays sollten eingesetzt werden, wenn:</p>
+<ul>
+<li>die Datenmenge <em>beschränkt</em>, von anfang an <em>bekannt</em> und eher <em>klein</em> ist</li>
+<li>die Datentypen <em>elementar</em> sind, also eine bekannte und konstante Grösse haben</li>
+</ul>
+<p>Sonst sind Collections, wie z.B. eine <code>ArrayList</code>, vorzuziehen.</p>
+<h2 id="listen"><span class="header-section-number">4.8</span> Listen</h2>
+<p>TODO: p.20-</p>
+<h2 id="stack"><span class="header-section-number">4.9</span> Stack</h2>
+<p>TODO: p.31-</p>
+<h2 id="queue"><span class="header-section-number">4.10</span> Queue</h2>
+<p>TODO: p.38-</p>
 <h1 id="glossar"><span class="header-section-number">5</span> Glossar</h1>
 <ul>
 <li>Algorithmus: präzise festgelegtes Verfahren zur Lösung eines Problems bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung)-Operator)</li>
