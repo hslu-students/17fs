@@ -1,3 +1,5 @@
+TODO: restrukturieren
+
 # Datenstrukturen
 
 ## Eigenschaften von Datenstrukturen
@@ -115,12 +117,81 @@ Sonst sind Collections, wie z.B. eine  `ArrayList`, vorzuziehen.
 
 ## Listen
 
-TODO: p.20-
+- einfach verkettete Listen: nur vorwärts iterierbar
+    - Referenz auf das erste Element (head)
+    - jedes Element (jeder Node) kennt seinen direkten Nachfolger
+    - das letzte Element zeigt auf `null`
+- doppelt verkettete Listen: vor- und rückwärts iterierbar
+    - Referenzen auf das erste (head) und das letzte (tail) Element
+    - jedes Element kennt seinen direkten Nachfolger und Vorgänger
+    - das letzte Element zeigt auf `null`
+
+### Eigenschaften von Listen
+
+- dynamisch: grösse passt sich der Anzahl zu speichernder Elemente an
+- explizit: Nodes "kennen" einander
+- indirekter Zugriff: von head vorwärts oder von tail rückwärts durchsuchbar
+- Reihenfolge definiert und konstant
+
+### Aufwand
+
+- Suchen: `O(n)` (mit Optimierung `O(log n)` möglich)
+- Einfügen (unsortiert): `O(1)`
+    - wenn es bei einer einfach verketteten Liste bei head eingefügt wird
+    - wenn es bei einer doppelt verketteten Liste bei head oder tail eingefügt
+      wird
+- Einfügen (sortiert): `O(n)`
+- Entfernen: `O(n)` (wegen Suche, reines Entfernen nur `O(1)`)
+
+### Modellierung
+
+- zwei Klassen:
+    - Liste
+        - enthält head (und tail)
+        - Hilfsattribute (z.B. Anzahl Elemente)
+    - Elemente
+        - TODO: p.27
+
+### Vergleich (Liste vs. Array)
+
+- Liste besser für grosse, variierende Datenmengen
+- Liste hat geringeren Einfügeaufwand
+- Listen können in Java generisch implementiert werden, Arrays nicht
 
 ## Stack
 
-TODO: p.31-
+- Stapelspeicher
+    - `push()`
+
+TODO: p.32
+
+### Aufwand
+
+Implementierung mittels Liste oder Array:
+
+- `push()`: `O(1)`
+- `pop()`: `O(1)`
+
+TODO: p.34-35
 
 ## Queue
 
-TODO: p.38-
+- Warteschlange
+    - `enqueue(E)`: Element am Ende anhängen
+    - `E dequeue`
+    - TODO: p.39
+
+### Aufwand
+
+- Implementierung mit doppelt verketteter Liste:
+    - `enqueue`: mit `O(1)`
+    - `dequeue`: mit `O(1)`
+- Implementierung mit einem Array: als Ring Buffer!
+    - Index für erstes und letztes Element "rotiert"
+    - Indizes dürfen einander nicht "überholen"
+        - Index % Arraygrösse = Position
+        - vor Index 0 liegt Index `n-1`
+    - `enqueue`: mit `O(1)` (gilt nur für Einfügen am Ende der Warteschlange!)
+    - `dequeue`:
+
+TODO: p.40-42

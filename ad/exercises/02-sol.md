@@ -47,6 +47,25 @@ Siehe oben; ersetze `Allocation` durch Typparameter `T`.
 
 ## 2.3
 
+siehe:
+
+- `ch.hslu.ad.sw02.ex02.DoubleLinkedList` zu a)-f)
+- `ch.hslu.ad.sw02.ex02.LinkedListIterator` zu g)
+- `ch.hslu.ad.sw02.ex02.DoubleLinkedListTest` zu a)-f)
+- TODO: h)
+
+# 3
+
+## 3.3
+
 ### a)
 
-TODO
+- Klasse: `Stack`
+    - Eigenschaften:
+        - `- data : String[]`
+        - `- top : int`
+    - Methoden:
+        - `+ push(element : String) : void`
+        - `+ pop() : String`
+
+usw.-

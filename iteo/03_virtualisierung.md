@@ -15,8 +15,9 @@
 
 - Performance durch parallele Ausführung
 - Skalierbarkeit durch Geräte mit unterschiedlichem Preis-Leistungs-Verhältnis
-- Verfügbarkeit
-- TODO p.6
+- Verfügbarkeit durch Redundanz (der Ausfall eines SMP führt nicht zum Ausfall
+  des kompletten Systems)
+- inkrementelles Wachstum durch Hinzufügen weiterer Prozessoren
 
 ### SMP-Organisation
 
@@ -58,9 +59,14 @@ kritischer.
         - je weiter weg das Memory, desto langsamer der Zugriff
     - CC-NUMA: mit Cache-Kohärenz (cache coherence)
 
-### LLC: last level cache
+### LLC: Last Level Cache
 
-TODO p. 17
+- L1- und L2-Caches gehören jeweils zu einem einzelnen Core
+- Den Last Level Cache (LLC) teilen sich alle Cores
+    - er ist aufgeteilt (in 2.5 MB grosse Teile)
+- Ein Core hat keine Kontrolle darüber, wo seine Daten im LLC abgelegt werden
+- Die Latenz im Zugriff von einem Core auf ein LLC-Segment richtet sich nach der
+  Entfernung dazwischen (und der Anzahl Hops, die zurückgelegt werden müssen)
 
 ## Simultanes Multi-Threading
 
@@ -121,12 +127,19 @@ T konvergiert für grosse n gegen 0.2 für einen nicht parallelisierten Anteil v
 
 ### Cache-Kohärenz
 
-- gemeinsames Datenobjekt in beiden Caches und im Memory
+Zwei Cores (P1 und P2) Zugriff auf ein gemeinsames Datenobjekt (X). Es gibt zwei
+Mechanismen, wie dies gehandhabt wird:
 
-1. write through cache
-2. write back cache
-
-TODO: p.38-39
+1. Write Through cache
+    - X liegt in beiden Caches (von P1 und P2) und im Memory
+    - P1 überschreibt X
+    - X wird ins Memory "durchgeschrieben"
+    - P2 verwendet immer noch den alten ("falschen") Wert aus dem Cache
+2. Write Back Cache
+    - X liegt im Cache von P1 und im Hauptspeicher
+    - P1 überschreibt X
+    - der Wert von X im Hauptspeicher wird nicht überschrieben
+    - P2 liest immer noch den alten ("falschen") Wert aus dem Hauptspeicher
 
 Lösungsansätze:
 
@@ -134,12 +147,19 @@ Lösungsansätze:
     - Snoop-Protokoll
         - Zugriffe erfolgen über das gleiche Medium (Bus-System)
         - Cache-Controller beobachten und erkennen Datenänderungen
-        - skaliert schlecht
-        - TODO: p.44
+          (implementieren ein Cachekohärenz-Protokoll)
+        - jede Cachezelle erhält ein zusätzliches Status-Bit (Snoop-Tag), die
+          dupliziert werden
+        - skaliert schlecht, da viel Kommunikationsaufwand nötig ist
     - Directory-Protokoll
-        - zentrale Liste mit Status aller Cache-Blöcke (welche CPU hat was?)
+        - zentrale Liste mit Status aller Cache-Blöcke
+            - welche Caches haben welche Datenobjekte?
+            - welche davon sind "dirty"?
+        - übliche Zustände:
+            - Shared: ein Block ist in einem/mehreren Caches, der Wert aktuell
+            - Uncached: ein Block ist in keinem Cache
+            - Exclusive: ein Block ist in einem Cache, der Wert nicht aktuell
         - skaliert besser
-        - TODO: p.45-47
 2. Verwendung eines gemeinsamen Caches
 3. Unterteilung der Daten (auf Softwareebene)
 
@@ -150,13 +170,20 @@ Lösungsansätze:
 - Es bräuchte `6.4*10^7` Leitungen.
 - Bei einer 100-lagigen Platine ergäbe das eine Platinenbreite von 6 km.
 - Es ist nicht praktikabel, alle Cores miteinander zu verbinden!
-
-TODO: p.50
-
-Lösung: Verbindungsnetzwerke. Die Cores werden über geschaltete Verbindungen
-(Switches) miteinander verbunden.
-
-TODO: p.52
+- Bei Intel werden die Sockets miteinander verbunden (zwei Leitungen: hin und
+  zurück)
+    - 4 Sockets: 12 Verbindungen
+    - 8 Sockets: 56 Verbindungen 
+- Lösung: Verbindungsnetzwerke. Die Cores werden über geschaltete Verbindungen
+  (Crossbar-Switches) miteinander verbunden.
+    - Entwurfskriterien
+        - hohe Leistung: viele Leitungen
+        - tiefe Kosten: wenig Leitungen
+    - Klassifikationskriterien
+        - Topologie: gemeinsames Medium oder geschaltete Verbindung? statisch
+          oder dynamisch veränderbar?
+        - Routing: Verteilung der Nachrichten (z.B.
+          Store-and-Forward-Verfahren); Routingalgorithmus
 
 ### Bewertungskriterien für Topologien
 
