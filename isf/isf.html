@@ -16,6 +16,9 @@
 <div id="TOC">
 <ul>
 <li><a href="#einführung"><span class="toc-section-number">1</span> Einführung</a></li>
+<li><a href="#kryptologie-1"><span class="toc-section-number">2</span> Kryptologie 1</a><ul>
+<li><a href="#arten-der-kryptoanalyse"><span class="toc-section-number">2.1</span> Arten der Kryptoanalyse</a></li>
+</ul></li>
 </ul>
 </div>
 <h1 id="einführung"><span class="header-section-number">1</span> Einführung</h1>
@@ -134,5 +137,28 @@
 </blockquote>
 <p>Schadensausmass Firma &gt;100’000 4 10’000..100’000 3 10’000..1’000 2 &lt;1’000 1</p>
 <p>Eintretenswahrscheinlichkeit mit Schadensausmass multiplizieren!</p>
+<h1 id="kryptologie-1"><span class="header-section-number">2</span> Kryptologie 1</h1>
+<h2 id="arten-der-kryptoanalyse"><span class="header-section-number">2.1</span> Arten der Kryptoanalyse</h2>
+<p>Bei bekannten Verfahren:</p>
+<ul>
+<li>Brute-Force</li>
+<li>Ciphertext-Only</li>
+</ul>
+<p>Bei unbekannten Verfahren:</p>
+<ul>
+<li>Known-Plaintext: (Beispiel: Ein Telegramm ist immer mit “Heil Hitler” unterschrieben)</li>
+<li>Chosen-Plaintext: Die Möglichkeit, einen Klartext durch das Krypto-Verfahren und dem gesuchten Schlüssel zu verschlüsseln.</li>
+<li>Chosen-Ciphertext: Man kann beliebige Cyphertexte entschlüsseln lassen, kennt aber den Key nicht.</li>
+</ul>
+<p>zu Folie 12: Geburtstagsparadox!</p>
+<p>zu Folie 16:</p>
+<ul>
+<li>Electronic Codebook (ECB)</li>
+<li>CBC: Output eines Blockes fliesst (mittels XOR) in die Chiffrierung mit ein
+<ul>
+<li>sicherer</li>
+<li>fehleranfälliger (jeder Fehler wirkt sich auf den nächsten Block aus, wegen XOR jedoch nicht auf den gesamten Rest (doppelt gedreht))</li>
+</ul></li>
+</ul>
 </body>
 </html>

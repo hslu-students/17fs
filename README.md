@@ -19,7 +19,7 @@ Darum setze ich nun meine Prioritäten auf die Module _Algorithmen &
 Datenstrukturen_ und _Diskrete Mathematik_, da dort Sachen behandelt werden, die
 mir im weiteren Verlauf meines Studiums oder Arbeitslebens nützlich sein werden.
 Ausserdem sind in diesen Modulen die Vorlesungen und die Folien recht hoher
-qualität.  Für diese Module möchte ich eine vollständige Zusammenfassung
+Qualität.  Für diese Module möchte ich eine vollständige Zusammenfassung
 schreiben, die gut genug sind, um sich damit auf die Modulendprüfung vorbereiten
 zu können.
 
