@@ -57,24 +57,25 @@ Im Netzwerk:
     - Authorisation (darf was?)
     - Accounting (wird wie berechnet?)
 
-| Eintretenswahrscheinlichkeit  | Student/Firma |
-| ----------------------------- | ------------- |
-| wöchentlich                   | 4             |
-| monatlich                     | 3             |
-| jährlich                      | 2             |
-| zehnjährlich                  | 1             |
+Eintretenswahrscheinlichkeit   Student/Firma 
+----------------------------- --------------
+wöchentlich                                4
+monatlich                                  3
+jährlich                                   2
+zehnjährlich                               1
 
-| Schadensausmass | Student |
-| --------------- | ------- |
->1000               4
-1000..100           3
-100..10             2
-<10                 1
+ Schadensausmass   Student 
+----------------  -------- 
+          >1000          4
+      1000..100          3
+        100..10          2
+            <10          1
 
-Schadensausmass     Firma
->100'000            4
-10'000..100'000     3
-10'000..1'000       2
-<1'000              1
+ Schadensausmass  Firma
+---------------- ------
+        >100'000      4
+ 10'000..100'000      3
+   10'000..1'000      2
+          <1'000      1
 
 Eintretenswahrscheinlichkeit mit Schadensausmass multiplizieren!

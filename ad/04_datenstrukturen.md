@@ -1,5 +1,3 @@
-TODO: restrukturieren
-
 # Datenstrukturen
 
 ## Eigenschaften von Datenstrukturen

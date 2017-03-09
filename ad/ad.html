@@ -62,11 +62,31 @@
 <li><a href="#entfernen"><span class="toc-section-number">4.7.3</span> Entfernen</a></li>
 <li><a href="#empfehlungen"><span class="toc-section-number">4.7.4</span> Empfehlungen</a></li>
 </ul></li>
-<li><a href="#listen"><span class="toc-section-number">4.8</span> Listen</a></li>
-<li><a href="#stack"><span class="toc-section-number">4.9</span> Stack</a></li>
-<li><a href="#queue"><span class="toc-section-number">4.10</span> Queue</a></li>
+<li><a href="#listen"><span class="toc-section-number">4.8</span> Listen</a><ul>
+<li><a href="#eigenschaften-von-listen"><span class="toc-section-number">4.8.1</span> Eigenschaften von Listen</a></li>
+<li><a href="#aufwand"><span class="toc-section-number">4.8.2</span> Aufwand</a></li>
+<li><a href="#modellierung"><span class="toc-section-number">4.8.3</span> Modellierung</a></li>
+<li><a href="#vergleich-liste-vs.array"><span class="toc-section-number">4.8.4</span> Vergleich (Liste vs. Array)</a></li>
 </ul></li>
-<li><a href="#glossar"><span class="toc-section-number">5</span> Glossar</a></li>
+<li><a href="#stack"><span class="toc-section-number">4.9</span> Stack</a><ul>
+<li><a href="#aufwand-1"><span class="toc-section-number">4.9.1</span> Aufwand</a></li>
+</ul></li>
+<li><a href="#queue"><span class="toc-section-number">4.10</span> Queue</a><ul>
+<li><a href="#aufwand-2"><span class="toc-section-number">4.10.1</span> Aufwand</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bäume"><span class="toc-section-number">5</span> Bäume</a><ul>
+<li><a href="#beispiel-unix-dateisystem"><span class="toc-section-number">5.1</span> Beispiel: UNIX-Dateisystem</a></li>
+<li><a href="#grundelemente-eines-baumes"><span class="toc-section-number">5.2</span> Grundelemente eines Baumes</a></li>
+<li><a href="#kenngrössen-von-bäumen"><span class="toc-section-number">5.3</span> Kenngrössen von Bäumen</a></li>
+<li><a href="#füllgrad-eines-baumes"><span class="toc-section-number">5.4</span> Füllgrad eines Baumes</a></li>
+<li><a href="#binäre-bäume"><span class="toc-section-number">5.5</span> Binäre Bäume</a><ul>
+<li><a href="#traversieren-von-binären-bäumen"><span class="toc-section-number">5.5.1</span> Traversieren von binären Bäumen</a></li>
+<li><a href="#binäre-suchbäume"><span class="toc-section-number">5.5.2</span> Binäre Suchbäume</a></li>
+<li><a href="#operationen"><span class="toc-section-number">5.5.3</span> Operationen</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#glossar"><span class="toc-section-number">6</span> Glossar</a></li>
 </ul>
 </div>
 <h1 id="einführung"><span class="header-section-number">1</span> Einführung</h1>
@@ -607,12 +627,263 @@
 </ul>
 <p>Sonst sind Collections, wie z.B. eine <code>ArrayList</code>, vorzuziehen.</p>
 <h2 id="listen"><span class="header-section-number">4.8</span> Listen</h2>
-<p>TODO: p.20-</p>
+<ul>
+<li>einfach verkettete Listen: nur vorwärts iterierbar
+<ul>
+<li>Referenz auf das erste Element (head)</li>
+<li>jedes Element (jeder Node) kennt seinen direkten Nachfolger</li>
+<li>das letzte Element zeigt auf <code>null</code></li>
+</ul></li>
+<li>doppelt verkettete Listen: vor- und rückwärts iterierbar
+<ul>
+<li>Referenzen auf das erste (head) und das letzte (tail) Element</li>
+<li>jedes Element kennt seinen direkten Nachfolger und Vorgänger</li>
+<li>das letzte Element zeigt auf <code>null</code></li>
+</ul></li>
+</ul>
+<h3 id="eigenschaften-von-listen"><span class="header-section-number">4.8.1</span> Eigenschaften von Listen</h3>
+<ul>
+<li>dynamisch: grösse passt sich der Anzahl zu speichernder Elemente an</li>
+<li>explizit: Nodes “kennen” einander</li>
+<li>indirekter Zugriff: von head vorwärts oder von tail rückwärts durchsuchbar</li>
+<li>Reihenfolge definiert und konstant</li>
+</ul>
+<h3 id="aufwand"><span class="header-section-number">4.8.2</span> Aufwand</h3>
+<ul>
+<li>Suchen: <code>O(n)</code> (mit Optimierung <code>O(log n)</code> möglich)</li>
+<li>Einfügen (unsortiert): <code>O(1)</code>
+<ul>
+<li>wenn es bei einer einfach verketteten Liste bei head eingefügt wird</li>
+<li>wenn es bei einer doppelt verketteten Liste bei head oder tail eingefügt wird</li>
+</ul></li>
+<li>Einfügen (sortiert): <code>O(n)</code></li>
+<li>Entfernen: <code>O(n)</code> (wegen Suche, reines Entfernen nur <code>O(1)</code>)</li>
+</ul>
+<h3 id="modellierung"><span class="header-section-number">4.8.3</span> Modellierung</h3>
+<ul>
+<li>zwei Klassen:
+<ul>
+<li>Liste
+<ul>
+<li>enthält head (und tail)</li>
+<li>Hilfsattribute (z.B. Anzahl Elemente)</li>
+</ul></li>
+<li>Elemente
+<ul>
+<li>TODO: p.27</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="vergleich-liste-vs.array"><span class="header-section-number">4.8.4</span> Vergleich (Liste vs. Array)</h3>
+<ul>
+<li>Liste besser für grosse, variierende Datenmengen</li>
+<li>Liste hat geringeren Einfügeaufwand</li>
+<li>Listen können in Java generisch implementiert werden, Arrays nicht</li>
+</ul>
 <h2 id="stack"><span class="header-section-number">4.9</span> Stack</h2>
-<p>TODO: p.31-</p>
+<ul>
+<li>Stapelspeicher
+<ul>
+<li><code>push()</code></li>
+</ul></li>
+</ul>
+<p>TODO: p.32</p>
+<h3 id="aufwand-1"><span class="header-section-number">4.9.1</span> Aufwand</h3>
+<p>Implementierung mittels Liste oder Array:</p>
+<ul>
+<li><code>push()</code>: <code>O(1)</code></li>
+<li><code>pop()</code>: <code>O(1)</code></li>
+</ul>
+<p>TODO: p.34-35</p>
 <h2 id="queue"><span class="header-section-number">4.10</span> Queue</h2>
-<p>TODO: p.38-</p>
-<h1 id="glossar"><span class="header-section-number">5</span> Glossar</h1>
+<ul>
+<li>Warteschlange
+<ul>
+<li><code>enqueue(E)</code>: Element am Ende anhängen</li>
+<li><code>E dequeue</code></li>
+<li>TODO: p.39</li>
+</ul></li>
+</ul>
+<h3 id="aufwand-2"><span class="header-section-number">4.10.1</span> Aufwand</h3>
+<ul>
+<li>Implementierung mit doppelt verketteter Liste:
+<ul>
+<li><code>enqueue</code>: mit <code>O(1)</code></li>
+<li><code>dequeue</code>: mit <code>O(1)</code></li>
+</ul></li>
+<li>Implementierung mit einem Array: als Ring Buffer!
+<ul>
+<li>Index für erstes und letztes Element “rotiert”</li>
+<li>Indizes dürfen einander nicht “überholen”
+<ul>
+<li>Index % Arraygrösse = Position</li>
+<li>vor Index 0 liegt Index <code>n-1</code></li>
+</ul></li>
+<li><code>enqueue</code>: mit <code>O(1)</code> (gilt nur für Einfügen am Ende der Warteschlange!)</li>
+<li><code>dequeue</code>:</li>
+</ul></li>
+</ul>
+<p>TODO: p.40-42</p>
+<h1 id="bäume"><span class="header-section-number">5</span> Bäume</h1>
+<ul>
+<li>Bäume in der Informatik stehen kopfüber</li>
+<li>Einsatz: zwei Szenarien
+<ol style="list-style-type: decimal">
+<li>Daten haben eine inhärent hierarchische Struktur
+<ul>
+<li>Dateisystem</li>
+<li>Stammbaum</li>
+<li>Vererbungshierarchie</li>
+</ul></li>
+<li>Nicht-hierarchische Strukturen werden zum schnellen Suchen in geordneten Baumstruktur (geordnete Datenmenge) übergeführt
+<ul>
+<li>Aufwand: <code>O(log n)</code> bei binärer Suche (schneller als sequenzielle Suche mit <code>O(n)</code>)</li>
+</ul></li>
+</ol></li>
+<li>Verschiedene Arten von Baumstrukturen
+<ul>
+<li>Gemeinsamkeiten: Wurzel/Stamm</li>
+<li>Unterschiede
+<ul>
+<li>Anzahl äste (Vergabelung)</li>
+<li>Unterschiedliche Länge (Tiefe)</li>
+<li>Breite (Grad) und Höhe des Baumes sind variabel</li>
+</ul></li>
+<li>Ungerichteter Baum (reine Hierarchie)</li>
+<li>Out-Tree: Navigation von der Wurzel nach unten (zu den Blättern)</li>
+<li>In-Tree: Navigation von den Blättern nach oben (zur Wurzel)</li>
+<li>Spezialformen:
+<ul>
+<li>Binär-Baum: TODO</li>
+<li>AVL-Baum: höhenbalancierter Binärbaum</li>
+<li>B-Baum: balancierter Baum</li>
+<li>B*-Baum: restriktivere Form des balancierten Baums</li>
+<li>Binominal-Baum: speziell strukturierter Baum</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="beispiel-unix-dateisystem"><span class="header-section-number">5.1</span> Beispiel: UNIX-Dateisystem</h2>
+<ul>
+<li>Wurzelverzeichnis <code>/</code></li>
+<li>Verzeichnisse auf erster Stufe: <code>etc</code>, <code>home</code>, <code>proc</code>, <code>var</code>, <code>dev</code></li>
+<li>Knoten repräsentieren Verzeichnisse und enthalten eine Liste von Dateien und anderen Verzeichnissen</li>
+<li>TODO: p.10</li>
+</ul>
+<h2 id="grundelemente-eines-baumes"><span class="header-section-number">5.2</span> Grundelemente eines Baumes</h2>
+<ul>
+<li>Wurzel (root): hat kein übergeordnetes Element</li>
+<li>(innere) Knoten (node): hat <code>1..n</code> (Kinder-)knoten</li>
+<li>Blatt (leaf): Knoten ohne Kinder</li>
+<li>verbindende Pfeile werden als Kanten (edges) bezeichnet
+<ul>
+<li>gerichtet: Pfeil zeigt (bei out-tree) vom übergeordneten zum untergeordneten Knoten</li>
+</ul></li>
+</ul>
+<h2 id="kenngrössen-von-bäumen"><span class="header-section-number">5.3</span> Kenngrössen von Bäumen</h2>
+<ul>
+<li><em>Ordnung</em> eines Baumes: definiert maximale Anzahl Kinder pro Knoten</li>
+<li><em>Grad</em> eines Knotens: bezeichnet die Anzahl Kinder eines Knotens
+<ul>
+<li>Blätter haben den Grad 0</li>
+</ul></li>
+<li><em>Pfad</em> eines Knotens: Weg von der Wurzel bis zum entsprechenden Knoten</li>
+<li><em>Tiefe</em> eines Knotens: seine Entfernung zur Wurzel (Zählen der Pfadelemente)</li>
+<li><em>Niveau</em> eines Baumes: Menge aller Knoten mit gleicher Tiefe</li>
+<li><em>Höhe</em> eines Baumes: Tiefe des Knotens mit der grössten Entfernung zur Wurzel</li>
+<li><em>Gewicht</em> eines Baumes: Anzahl enthaltener Knoten</li>
+</ul>
+<p>TODO: Grafik mit Beispiel für jede Grösse</p>
+<h2 id="füllgrad-eines-baumes"><span class="header-section-number">5.4</span> Füllgrad eines Baumes</h2>
+<ul>
+<li><em>ausgefüllter</em> Baum: jeder innere Knoten hat die maximale Anzahl Kinder
+<ul>
+<li>die Ordnung der inneren Knoten ist gleich dem Grad des Baumes</li>
+</ul></li>
+<li><em>voller</em> Baum: letztes Niveau linksbündig angeordnet und ausser diesem jedes Niveau die maximale Anzahl an Kindern enthält (TODO: p.22)</li>
+<li><em>vollständiger</em>/<em>kompletter</em> Baum:
+<ul>
+<li>maximale Anzahl Knoten auf jedem Niveau</li>
+<li>minimale Anzahl Niveaus für sein Gewicht</li>
+<li>symmetrisch ausgeglichen</li>
+</ul></li>
+</ul>
+<h2 id="binäre-bäume"><span class="header-section-number">5.5</span> Binäre Bäume</h2>
+<ul>
+<li>ein Baum mit Ordnung 2: jeder Knoten hat maximal zwei Kinder
+<ul>
+<li>linkes und rechtes Kind</li>
+</ul></li>
+<li>Struktur ermöglicht binäre Suche</li>
+<li>Traversieren</li>
+</ul>
+<h3 id="traversieren-von-binären-bäumen"><span class="header-section-number">5.5.1</span> Traversieren von binären Bäumen</h3>
+<p>auf drei unterschiedliche Arten (rekursiv):</p>
+<ol style="list-style-type: decimal">
+<li>Preorder: Hauptreihenfolge (<code>x-l-r</code>)
+<ol style="list-style-type: lower-alpha">
+<li>verarbeite Knoten <code>x</code></li>
+<li>traversiere linken Kindknoten: <code>preorder(x.leftChild)</code></li>
+<li>traversiere rechten Kindknoten: <code>preorder(x.rightChild)</code></li>
+<li>TODO Grafik p.10</li>
+<li>die Wurzel wird als erstes verarbeitet</li>
+</ol></li>
+<li>Postorder: Nebenreihenfolge (<code>l-r-x</code>)
+<ol style="list-style-type: lower-alpha">
+<li>traversiere linken Kindknoten: <code>preorder(x.leftChild)</code></li>
+<li>traversiere rechten Kindknoten: <code>preorder(x.rightChild)</code></li>
+<li>verarbeite Knoten <code>x</code></li>
+<li>TODO Grafik p.12</li>
+<li>die Wurzel wird als letztes verarbeitet</li>
+</ol></li>
+<li>Inorder: symmetrische Reihenfolge (<code>l-x-r</code>)
+<ol style="list-style-type: lower-alpha">
+<li>traversiere linken Kindknoten: <code>preorder(x.leftChild)</code></li>
+<li>verarbeite Knoten <code>x</code></li>
+<li>traversiere rechten Kindknoten: <code>preorder(x.rightChild)</code></li>
+<li>TODO Grafik p.14</li>
+<li>die Wurzel wird genau in der Hälfte verarbeitet</li>
+<li>Ausgabe in der Reihe der Sortierung</li>
+</ol></li>
+</ol>
+<p>TODO: p.8</p>
+<h3 id="binäre-suchbäume"><span class="header-section-number">5.5.2</span> Binäre Suchbäume</h3>
+<ul>
+<li>identisch mit binären Bäumen (Ordnung: 2)</li>
+<li>jeder Knoten enthält neben dem Datenelement noch einen <em>Schlüsselwert</em> (zum Sortieren oder zum Suchen)
+<ul>
+<li>Schlüsselwert aus (Teil-)Daten des Datenelements</li>
+<li>Schlüsselwert aus Berechnung über (Teil-Daten) des Datenelements (z.B. <code>hashCode()</code>)</li>
+</ul></li>
+</ul>
+<p>Geordneter binärer Suchbaum:</p>
+<ul>
+<li>jeder Schlüssel im linken Teilbaum eines Knotens ist kleiner als der Schlüssel des Knotens</li>
+<li>jeder Schlüssel im rechten Teilbaum eines Knotens ist grösser als oder gleich dem Schlüssel des Knotens</li>
+<li>dies ermöglicht eine effiziente <em>binäre Suche</em></li>
+</ul>
+<h3 id="operationen"><span class="header-section-number">5.5.3</span> Operationen</h3>
+<ul>
+<li>Suchen: <code>O(log n)</code> (2er-Logarithmus)
+<ul>
+<li>Beispiel: 1024 Elemente - 10 Entscheidungen (<code>2^10=1024</code>)</li>
+</ul></li>
+<li>Einfügen:
+<ol style="list-style-type: decimal">
+<li>Suchen des geeigneten Platzes zum Einfügen</li>
+<li>Eigentliches Anfügen an den gefundenen Node</li>
+<li>Die Einfügereihenfolge gibt die Struktur des Baumes vor (im Schlimmsten Fall entsteht bei Befüllen eines Baumes eine einfach verkettete Liste)</li>
+</ol></li>
+<li>Entfernen:
+<ol style="list-style-type: decimal">
+<li>Blatt: einfach entfernen</li>
+<li>innerer Knoten mit einem Kindknoten: den inneren Knoten durch den Kindknoten ersetzen</li>
+<li>innerer Knoten mit zwei Kindknoten: holy fucking jumping shitballs (p.25)
+<ul>
+<li>TODO: p.26 kleinsten (am weitesten links gelegene) Wert im rechten Teilbaum suchen</li>
+</ul></li>
+</ol></li>
+</ul>
+<h1 id="glossar"><span class="header-section-number">6</span> Glossar</h1>
 <ul>
 <li>Algorithmus: präzise festgelegtes Verfahren zur Lösung eines Problems bzw. einer Problemklasse; ein Lösungsverfahren (Rezept, Anleitung)-Operator)</li>
 <li>Datenstruktur: ein Konzept zur <em>Speicherung und Organisation von Daten</em>. Sie ist durch die Operationen charakterisiert, welche Zugriffe und Verwaltung realisieren.</li>
