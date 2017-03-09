@@ -1,0 +1,43 @@
+# Protokolle
+
+- Zweck
+    - ein Protokoll ist eine Urkunde (ein gesetzlich verbindliches Dokument) und
+      muss daher auch genehmigt werden
+    - Beweiskraft (z.B. bei einer Generalversammlung)
+    - Sitzungsunterlage (als Grundlage für eine Folgesitzung)
+    - Festhalten von Entscheidungen
+    - Abwesende, Vorgesetzte etc. über einen Sitzungsverlauf informieren
+    - Erinnerung
+    - Dokumentation
+    - Anforderungen an Protokollant
+        - leserlich und knapp schreiben
+        - aufmerksam und konzentriert zuhören
+        - wichtige von unwichtigen Äusserungen unterscheiden
+        - Zusammenhänge erkennen
+        - präzise und treffend formulieren
+        - Beiträge richtig strukturieren
+- Formen
+    - Beschlussprotokoll (Ergebnisprotokoll)
+        - hält Beschlüsse fest
+    - Verlaufsprotokoll
+        - hält Gesprächsverlauf fest
+    - Gerichtsprotokoll
+        - wortwörtlich
+- Aufbau
+    - Protokollkopf
+        - Anlass
+        - Ort
+        - Datum
+        - Zeit
+        - Teilnehmende/Abwesende/Gäste
+        - Leitung (Sitzungsfunktion)
+    - Inhalt
+        - Traktandenliste
+        - Traktanden
+        - evtl. Pendenzenliste, weitere Termine
+    - Protokollschluss
+        - Ort
+        - Datum
+        - Verfasser und Unterschrift
+- Grundregeln
+- Indirekte Rede

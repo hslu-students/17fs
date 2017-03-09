@@ -1,3 +1,5 @@
+# Zielsetzungen
+
 Ziele sollten S.M.A.R.T sein:
 
 - Spezifisch
@@ -5,3 +7,6 @@ Ziele sollten S.M.A.R.T sein:
 - Angemessen
 - Realistisch
 - Terminiert
+
+[Anmerkung des Verfassers: ja, das ist alles, was ich in zwei Wochen
+der Vorlesung "Projektmanagement Basics" mitgenommen habe.]
