@@ -36,15 +36,94 @@ e. maximale Anzahl Knoten pro Niveau: 2^(Niveau-1)
     4. 8 Knoten
     5. 16 Knoten
     6. 32 Knoten
-f. TODO
-g. TODO
+f. Skizze:
+```
+  O
+ / \
+ O O
+/
+O
+```
+g. Im Besten Fall ist der binäre Baum geordnet. In diesem Fall kann eine binäre
+Suche in `n` Elementen mit der Ordnung `O(log n)` angewandt werden. Im
+schlechtesten Fall ist der Baum so aufgebaut, dass er nur einen Knoten pro
+Niveau hat. Dann hat die Suche die Ordnung `O(n)`.
 
 # 3
 
-# 3.3
+## 3.3
 
-TODO
+### a)
+
+a. [Anzahl Elemente] = 2^[Anzahl Niveaus] - 1, 15=2^4-1 (vier Niveaus)
+```
+   .   O
+   /       \
+   O       O
+ /   \   /   \
+ O   O   O   O
+/ \ / \ / \ / \
+O O O O O O O O
+```
+b.
+```
+   .   H   
+   /       \
+   D       L
+ /   \   /   \
+ B   F   J   N
+/ \ / \ / \ / \
+A C E G I K M O
+```
+c. Suche nach N, K und O:
+    - N: `N > H -> r, N > L -> r, N` gefunden
+    - K: `K > H -> r, K < L -> l, K > J -> r, K` gefunden
+    - O: `O > H -> r, O > L -> r, O > N -> r, O` gefunden
+d.
+```
+  .   G   
+  /       \
+  B       H
+/   \
+A   F
+   /
+   E
+    \
+    D
+   /
+   L
+```
+e. Dieser "binäre Baum" entspricht einer einfach verketteten Liste
+```
+A
+\
+B
+\
+C
+\
+D
+\
+E
+\
+F
+\
+G
+\
+H
+```
+f. Der Baum muss in der _Inorder-Reihenfolge_ traversiert werden, um der Sortierung zu folgen.
+g. Algorithmus von der Wurzel aus: [TODO]
 
 # 4
 
 TODO
+
+# 5
+
+TODO
+
+# 6
+
+TODO
+
+# 7
