@@ -43,19 +43,115 @@ Risiko                                Häufigkeit  Schadensausmass  Risiko
 
 ## Übersicht Risiken
 
-TODO: Spider-Chart erstellen anhand obiger Daten
+![Übersicht Risiken](risiko-chart.png "Übersicht Risiken")
 
 # Massnahmen
 
 ## Budget bis CHF 500
 
-a. Risiken 1-8 sind zwar nicht die grössten, können aber einfach gelöst werden, indem ein WLAN-Router mit WPA2 installiert wird. Kosten: CHF 100.-
+a. Risiken 1-8 sind zwar nicht die grössten, können aber einfach gelöst werden, indem ein WLAN-Router mit WPA2 installiert wird. Es wird ein schwer knackbares Passwort eingesetzt, dass nur den Eltern bekannt ist, und dass sie bei allen Geräten selber eingeben müssen. Kosten: CHF 100.-
 b. Risiko 9, PC-Verwurmung: Der Onkel Özutöck soll geschult werden, sodass er Programme nicht mehr von seinem Laptop auf andere Computer überträgt, sondern sie jeweils in einer aktuellen Version direkt vom Anbieter herunterlädt und, falls möglich, die heruntergeladene Version gegen einen Hash-Wert auf Integrität überprüft. Kosten: CHF 100.-
-- Risiko 10, Ransomware: Mittels Backup-Lösung von Windows und einer externen Festplatte soll eine einfache Datensicherung eingerichtet werden. Kosten: CHF 100.-
-- Risiko 11, Identitätsdiebstahl
-- Risiko 12, Datenverlust
-- Risiko 15, Ungewollte Foto-Veröffentlichung
+c. Risiko 10, Ransomware und Risiko 12, Datenverlust: Mittels Backup-Lösung von Windows und einer externen Festplatte soll eine einfache Datensicherung eingerichtet werden. Kosten: CHF 100.-
+d. Risiko 11, Identitätsdiebstahl: Die Webbrowser sollen so eingestellt werden, dass Session-Cookies beim Beenden des Browsers immer automatisch gelöscht werden. Kosten: CHF 100.-
+e. Risiko 15, Ungewollte Foto-Veröffentlichung: Ein Fachmann soll der ganzen Familie eine einstündige Schulung geben, wie man mit Fotos umgehen soll: Kosten: CHF 100.-
+
+### Risikosituation nach diesen Massnahmen
+
+- Die Risiken 1-8 (unsicheres WLAN) sollten durch die Umstellung von WEP auf WPA2 nahezu eliminiert worden sein.
+- Risiko 9 (Özutöcks potenziell verwurmte Software) sollte durch eine entsprechende Schulung erheblich gemindert worden sein.
+- Die Risiken 10 (Ransomware) und 12 (Datenverlust) werden durch die einfache Backup-Lösung stark gemindert.
+- Das Risiko 11 (Identitätsdiebstahl) wurde durch die Schulung etwas abgemindert. Es ist aber möglich, dass die Massnahmen aus Bequemlichkeit wieder rückgängig gemacht werden.
+- Das Risiko 15 (ungewollt veröffentliche Fotos) wird durch die Schulung der Familie gemindert.
+
+Risiko                                Häufigkeit  Schadensausmass  Risiko
+------------------------------------ ----------- ---------------- -------
+9. PC-"Verwurmung"                             1                2       2
+10. Ransomware                                 2                1       2
+11. Identitätsdiebstahl                        1                3       3
+12. Datenverlust                               2                1       3
+13. Datendiebstahl                             1                3       3
+14. Pädophile Übergriffe                       1                3       3
+15. Ungewollte Foto-Veröffentlichung           1                2       2
+
+![Risiken nach erstem Massnahmen-Paket](risiko-chart-massnahmen-1.png "Risiken nach erstem Massnahmen-Paket")
 
 ## Budget bis CHF 1500
+
+a. Folgende, bereits oben aufgeführte Massnahmen für bis zu CHF 500.- sollen auch für ein Budget von CHF 1500.- umgesetzt werden:
+    1. Installation eines neuen WLAN-Routers mit WPA2 und sicherem, bei den Eltern aufbewahrtem Passwort: CHF 100.-
+    2. Schulung von Onkel Özutöck: CHF 100.-
+    3. Sichere Konfiguration der Webbrowser: CHF 100.-
+    4. Schulung der Familie bezüglich Umgang mit Fotografien: CHF 100.-
+b. Risiko 10 (Ransomware) und Risiko 12 (Datenverlust) sollen durch die Installation eines automatischen Backup-Systems mittels NAS implementiert werden. Kosten: CHF 1000.-
+c. Risiko 10 (Ransomware) und Risiko 11 (Identitätsdiebstahl) Auf dem Eltern-PC soll die Microsoft-eigene Antivirensoftware durch eine bessere Antiviren-Lösung ersetzt werden: CHF 100.-
+
+### Risikosituation nach diesen Massnahmen
+
+- Die Risiken 1-8 (unsicheres WLAN) sollten durch die Umstellung von WEP auf WPA2 nahezu eliminiert worden sein.
+- Risiko 9 (Özutöcks potenziell verwurmte Software) sollte durch eine entsprechende Schulung erheblich gemindert worden sein.
+- Die Risiken 10 (Ransomware) und 12 (Datenverlust) werden durch die NAS-Backup-Lösung stark gemindert.
+- Das Risiko 11 (Identitätsdiebstahl) wurde durch die Schulung etwas abgemindert. Es ist aber möglich, dass die Massnahmen aus Bequemlichkeit wieder rückgängig gemacht werden.
+- Die Risiken 9 (PC-"Verwurmung"), 10 (Ransomware) und 11 (Identitätsdiebstahl) werden durch die Installation einer hochwertigeren Antiviren-Lösung noch weiter gemindert.
+- Das Risiko 15 (ungewollt veröffentliche Fotos) wird durch die Schulung der Familie gemindert.
+
+Risiko                                Häufigkeit  Schadensausmass  Risiko
+------------------------------------ ----------- ---------------- -------
+9. PC-"Verwurmung"                             1                1       1
+10. Ransomware                                 1                1       1
+11. Identitätsdiebstahl                        1                3       3
+12. Datenverlust                               1                1       1
+13. Datendiebstahl                             1                3       3
+14. Pädophile Übergriffe                       1                3       3
+15. Ungewollte Foto-Veröffentlichung           1                2       2
+
+![Risiken nach zweitem Massnahmen-Paket](risiko-chart-massnahmen-2.png "Risiken nach zweitem Massnahmen-Paket")
+
 ## Budget ab CHF 1500
 
+a. Folgende, bereits oben aufgeführte Massnahmen sollen auch für das Budget ab CHF 1500.- umgesetzt werden (Kosten: CHF 1400.-):
+    1. Installation eines neuen WLAN-Routers mit WPA2 und sicherem, bei den Eltern aufbewahrtem Passwort: CHF 100.-
+    2. Schulung von Onkel Özutöck: CHF 100.-
+    3. Sichere Konfiguration der Webbrowser: CHF 100.-
+    4. Schulung der Familie bezüglich Umgang mit Fotografien: CHF 100.-
+    5. Installation eines NAS mit Backup-Lösung: CHF 1000.-
+b. Risiko 9 (PC-"Verwurmung"): Sämtliche PCs und Laptops (auch derjenige von Onkel Özutöck) sollen eine hochwertige Antiviren-Lösung erhalten. Kosten: CHF 500.-
+c. Risiko 11 (Identitätsdiebstahl): Die ganze Familie soll im Passwort-Management geschult werden. Dazu wird ein Passwort-Manager installiert und die Familie in dessen Gebrauch geschult. Sämtliche Passwörter werden durch sichere, generierte Passwörter ersetzt, was sehr arbeitsintensiv ist, zumal zunächst sämtliche verwendeten Passwörter katalogisiert werden müssen. Kosten: CHF 1000.-
+d. Die Risiken 9 (PC-"Verwurmung"), 10 (Ransomware) und v.a. 13 (Datendiebstahl) sollen durch die Installation einer vorgelagerten Firewall weiter gemindert werden. Diese wird von einem Sicherheits-Spezialisten konfiguriert. Kosten: CHF 2000.-
+
+Die Gesamtkosten belaufen sich auf CHF 4900.-
+
+### Risikosituation nach diesen Massnahmen
+
+- Die Risiken 1-8 (unsicheres WLAN) sollten durch die Umstellung von WEP auf WPA2 nahezu eliminiert worden sein.
+- Risiko 9 (Özutöcks potenziell verwurmte Software) sollte durch eine entsprechende Schulung und einer Antiviren-Lösung erheblich gemindert worden sein.
+- Die Risiken 10 (Ransomware) und 12 (Datenverlust) werden durch die NAS-Backup-Lösung stark gemindert.
+- Das Risiko 11 (Identitätsdiebstahl) wurde durch den konsequenten Einsatz eines Passwort-Managers, die sichere Konfiguration des Webbrowsers und die Schulung praktisch eliminiert.
+- Die Risiken 9 (PC-"Verwurmung"), 10 (Ransomware) und 11 (Identitätsdiebstahl) werden durch die Installation einer hochwertigeren Antiviren-Lösung noch weiter gemindert.
+- Die Risiken 9 (PC-"Verwurmung"), 10 (Ransomware) und v.a. 13 (Datendiebstahl) sind mit der Firewall auf ein Minimum reduziert worden.
+- Das Risiko 15 (ungewollt veröffentliche Fotos) wird durch die Schulung der Familie gemindert.
+
+Risiko                                Häufigkeit  Schadensausmass  Risiko
+------------------------------------ ----------- ---------------- -------
+12. Datenverlust                               1                1       1
+14. Pädophile Übergriffe                       1                3       3
+15. Ungewollte Foto-Veröffentlichung           1                2       2
+
+![Risiken nach drittem Massnahmen-Paket](risiko-chart-massnahmen-3.png "Risiken nach drittem Massnahmen-Paket")
+
+# Fazit
+
+Die Verwundbarkeiten in dieser Fallstudie gehen v.a. auf zwei Faktoren zurück:
+
+1. Einsatz veralteter Sicherheits-Technologien (WEP)
+2. Falsches, unbedachtes Verhalten
+    a. im Umgang mit Passwörtern
+    b. im Umgang mit Datensicherung
+    c. im Umgang mit persönlichen Daten, z.B. Fotos
+
+Viele Risiken konnten durch das Ersetzen der WEP-Verschlüsselung durch eine zeitgemässere Technologie stark vermindert werden, ohne dass dabei grosse Kosten entstanden sind. Der ständige Zugewinn an Rechenkapazität zwingt einen immer wieder zum Austausch der eingesetzten Verschlüsselungstechnologie.
+
+Einige Risiken (Identitätsdiebstahl, ungewollte Foto-Veröffentlichung) konnten mittels Schulungen gemindert werden. Dies funktioniert aber nur, wenn die dort eingeübten Verhaltensregeln konsequent eingehalten werden.
+
+Wer streng vertrauliche Daten zu Hause bearbeiten will, braucht eine professionelle Sicherheits-Infrastruktur, sprich eine vorgelagerte Firewall, die von einem Profi konfiguriert werden soll. Dies könnte jedoch zu Komfort-Einschränkungen führen, zumal gewisse Dienste bzw. Ports ganz geschlossen werden sollten. Als noch tiefgreifendere Massnahme käme die Aufteilung des Netzwerkes in zwei Segmente in Betracht.
+
+Risiken wie Datenverlust und Pädophilie können durch IT-Massnahmen nicht komplett eliminiert werden. Hardware kann kaputt gehen, und Pädophile gab es auch schon, bevor es Computer gab. Hier ist Vorsicht ebenso wichtig wie eine entsprechende technische Infrastruktur.
