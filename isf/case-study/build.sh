@@ -14,6 +14,7 @@ pandoc -N -S -s --toc \
 pandoc -N -S -s --toc \
     --variable title="$title"\
     --variable author="$author" \
+    --variable date=`date +%d.%m.%Y` \
     --variable papersize=a4 \
     --variable documentclass=scrartcl \
     --variable fontfamily=ebgaramond,helvet \
