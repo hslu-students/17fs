@@ -1,0 +1,19 @@
+Rack-Server
+
+- https://www.hpe.com/ch/de/product-catalog/servers/proliant-servers.filters-facet_subbrand_url:ProLiant-DL-Rack.hits-12.html
+- https://www.hpe.com/ch/de/product-catalog/servers/proliant-servers.filters-facet_subbrand_url:ProLiant-XL-Server.hits-12.html
+- https://www.hpe.com/ch/de/product-catalog/servers/integrity-servers.hits-12.html
+
+Tower-Server
+
+- https://www.hpe.com/ch/de/product-catalog/servers/proliant-servers.filters-facet_seriesname_url:Gen9|facet_subbrand_url:ProLiant-ML-Tower.hits-12.html
+- https://www.hpe.com/ch/de/product-catalog/servers/proliant-servers/pip.hpe-proliant-microserver-gen8.5379860.html
+- https://www.hpe.com/us/en/product-catalog/servers/proliant-easy-connect-server.hits-12.html
+
+Blade-Server
+
+- https://www.hpe.com/ch/de/integrated-systems/bladesystem.html
+
+Integrierte Systeme
+
+- https://www.hpe.com/ch/de/integrated-systems.html

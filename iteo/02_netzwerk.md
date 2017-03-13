@@ -88,6 +88,7 @@ Private IP-Bereiche:
     - Netze sind teilweise virtuell basierend auf einem Trägernetzwerk und werden mit speziellen Protokollen konfiguriert und verbunden (möglicher Standard: Openflow)
 - VLAN: virtual LAN
     - Bildung getrennter Netze auf gemeinsamer Hardware
-    - tagged oder untagged
+    - tagged (VLAN-Tag im Ethernet-Frame) oder untagged (über Switch gesteuert)
     - Trunk: Verbindung zweier Switches
 
+usw.-
