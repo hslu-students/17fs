@@ -19,4 +19,5 @@ pandoc -N -S -s --toc \
     --variable documentclass=scrartcl \
     --variable fontfamily=ebgaramond,helvet \
     --variable lang=de \
+    --variable geometry:margin=3cm \
     *.md -o $name.pdf
