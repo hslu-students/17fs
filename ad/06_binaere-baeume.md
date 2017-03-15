@@ -64,3 +64,8 @@ Geordneter binärer Suchbaum:
     3. innerer Knoten mit zwei Kindknoten: holy fucking jumping shitballs (p.25)
         - TODO: p.26 kleinsten (am weitesten links gelegene) Wert im rechten
           Teilbaum suchen
+- Balancieren: (p.27)
+    - jeweils beim Einfügen und Entfernen von Elementen
+    - überprüfen der Höhendifferenz
+    - ausgleichen durch Rotation
+    - umhängen falsch positionierter Nodes
