@@ -116,14 +116,59 @@ g. Algorithmus von der Wurzel aus: [TODO]
 
 # 4
 
-TODO
+## 4.3
+
+### a)
+
+    <<interface>>
+    Tree
+    ---
+    ---
+    + add(node:Node)
+    + remove(node:Node)
+    + contains(node:Node):boolean
+    + getNodeList():List<Node>
+    + balance()
+
+    BinaryTree:Tree
+    ---
+    - root:Node
+    ---
+    + getRoot():Node
+    [siehe oben]
+
+### b)
+
+    Node
+    ---
+    - value:T
+    - left:Node
+    - right:Node
+    ---
+    + Node(value:T)
+    + getLeft():Node
+    + setLeft(node:Node)
+    + getRight():Node
+    + setRight(node:Node)
+
+### c)
+
+Die Klasse `Node` muss das Interface `Comparable` implementieren und somit die Methode `compareTo()` implementieren.
+
+### d)
+
+- Node zu Node: 1 zu [0..2]
+- BinaryTree zu Node: 1 zu n
+    - Spezielfall: 1 Node als Root
 
 # 5
 
-TODO
+TODO: g) (order) und i) (remove)
 
 # 6
 
 TODO
 
 # 7
+
+TODO
