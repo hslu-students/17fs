@@ -56,23 +56,26 @@ die ein Smartphone mit Kamera mit sich bringt.
 
 ## Risikogewichtung
 
+Häufigkeit und Schadensausmass sind in einer Skala von 1 (am tiefsten) bis 10
+(am höchsten) angegeben.
+
 Bezeichnung                           Häufigkeit  Schadensausmass  Risiko
 ------------------------------------ ----------- ---------------- -------
-1. Unbefugter Druckerzugriff                   1                1       1
-2. Unbefugter Kamerazugriff                    1                3       3
-3. Unbefugter Routerzugriff                    2                1       2
-4. MAC-Aussperrung                             1                1       1
-5. Netzwerk-Lahmlegung                         1                1       1
-6. Router-Zerstörung                           1                1       1
-7. Unbefugter Datenzugriff                     1                3       3
-8. Windows-Zerstörung                          2                2       4
-9. PC-"Verwurmung"                             3                2       6
-10. Ransomware                                 2                3       6
-11. Identitätsdiebstahl                        2                3       6
-12. Datenverlust                               3                2       6
-13. Datendiebstahl                             1                3       3
-14. Pädophile Übergriffe                       1                3       3
-15. Ungewollte Foto-Veröffentlichung           3                2       6
+1. Unbefugter Druckerzugriff                   2                1       2
+2. Unbefugter Kamerazugriff                    2                9      18 
+3. Unbefugter Routerzugriff                    3                3       9
+4. MAC-Aussperrung                             2                2       4
+5. Netzwerk-Lahmlegung                         3                3       9
+6. Router-Zerstörung                           3                4      12 
+7. Unbefugter Datenzugriff                     3                5      15 
+8. Windows-Zerstörung                          4                2       8
+9. PC-"Verwurmung"                             6                5      30 
+10. Ransomware                                 5                7      35 
+11. Identitätsdiebstahl                        4                8      32 
+12. Datenverlust                               7                7      49 
+13. Datendiebstahl                             3                8      24 
+14. Pädophile Übergriffe                       2               10      20 
+15. Ungewollte Foto-Veröffentlichung          10                8      80 
 
 ![Übersicht Risiken](risiko-chart.png "Übersicht Risiken")
 
@@ -113,21 +116,21 @@ CHF 100.-
 
 Bezeichnung                           Häufigkeit  Schadensausmass  Risiko
 ------------------------------------ ----------- ---------------- -------
-1. Unbefugter Druckerzugriff                   0                1       0
-2. Unbefugter Kamerazugriff                    0                3       0
-3. Unbefugter Routerzugriff                    0                1       0
-4. MAC-Aussperrung                             0                1       0
-5. Netzwerk-Lahmlegung                         0                1       0
-6. Router-Zerstörung                           0                1       0
-7. Unbefugter Datenzugriff                     0                3       0
-8. Windows-Zerstörung                          0                2       0
-9. PC-"Verwurmung"                             1                2       2
-10. Ransomware                                 2                1       2
-11. Identitätsdiebstahl                        1                3       3
-12. Datenverlust                               2                1       2
-13. Datendiebstahl                             1                3       3
-14. Pädophile Übergriffe                       1                3       3
-15. Ungewollte Foto-Veröffentlichung           1                2       2
+1. Unbefugter Druckerzugriff                   1                1       1
+2. Unbefugter Kamerazugriff                    1                9       9
+3. Unbefugter Routerzugriff                    1                3       3
+4. MAC-Aussperrung                             1                2       2
+5. Netzwerk-Lahmlegung                         1                3       3
+6. Router-Zerstörung                           1                4       4
+7. Unbefugter Datenzugriff                     1                5       5
+8. Windows-Zerstörung                          1                2       2
+9. PC-"Verwurmung"                             2                5      10 
+10. Ransomware                                 5                2      10
+11. Identitätsdiebstahl                        2                8      16
+12. Datenverlust                               7                2      14
+13. Datendiebstahl                             2                8      16
+14. Pädophile Übergriffe                       2               10      20 
+15. Ungewollte Foto-Veröffentlichung           2                8      16 
 
 ![Risiken nach erstem Massnahmen-Paket](risiko-chart-massnahmen-1.png "Risiken
 nach erstem Massnahmen-Paket")
@@ -150,6 +153,11 @@ wieder zum Austausch der eingesetzten Verschlüsselungstechnologie.
 Einige Risiken (Identitätsdiebstahl, ungewollte Foto-Veröffentlichung) konnten
 mittels Schulungen gemindert werden. Dies funktioniert aber nur, wenn die dort
 eingeübten Verhaltensregeln konsequent eingehalten werden.
+
+Manche Massnahmen zielen darauf ab, die Häufigkeit der Schadensfälle bzw. deren
+Wahrscheinlichkeit zu minimieren, so etwa das Ersetzen von WEP durch WPA2.
+Andere Massnahmen helfen dabei, das Schadensausmass zu reduzieren, so das
+Durchführen einer regelmässigen und systematischen Datensicherung.
 
 Möchte Herr Meier vertrauliche Dateien von seiner Arbeit zu Hause bearbeiten,
 bräuchte er zusätzliche Sicherheitsmassnahmen. Die Installation einer
