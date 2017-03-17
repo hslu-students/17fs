@@ -2,9 +2,10 @@
 
 a. Ein Nachbar (oder dessen durch Viren, Würmer und dergleichen kompromittierter
 PC) könnte die WEP-WLAN-Verschlüsselung knacken. Dadurch ergeben sich die
-folgenden Risiken: 1. Der Drucker könnte von Unbefugten verwendet werden. Das
-bringt diesen zwar nichts, könnte aber Papier und Toner bzw. Tinte verschwenden
-und das Gerät abnutzen.
+folgenden Risiken:
+    1. Der Drucker könnte von Unbefugten verwendet werden. Das bringt diesen
+    zwar nichts, könnte aber Papier und Toner bzw. Tinte verschwenden und das
+    Gerät abnutzen.
     2. Die beiden installierten Kameras könnten zur Spionage verwendet werden.
     Das bedeutete einerseits die Verletzung der Privatsphäre, andererseits
     könnte dies auch zur Einbruchsplanung genutzt werden, da man so herausfinden
@@ -20,7 +21,7 @@ und das Gerät abnutzen.
     7. Über das gekaperte Netzwerk könnten trojanische Pferde eingespeist
     werden, womit dann Remote-Kontrolle über die Systeme übernehmen werden
     könnte. Dadurch könnten private Daten abgegriffen und/oder gelöscht werden.
-    8. Die Windows-Intallationen könnten unwiderruflich zerstört werden.
+    8. Die Windows-Installationen könnten unwiderruflich zerstört werden.
 b. Onkel Özutöcks Laptop könnte von Viren, Würmern und dergleichen
 kompromittiert sein.
     9. Die Programme, die er so auf die PCs überspielt, könnten dadurch
@@ -33,7 +34,7 @@ von Schadsoftware.
     droht Datenverlust oder finanzieller Schaden.
     11. Trojanische Pferde oder Würmer könnten aktive Logins (über
     Session-Cookies) übernehmen und auf verschiedenen Benutzerkonti
-    straftrechtlich relevante Informationen verbreiten (Facebook, Twitter) oder
+    strafrechtlich relevante Informationen verbreiten (Facebook, Twitter) oder
     sogar auf das Online-Banking zugreifen. Sind die Passwörter im Klartext
     abgespeichert, können sie alle problemlos abgegriffen werden.
     12. Bei einem plötzlichen Festplatten-Crash gehen die darauf gespeicherten
@@ -81,22 +82,22 @@ Bezeichnung                           Häufigkeit  Schadensausmass  Risiko
 
 # Massnahmen für ein Budget bis CHF 500.-
 
-a. Die Risiken 1-8 sind zwar nicht die grössten, können aber dadurch entschärft
+- Die Risiken 1-8 sind zwar nicht die grössten, können aber dadurch entschärft
 werden, dass ein WLAN-Router mit WPA2 installiert wird. Es wird ein schwer
 knackbares Passwort eingesetzt, das nur den Eltern bekannt ist, und das sie bei
 allen Geräten selber eingeben müssen. Kosten: CHF 100.-
-b. Risiko 9, PC-Verwurmung: Der Onkel Özutöck soll geschult werden, sodass er
+- Risiko 9, PC-Verwurmung: Der Onkel Özutöck soll geschult werden, sodass er
 Programme nicht mehr von seinem Laptop auf andere Computer überträgt, sondern
 sie jeweils in einer aktuellen Version direkt vom Anbieter herunterlädt und,
 falls möglich, die heruntergeladene Version gegen einen Hash-Wert auf ihre
 Integrität überprüft. Kosten: CHF 100.-
-c. Risiko 10, Ransomware und Risiko 12, Datenverlust: Mittels Backup-Lösung von
+- Risiko 10, Ransomware und Risiko 12, Datenverlust: Mittels Backup-Lösung von
 Windows und einer externen Festplatte soll eine einfache Datensicherung
 eingerichtet werden. Kosten: CHF 100.-
-d. Risiko 11, Identitätsdiebstahl: Die Webbrowser sollen so eingestellt werden,
+- Risiko 11, Identitätsdiebstahl: Die Webbrowser sollen so eingestellt werden,
 dass Session-Cookies beim Beenden des Browsers immer automatisch gelöscht
 werden. Kosten: CHF 100.-
-e. Risiko 15, Ungewollte Foto-Veröffentlichung: Ein Fachmann soll der ganzen
+- Risiko 15, Ungewollte Foto-Veröffentlichung: Ein Fachmann soll der ganzen
 Familie eine einstündige Schulung geben, wie man mit Fotos umgehen soll: Kosten:
 CHF 100.-
 
