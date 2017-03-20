@@ -273,13 +273,13 @@ public Object get(int hashCode) {
         }
         if (calculateIndex(entries[index]) != collisionDomain) {
             // end of chain reached: abort
-            return false;
+            return null;
         }
         index++;
     }
     
     if (index == SIZE) {
-        return false;
+        return null;
     }
     
     return entries[index];
@@ -414,9 +414,16 @@ Position nach links geschoben werden.
 
 ## a) Mögliche Nachteile 
 
-Die ganze Implementierung wird etwas schwieriger, da man bei jeder Operation mit
-zwei Semantiken arbeiten muss: Array und verkettete Liste. Die eigene
-Implementierung der verketteten Liste ist eine weitere Fehlerquelle.
+Die ganze Implementierung könnte etwas schwieriger werden, da man bei jeder
+Operation mit zwei Semantiken arbeiten muss: Array und verkettete Liste. Die
+eigene Implementierung der verketteten Liste ist eine weitere Fehlerquelle.
+
+Nach der Implementierung kann ich jedoch sagen, dass die `BucketListHashTable`
+wesentlich einfacher implementieren liess als die `HashTable` der vorherigen
+Aufgabe, sofern man auf eine funktionierende `SingleLinkedList`-Implementierung
+zurückgreifen kann.
+
+Ich kann keine praktischen Nachteile erkennen.
 
 ## b) Entwurf
 
@@ -445,7 +452,227 @@ Implementierung der verketteten Liste ist eine weitere Fehlerquelle.
     - Es muss zweistufig iteriert werden: einerseits über das Array mit den
       verketteten Listen, andererseits über die Listenelemente.
 
+## c) Implementierung
+
+Verwendet man eine gut getestete und somit funktionierende
+`SingleLinkedList`-Implementierung, lässt sich die `BucketListHashTable` sehr
+einfach umsetzen:
+
+```java
+package ch.hslu.ad.sw04.ex03;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class BucketListHashTable {
+
+    public static final int SIZE = 10;
+
+    private SingleLinkedList entries[] = new SingleLinkedList[SIZE];
+
+    private int size = 0;
+
+    public boolean put(Object entry) {
+        int index = calculateIndex(entry);
+        if (entries[index] == null) {
+            entries[index] = new SingleLinkedList();
+        }
+        if (entries[index].contains(entry)) {
+            return false;
+        }
+        entries[index].add(entry);
+        size++;
+        return true;
+    }
+
+    public boolean remove(Object entry) {
+        int index = calculateIndex(entry);
+        if (entries[index] == null || !entries[index].contains(entry)) {
+            size--;
+            return false;
+        }
+        return entries[index].remove(entry);
+    }
+
+    public Object get(int hashCode) {
+        int index = calculateIndex(hashCode);
+        if (entries[index] == null) {
+            return null;
+        }
+        Iterator<Object> iterator = entries[index].iterator();
+        while (iterator.hasNext()) {
+            Object entry = iterator.next();
+            if (entry.hashCode() == hashCode) {
+                return entry;
+            }
+        }
+        return null;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Collection<Object> getAllElements() {
+        Collection<Object> allElements = new ArrayList<>();
+        for (int n = 0; n < entries.length; n++) {
+            if (entries[n] == null) {
+                continue;
+            }
+            Iterator<Object> listEntries = entries[n].iterator();
+            while (listEntries.hasNext()) {
+                allElements.add(listEntries.next());
+            }
+        }
+        return allElements;
+    }
+
+    private int calculateIndex(Object entry) {
+        return entry.hashCode() % SIZE;
+    }
+
+    private int calculateIndex(int hashCode) {
+        return hashCode % SIZE;
+    }
+}
+```
+
+Ein zweidimensionales Array ist hier keine Alternative, da je nach
+Anwendungsfall einige Buckets sehr gross werden, andere jedoch komplett leer
+bleiben würden. Man würde viel Speicher verschwenden und hätte trotzdem keine
+Sicherheit, dass man für alle Fälle genügend Platz reserviert hätte.
+
+## d) Testen
+
+Mit der `BucketListHashTable` lassen sich auch Elemente entfernen, ohne dass
+dadurch die Sondierungskette unterbrochen würde. Damit funktionieren nun alle
+Tests wunschgemäss.
+
 # Einfache Performance-Messung und Analyse
+
+Für diese Aufgabe verwende ich die alte, "dumme" `HashTable`-Implementierung.
+Diese enthält Einträge vom Typ `CharWrapper` und heisst `CharWrapperHashTable`.
+
+## a) Logging von `hashCode()` und `equals()`
+
+Hier die Klasse `CharWrapper` mit eingebautem Logging:
+
+```java
+package ch.hslu.ad.sw04.ex04;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public final class CharWrapper {
+
+    private static final Logger logger = LogManager.getLogger("CharWrapper");
+
+    private final Character character;
+
+    public CharWrapper(Character character) {
+        this.character = character;
+    }
+
+    public Character getCharacter() {
+        return character;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        boolean equality = false;
+        if (other == null) {
+            equality = false;
+        } else if (this == other) {
+            equality = true;
+        } else if (!(other instanceof CharWrapper)) {
+            return false;
+        } else {
+            CharWrapper otherCharWrapper = (CharWrapper) other;
+            equality = character.equals(otherCharWrapper.character);
+        }
+        logger.debug(String.format("'%s'.equals('%s')? %s", this.toString(),
+            other.toString(), equality));
+        return equality;
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode = character.hashCode();
+        logger.debug(String.format("'%s'.hashCode() == %d",
+            this.toString(), hashCode));
+        return hashCode;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(character);
+    }
+}
+```
+
+## b) Log-Ausgaben
+
+- Test mit einem Element:
+    - Füge ich ein Element hinzu, wird `hashCode()` einmal ausgeführt.
+    - Entferne ich das Element wieder, wird `hashCode()` erneut ausgeführt.
+- Test mit zwei Elementen (ohne Kollision):
+    - Füge ich zwei Elemente hinzu, wird `hashCode()` zweimal ausgeführt.
+    - Entferne die beiden Elemente wieder, wird `hashCode()` zweimal ausgeführt.
+- Test mit drei Elementen (ohne Kollision):
+    - Das Verhalten ist analog zu den zwei vorherigen Fällen. Die
+      `hashCode()`-Aufrufe steigen linear zur Anzahl Elemente an: drei Aufrufe
+      zum Einfügen, drei Aufrufe zum Entfernen.
+- Test mit zwei Elementen (mit Kollision):
+    - Beim Einfügen wird `hashCode()` drei mal und `equals()` einmal aufgerufen.
+    - Beim Löschen wird `hashCode()` weitere drei mal aufgerufen.
+- Test mit drei Elementen (nur Kollisionen):
+    - Beim Einfügen wird `hashCode()` sechs mal und `equals()` drei mal aufgerufen.
+    - Beim Löschen wird `hashCode()` weitere drei mal aufgerufen.
+- Test mit vier Elementen (nur Kollisionen):
+    - Beim Einfügen wird `hashCode()` zehn mal und `equals()` sechs mal aufgerufen.
+    - Beim Löschen wird `hashCode()` weitere vier mal aufgerufen.
+
+Fazit: Je mehr Kollisionen es gibt, desto schneller wachsen die Anzahl Aufrufe
+von `hashCode()` und `equals()`. Leider bietet der Datentyp `char` nicht die
+Möglichkeit, noch wesentlich mehr Kollisionen zu testen. Beim Entfernen verläuft
+das Wachstum der Aufrufe eher linear.
+
+## c) Zeitfresser
+
+Wie wir gesehen haben, wird `hashCode()` häufiger aufgerufen als `equals()`. Die
+Methode `hashCode()` dürfte auch rechenintensiver sein als `equals()`, denn der
+`hashCode()` muss immer zu Ende berechnet werden, während man bei `equals()` bei
+der ersten Teilungleichheit der zu vergleichenden Objekte abbrechen und `false`
+zurückgeben kann.
+
+## d) Test mit `Thread.sleep()`
+
+Ein Test (hinzufügen und entfernen) mit vier Kollisionen ergibt folgende
+Wartezeiten:
+
+- Wenn `equals()` und `hashCode()` je `500ms` warten:
+    - `10'355ms`
+- Wenn `equals() 500ms` und `hashCode() 1000ms` wartet:
+    - `17'396ms`
+- Wenn `equals() 1000ms` und `hashCode() 500ms` wartet:
+    - `13'381ms`
+- Wenn `equals()` und `hashCode()` je `1000ms` warten:
+    - `20'401ms`
+
+Fazit: Ein schnelles `hashCode()` trägt (wie erwartet) mehr zur Performance bei
+als ein schnelles `equals()`.
+
+## e) Test mit `java.util.HashSet`
+
+Für `n = 20'000` benötigt das `HashSet` zum Einfügen ca `300ms`, währenddem die
+eigene Implementierung gerade einmal `3ms` benötigt.  Beim Einfügen und
+anschliessenden Entfernen benötigt das `HashSet` weniger als `300ms` und die
+eigene Implementierung `4ms`. Scheinbar hat `HashSet` eine höhere
+Grundkomplexität, die sich aber bei vielen Zugriffen ausbezahlt.
+
+Für grosse `n` lässt sich kein Vergleich anstellen, da für die eigene
+Implementierung nur Grössen innerhalb des `char`-Wertebereichs funktionieren.
 
 # Performance-Vergleich: Stack-Implementationen
 
