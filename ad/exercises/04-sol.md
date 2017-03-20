@@ -1,4 +1,4 @@
-# Einfache Hashtabelle (bzw. Hashset)
+# 1. Einfache Hashtabelle (bzw. Hashset)
 
 ## a) Datentyp für Hashwerte
 
@@ -115,7 +115,7 @@ die Indexberechnung (`hashCode % SIZE`) Kollisionen, selbst wenn die Methode
 `hashCode()` auf den Objekten gut umgesetzt ist. Das liegt daran, dass der
 Zahlenraum von `[0..Integer.MAX_VALUE]` auf `[0..SIZE[` reduziert wird.
 
-# Hashtabelle mit Kollisionen
+# 2. Hashtabelle mit Kollisionen
 
 ## a) Füllstand
 
@@ -410,7 +410,7 @@ Das Problem kann gelöst werden, indem beim Entfernen die Elemente rechts vom
 betroffenen Element, die zur gleichen _Collision Domain_ gehören, um eine
 Position nach links geschoben werden.
 
-# Hashtabelle mit Buckets (Listen für Kollisionen)
+# 3. Hashtabelle mit Buckets (Listen für Kollisionen)
 
 ## a) Mögliche Nachteile 
 
@@ -549,7 +549,7 @@ Mit der `BucketListHashTable` lassen sich auch Elemente entfernen, ohne dass
 dadurch die Sondierungskette unterbrochen würde. Damit funktionieren nun alle
 Tests wunschgemäss.
 
-# Einfache Performance-Messung und Analyse
+# 4. Einfache Performance-Messung und Analyse
 
 Für diese Aufgabe verwende ich die alte, "dumme" `HashTable`-Implementierung.
 Diese enthält Einträge vom Typ `CharWrapper` und heisst `CharWrapperHashTable`.
@@ -674,6 +674,92 @@ Grundkomplexität, die sich aber bei vielen Zugriffen ausbezahlt.
 Für grosse `n` lässt sich kein Vergleich anstellen, da für die eigene
 Implementierung nur Grössen innerhalb des `char`-Wertebereichs funktionieren.
 
-# Performance-Vergleich: Stack-Implementationen
+# 5. Performance-Vergleich: Stack-Implementationen
 
-# Optional: Verwendung einer Thirdparty-Datenstruktur
+## b) Hilfsmethode
+
+```java
+package ch.hslu.ad.sw04.ex05;
+
+public class StackUtils {
+
+    public Integer[] getSortedArray(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException();
+        }
+        Integer array[] = new Integer[size];
+        for (Integer n = 0; n < size; n++) {
+            array[n] = n;
+        }
+        return array;
+    }
+}
+```
+
+## c) Warum ein statischer Array?
+
+Ein statischer Array ist bei einer im Voraus bekannter Grösse die wohl
+schnellste und einfachste Datenstruktur. Es bietet einen sehr guten und wohl
+fast unschlagbaren Benchmark für andere Datenstrukturen.
+
+## d) Laufzeitmessung Array-Generierung
+
+      n  Laufzeit min (ms)  Laufzeit max (ms)
+------- ------------------ ------------------
+   1000                  0                  1
+  10000                  2                  5
+ 100000                  5                  9
+1000000                 12                 17
+2000000                 75                 94
+4000000                822               1107
+
+## e) Laufzeitmessung Stack-Befüllung
+
+Hinweis: Der `java.util.Stack` erlaubt entgegen der Aufgabenstellung keine
+initiale Grössenangabe, jedenfalls in OpenJDK 8 nicht.
+
+      n  Laufzeit min (ms)  Laufzeit max (ms)
+------- ------------------ ------------------
+   1000                  0                  1 
+  10000                  1                  9 
+ 100000                  6                 11 
+1000000                 84                 99 
+2000000                128                161
+4000000                718                803 
+
+Der `java.util.Stack` scheint für grosse `n` ähnlich gut zu skalieren wie ein
+Array.
+
+## f) Vergleich zu eigener Stack-Implementierung
+
+Hinweis: Der eigene Stack erlaubt eine initiale Grössenangabe und ist nicht
+generisch implementiert.
+
+      n  Laufzeit min (ms)  Laufzeit max (ms)
+------- ------------------ ------------------
+   1000                  0                  1
+  10000                  1                  3
+ 100000                  4                  7
+1000000                 69                 81
+2000000                697                788 
+4000000                728                796
+
+Im Gegensatz zur `java.util.Stack`-Implementierung verzeichnet meine eigene
+Implementierung starke Performance-Einbussen bei zwei Millionen Einträgen.
+Ansonsten funktionieren sie beide ähnlich schnell.
+
+## g) Vergleich zu `java.util.Deque`
+
+Hinweis: Als Implementierung verwende ich eine `ArrayDeque`, die ich mittels
+`push()` befülle.
+
+      n  Laufzeit min (ms)  Laufzeit max (ms)
+------- ------------------ ------------------
+   1000                  0                  1
+  10000                  1                  4
+ 100000                  4                  6
+1000000                 67                 84
+2000000                681                792 
+4000000                680                743
+
+Die Performance ist vergleichbar mit meiner eigenen Stack-Implementierung.
