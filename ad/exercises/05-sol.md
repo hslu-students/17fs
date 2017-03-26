@@ -261,8 +261,8 @@ Log-Meldung oder die Stack-Trace ausgibt.
 ## Warum ist die `stop()`-Methode `deprecated`?
 
 Wird ein Thread mittels `stop()` angehalten, werden sämtliche von ihm gesperrten
-Datenobjekte in einem inkonsistenten Zustand wieder freigegeben, wodurch
-inkonsistente Zustände entstehen könnten:
+Datenobjekte in einem inkonsistenten Zustand wieder freigegeben, wodurch es zu
+Problemen kommen kann:
 
 ```java
 database.insert(monthlySalaryPayment);
@@ -278,4 +278,11 @@ keine Seiteneffekte hat, gestartet und dann abgebrochen hat.
 
 # 5 Optional: JoinAndSleep
 
-TODO (oder auch nicht)
+## In welchem Zustand ist ein Thread, der auf einen anderen Thread wartet?
+
+Der Thread ist im Zustand "waiting".
+
+## Welcher Programmteil muss die Threads abbrechen?
+
+Die `main()`-Methode kann die Abbrechung anfordern, doch die `run()`-Methode des
+Threads muss der Aufforderung folgen.
