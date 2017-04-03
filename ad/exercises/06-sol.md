@@ -254,4 +254,10 @@ ausgeglichen vergeben werden.
 
 # 5 Optional: Scatter/Gather-Verarbeitung
 
-TODO
+Ich habe eine `SumOperator` geschrieben, die ein grosses und zufälliges
+`int`-Array (bzw. einen `SumTask`) von mehreren `PartialSumWorker`-Instanzen
+aufsummieren lässt. Dazu wird das Array zunächst in ungefähr gleichgrosse
+Teilarrays aufgespalten, und die Teilsummen der Worker werden am Schluss wieder
+durch den Operator aufsummiert. Der Testfall `SumScatterGatherTest` demonstriert
+die Funnktionalität mit verschiedenen Tests, die eine unterschiedliche Anzahl
+von Threads verwenden (von einem Thread bis zu einem Thread pro Array-Element).
