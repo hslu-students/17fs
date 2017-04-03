@@ -76,7 +76,6 @@ es allen schlafenden Threads aufzuwachen. Wird eine Aktion abgeschlossen, nach
 der es mehreren Threads wieder möglich wird weiterzuarbeiten, sollte `notifyAll`
 ausgeführt werden, damit soviele Threads wie möglich wieder arbeiten können.
 
-
 Frage: Wenn ein Thread einen anderen Thread steuern will, ist dies offensichtlich keine gute Lösung. Wie sieht eine bessere Lösung aus?
 
 Antwort: Eine übergeordnete Logik soll sich um die Steuerung der beiden Threads
