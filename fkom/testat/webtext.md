@@ -6,10 +6,10 @@ Mit _OpenOffice.org Writer_ und _Libre Office Writer_ gibt es eine kostenlose
 Alternative zu _Microsoft Word_. Diese Software verwendet ein eigenes
 Dateiformat: _OpenDocument Text_ (ODT) mit der Dateiendung `.odt`.
 
-Beide Programme – _Word_ und _Writer_ – untersützen mittlerweile beide Formate.
-Im Gegensatz zu _Word_ funktioniert aber _Writer_ auch auf Linux. Hartgesottene
-Linux-User verwenden aber lieber einfache Textdateien (_plain text_) zum
-Speichern und Bearbeiten ihrer Texte. Warum ist das so?
+Beide Programme (_Word_ und _Writer_) untersützen mittlerweile beide Formate
+(OOXML und ODT).  Im Gegensatz zu _Word_ funktioniert aber _Writer_ auch auf
+Linux. Hartgesottene Linux-User verwenden aber lieber einfache Textdateien
+(_plain text_) zum Speichern und Bearbeiten ihrer Texte. Warum ist das so?
 
 # Unterschiede zwischen Textdateien und _OOXML/ODT_
 
@@ -68,8 +68,7 @@ Dadurch erhält man folgende Ausgabe:
     1231 neues-aquarium.txt
      893 im-stau.txt
 
-Doch was hat das ganze zu bedeuten? Schauen wir uns den Befehl (bzw. die
-Befehle) genauer an:
+Doch was hat das ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:
 
 ### Der `wc`-Befehl
 
