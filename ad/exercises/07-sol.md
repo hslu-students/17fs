@@ -31,3 +31,93 @@ Antwort: Da ich den Test für den Einsatz eines Executors ohnehin umschreiben
 musste, war das kein grosses Problem; ich ersetzte einfach die Methodennamen.
 Besser wäre es gewesen, wenn mein `BoundedBuffer` das Interface `Queue`
 implementiert hätte, dann wäre dieses Problem gar nicht aufgetreten.
+
+# 2 Parkhaus
+
+TODO
+
+# 3 Speed Count
+
+## Reflektion
+
+Frage: Was können Sie über die Performance der beiden Thread-sicheren Zähler
+aussagen?
+
+Antwort: Der `AtomicCounter` ist schneller.
+
+Frage: Was stellen Sie bei den Testresultaten fest?
+
+Antwort: Die Performanceunterschiede bewegen sich in einem Raum von 2 bis 15
+Prozent.
+
+Frage: Wie erklären Sie sich diese Testresultate?
+
+Antwort: `synchronized` verlangsamt die Anwendung massiv.
+
+Frage: Welche GEnauigkeit erreicht Ihr Test?
+
+Antwort: Keine besonders hohe Genauigkeit, die Abweichungen bewegen sich in
+einem Raum von 2 bis 15 Prozent.
+
+# 4 Suche nach grossen Primzahlen
+
+## Reflektion
+
+Frage: Wie lange dauert es jetzt?
+
+Antwort: (Ich vergleiche die beiden loggenden Implementierungen, nicht die
+synchrone loggende mit der asynchronen in-eine-Datei-schreibende.) Synchron: ca.
+zwei Minuten. Asynchron: ca. eine Minute.
+
+Frage: Wie viele Threads lassen Sie laufen?
+
+Antwort: Einen mehr als die Anzahl der Prozessor-Kerne meines Rechners.
+
+Frage: Was passiert, wenn Sie die Anzahl Threads verdoppeln, vervierfachen,
+verzehnfachen?
+
+Antwort: Es dauert tendenziell länger, wobei ich zu wenige Test laufen gelassen
+habe, um Zufall auszuschliessen. Mehr Threads benötigen jedoch mehr
+Verwaltungsaufwand, wodurch es tatsächlich länger dauern dürfte.
+
+Frage: Können Sie die Applikation noch schneller machen?
+
+Antwort: Auf meinem Rechner wohl nicht signifikant, ohne dabei Genauigkeit (bzw.
+hohe Wahrscheinlichkeiten für Primzahlen) zu opfern.
+
+# 5 Optional: Container threadsicher machen
+
+## b) Was stellen Sie fest?
+
+Hinweis: Als gemeinsame Datenstruktur für die Zahlen habe ich eine `ArrayList`
+verwendet.
+
+Wird der Consumer vor den Producern gestartet, trifft er auf eine leere Liste (`iterator.hasNext() == false`) ist sieht seine Arbeit als beendet an.
+
+Die Producers verursachen beim konkurrierenden Schreiben auf die `ArrayList`
+immer wieder eine `ArrayIndexOutOfBoundsException`. Das Problem ist wohl, dass
+ein Producer in die zu kleine Liste schreiben will, wenn sie noch nicht mit der
+Vergrösserung fertig ist.
+
+Gelegentlich läuft der Test auch korrekt durch. Mit einer `LinkedList` erhalte
+ich hingegen eine `NullPointerException`.
+
+## c)
+
+Mit der `CopyOnWriteArrayList` (die einzig threadsichere `List`-Implementierung)
+funktioniert es leider nicht. Das Problem ist wohl wieder, dass `hasNext()` "zu
+früh" `false" zurückliefert.
+
+## d)
+
+Man müsste wohl eine nicht-threadsichere Queue einsetzen.
+
+## e)
+
+Das ganze Design funktioniert nicht zuverlässig mit einer `BlockingQueue`. List
+man aus einer `BlockingQueue`, muss man wissen, wie viele Elemente man daraus
+herauslesen will, oder aber man unterbricht den Thread von aussen.
+
+Besser wäre es, wenn man die `BlockingQueue` "schliessen" könnte, sobald keine
+weiteren Werte mehr hineingeschrieben werden müssen, wie man das mit Go Channels
+machen könnte.
