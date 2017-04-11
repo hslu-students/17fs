@@ -7,11 +7,11 @@ Microsofts kostenpflichtige Textverarbeitung _Word_ aus der _Office_-Suite
 verwendet als Dateiformat _Office Open XML_ (OOXML<sup>[1](#1)</sup>). Die
 Open-Source-Textverarbeitung _Libre Office Writer_<sup>[2](#2)</sup> verwendet
 hingegen _OpenDocument Text_ (ODT<sup>[3](#3)</sup>) als Dateiformat. Beide
-Programme (_Word_ und _Writer_) untersützen beide Formate (OOXML und ODT).
+Programme (_Word_ und _Writer_) unterstützen beide Formate (OOXML und ODT).
 
 Texteditoren verwenden als Dateiformat einfache Textdateien.
 
-# Unterschiede von Textdateien und _OOXML/ODT_
+# Unterschiede zwischen Textdateien und _OOXML/ODT_
 
 OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache
 Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe
