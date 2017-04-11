@@ -1,10 +1,11 @@
 TODO
 ----
 
-! 2017-04-07    DMATH   Aufgaben Wahrscheinlichkeitsrechnung I
-+ 2017-04-10    AD      Aufgaben Woche 7
-= 2017-04-10    AD      Input Slides 6/2 und 7/1 anschauen
+! 2017-04-13    DMATH   Aufgaben Wahrscheinlichkeitsrechnung II
++ 2017-04-18    AD      Aufgaben Woche 8
+! 2017-04-XX    AD      Ilias-Testat II
 - 2017-04-14    ISF     Aufgabe "Signierte Email"
+! 2017-04-24    ITEO    Kapitel I & II auf eine Seite zusammenfassen
 ! SW13          ISF     DRM-Vortrag (TODO: planen!)
 
 Symbole: ! (testatpflichtig), + (wichtig), = (normal), - (optional)

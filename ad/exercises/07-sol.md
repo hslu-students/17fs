@@ -34,7 +34,30 @@ implementiert hätte, dann wäre dieses Problem gar nicht aufgetreten.
 
 # 2 Parkhaus
 
-TODO
+## Reflektion
+
+Frage: Wie viele Autos konnten Sie maximal nebenläufig "fahren" lassen?
+
+Antwort: So viele, wie mein Computer Rechenkerne hat.
+
+Frage: Wie effizient arbeitet Ihre Simulation?
+
+Antwort: Das hängt von den Simulationsparametern ab.
+
+Frage: Wie fair sind die Parkhäuser?
+
+Antwort: Die Autos dürfen in der Reihenfolge ihrer Ankunft parkieren. Ich halte
+das für fair. Man könnte aber auch ihre geplante Parkdauer berücksichtigen,
+sodass Kurzzeitparker Langzeitparkern gegenüber bevorzugt würden.
+
+Frage: Falls Sie die Stadtplanung unterstützt haben: Was raten Sie den
+Stadtplanern von "Pannobile", welche Kapazitäten sollen die Parkhäuser haben?
+
+Antwort: Da es viele Fahrer gibt, die nur das erstbeste Parkhaus ansteuern
+wollen, aber in meiner Simulation alle Parkhäuser gleich gross sind, muss man
+sich mit einer Quote von ca. 90% zufrieden geben, wenn man nicht alle Parkhäuser
+überdimensionieren möchte. Die Simulation müsste verschiedengrosse Parkhäuser
+zulassen, um eine bessere Aussage machen zu können.
 
 # 3 Speed Count
 
