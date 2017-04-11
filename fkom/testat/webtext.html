@@ -47,25 +47,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <div id="header">
-<h1 class="title">Textdateien</h1>
-<h1 class="subtitle">Effizienter arbeiten unter Linux</h1>
+<h1 class="title">Linux und Textdateien</h1>
+<h1 class="subtitle">Effizient arbeiten mit einfachen Mitteln</h1>
 <h2 class="author">Patrick Bucher</h2>
-<h3 class="date">07.04.2017</h3>
+<h3 class="date">11.04.2017</h3>
 </div>
-<p>Windows- und Mac-User schreiben Texte meistens mit <em>Microsoft Word</em>. Als Dateiformat verwenden sie <em>Office Open XML</em> (OOXML) und als Endung des Dateinamens <code>.docx</code>.</p>
-<p>Mit <em>OpenOffice.org Writer</em> und <em>Libre Office Writer</em> gibt es eine kostenlose Alternative zu <em>Microsoft Word</em>. Diese Software verwendet ein eigenes Dateiformat: <em>OpenDocument Text</em> (ODT) mit der Dateiendung <code>.odt</code>.</p>
-<p>Beide Programme – <em>Word</em> und <em>Writer</em> – untersützen mittlerweile beide Formate. Im Gegensatz zu <em>Word</em> funktioniert aber <em>Writer</em> auch auf Linux. Hartgesottene Linux-User verwenden aber lieber einfache Textdateien (<em>plain text</em>) zum Speichern und Bearbeiten ihrer Texte. Warum ist das so?</p>
+<p>Windows- und Mac-User schreiben Texte meistens mit <em>Microsoft Word</em>. Als Dateiformat verwenden sie <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>, <code>.docx</code>). Mit <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> gibt es eine kostenlose Alternative zu <em>Microsoft Word</em>. Diese Software verwendet ein eigenes Dateiformat: <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>, <code>.odt</code>).</p>
+<p>Beide Programme (<em>Word</em> und <em>Writer</em>) untersützen beide Formate (OOXML und ODT). Im Gegensatz zu <em>Word</em> funktioniert aber <em>Writer</em> auch auf Linux. Hartgesottene Linux-User verwenden aber lieber einfache Textdateien zum Speichern und Bearbeiten ihrer Texte. Warum?</p>
 <h1 id="unterschiede-zwischen-textdateien-und-ooxmlodt">Unterschiede zwischen Textdateien und <em>OOXML/ODT</em></h1>
 <p>OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe von Zeichen. Dadurch ergeben sich einige Unterschiede in der Handhabung von OOXML/ODT-Dateien einerseits und Textdateien andererseits:</p>
 <ol style="list-style-type: decimal">
-<li>OOXML/ODT-Dateien lassen sich nur mit einigen wenigen Programmen (<em>Word</em>, <em>Writer</em>) zuverlässig bearbeiten. Textdateien lassen sich mit einem beliebigen Texteditor, wovon es hunderte gibt, bearbeiten.</li>
+<li>OOXML/ODT-Dateien lassen sich nur mit <em>Word</em> und <em>Writer</em> zuverlässig bearbeiten. Textdateien lassen sich mit einem beliebigen Texteditor bearbeiten.</li>
 <li>OOXML/ODT-Dateien enthalten viele Zusatzinformationen für Formatierung, Struktur und zusätzliche Einstellungen. Textdateien haben diesen <em>Overhead</em> nicht, da sie nur die eigentlichen Nutzdaten enthalten.</li>
-<li>OOXML/ODT-Dateien können nur so lange gelesen werden, wie die enstprechenden Programme dazu verfügbar sind. (Wer schon einmal eine alte <code>.wps</code>-Datei öffnen wollte, kennt das Problem.) Textdateien, die nur aus einer Reihe von Zeichen bestehen, können immer gelesen werden.</li>
-<li>OOXML/ODT-Dateien lassen sich nur im „WYSIWYG“-Modus („what you see is what you get“) bearbeiten. Textdateien lassen sich auch als <em>Textstrom</em> bearbeiten.</li>
+<li>OOXML/ODT-Dateien können nur so lange gelesen werden, wie die enstprechenden Programme dazu verfügbar sind. Textdateien, die nur aus einer Reihe von Zeichen bestehen, können immer gelesen werden.</li>
+<li>OOXML/ODT-Dateien lassen sich nur im «WYSIWYG»-Modus («what you see is what you get») bearbeiten. Textdateien lassen sich auch als <em>Textstrom</em> bearbeiten.</li>
 </ol>
-<p>Aus den ersten drei Punkten ergeben sich drei offensichtliche Vorteile für Textdateien. Doch was hat man als Benutzer davon, wenn man eine Datei als <em>Textstrom</em> bearbeiten kann?</p>
-<h2 id="anwendungsbeispiel-wörter-in-mehreren-artikeln-zählen">Anwendungsbeispiel: Wörter in mehreren Artikeln zählen</h2>
-<p>Angenommen, wir haben eine Reihe von Artikeln; einmal im <em>OpenDocument Text</em>-Format (<code>.odt</code>) und einmal im Textformat (<code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel in Wörtern gemessen der längste ist. Mit unseren <em>OpenDocument Text</em>-Dateien verfahren wir folgendermassen:</p>
+<p>Aus den ersten drei Punkten ergeben sich drei offensichtliche Vorteile für Textdateien. Doch welche Vorteile bieten <em>Textströme</em>?</p>
+<h1 id="anwendungsbeispiel-wörter-in-mehreren-artikeln-zählen">Anwendungsbeispiel: Wörter in mehreren Artikeln zählen</h1>
+<p>Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (<code>.odt</code>) und einmal im Textformat (<code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien verfahren wir folgendermassen:</p>
 <ol style="list-style-type: decimal">
 <li>Wir öffnen den ersten Artikel mit <em>Writer</em>.</li>
 <li>Wir gehen auf das Menü <em>Tools</em> und wählen den Eintrag <em>Word Count</em>.</li>
@@ -73,41 +72,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Wir schliessen den Artikel.</li>
 <li>Wir wiederholen den Vorgang für den nächsten Artikel.</li>
 </ol>
-<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Dateien in Zwischenzeit bearbeitet wurden. Schliesslich könnte sich dadurch die Anzahl der Wörter verändert haben.</p>
-<p>Mit Textdateien funktioniert das einfacher. Man verwendet einfach folgenden Konsolenbefehl bzw. folgende zwei, durch eine sogenannte <em>Pipe</em> verbundenen Befehle:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r</code></pre></div>
-<p>Dadurch erhält man folgende Ausgabe:</p>
-<pre><code>2220 eigenes-bier-brauen.txt
-1739 berlinreise.txt
-1231 neues-aquarium.txt
- 893 im-stau.txt</code></pre>
+<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Artikel in Zwischenzeit umgeschrieben wurden.</p>
+<p>Mit Textdateien funktioniert das einfacher. Man verwendet einfach folgende Befehlszeile, die untenstehende Ausgabe ergibt:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r
+
+<span class="ex">2220</span> eigenes-bier-brauen.txt
+<span class="ex">1739</span> berlinreise.txt
+<span class="ex">1231</span> neues-aquarium.txt
+ <span class="ex">893</span> im-stau.txt</code></pre></div>
 <p>Doch was hat das ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:</p>
-<h3 id="der-wc-befehl">Der <code>wc</code>-Befehl</h3>
+<h2 id="der-wc-befehl">Der <code>wc</code>-Befehl</h2>
 <ul>
-<li>Das <code>wc</code> zählt die Wörter in einer Datei. Der Programmname ist eine Abkürzung für „word count“.</li>
-<li>Standardmässig gibt <code>wc</code> die Anzahl Zeilen, Wörter und Zeichen einer Datei aus. Wir interessieren uns aber nur für die Wörter. Darum geben wir den Parameter <code>-w</code> (für „words“) mit.</li>
-<li>Mit <code>*.txt</code> geben wir dem Programm sämtliche Textdateien im aktuellen Arbeitsverzeichnis zum Zählen.</li>
+<li><code>wc</code><sup><a href="#4">4</a></sup> steht für «word count» und zählt die Wörter in einer Datei.</li>
+<li>Standardmässig gibt <code>wc</code> die Anzahl Zeilen, Wörter und Zeichen einer Datei aus. Mit dem Parameter <code>-w</code> (für «words») erhalten wir nur die Anzahl Wörter.</li>
+<li>Mit <code>*.txt</code> übergeben wir dem Programm sämtliche Textdateien im Arbeitsverzeichnis.</li>
 </ul>
-<p>Das (<code>wc -w *.txt</code>) ist der erste Teil des Befehls. Führte man ihn aus, erhielte man folgende Ausgabe:</p>
-<pre><code>1739 berlinreise.txt
-2220 eigenes-bier-brauen.txt
- 893 im-stau.txt
-1231 neues-aquarium.txt</code></pre>
-<h3 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h3>
-<p>Die Dateien sind alphabetisch und nicht nach Nummern sortiert. Das liegt daran, dass <code>wc</code> die Dateien über die Wildcard <code>*.txt</code> in alphabetischer Reihenfolge zur Bearbeitung erhält. Darum kommt jetzt der zweite Teil der Befehlszeile zum Zug:</p>
+<p><code>wc -w *.txt</code> ist der erste Teil des Befehls. Führte man ihn aus, erhielte man folgende Ausgabe:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt
+
+<span class="ex">1739</span> berlinreise.txt
+<span class="ex">2220</span> eigenes-bier-brauen.txt
+ <span class="ex">893</span> im-stau.txt
+<span class="ex">1231</span> neues-aquarium.txt</code></pre></div>
+<p>Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht sortiert.</p>
+<h2 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h2>
+<p>Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge, und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum kommt jetzt <code>sort</code><sup><a href="#5">5</a></sup> zum Zug.</p>
 <ul>
-<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa „Röhre“. Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter.</li>
-<li>Das nächste Programm ist in diesem Fall <code>sort</code>, das Textzeilen in alphabetisch und in aufsteigender Reihenfolge sortiert.</li>
-<li>Da wir aber keine alphabetische, sondern numerische Sortierung wollen (“100“ wäre gemäss alphabetischer Sortierung kleiner als „9“), geben wir den Parameter <code>-n</code> an.</li>
-<li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl am Anfang) sondern absteigend (die grösste Zahl am Anfang) sein, was wir mit dem Parameter <code>-r</code> machen.</li>
+<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <em>Der Text «fliesst» also wie ein Strom durch die Röhre.</em> (Textstrom)</li>
+<li>Das nächste Programm ist <code>sort</code>, das Textzeilen in alphabetisch aufsteigender Reihenfolge sortiert.</li>
+<li>Da wir keine alphabetische, sondern eine numerische Sortierung benötigen («100» wäre gemäss alphabetischer Sortierung kleiner als «9»), geben wir den Parameter <code>-n</code> («numeric») an.</li>
+<li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl am Anfang) sondern absteigend (die grösste Zahl am Anfang) sein, was wir mit dem Parameter <code>-r</code> («reverse») machen.</li>
 </ul>
-<h3 id="die-ausgabe-kürzen">Die Ausgabe kürzen</h3>
-<p>Je mehr Artikel sich in unserem Verzeichnis befinden, desto länger wird die Ausgabe. Bei hunderten Artikel müssten wir bald nach oben scrollen, um zu sehen, welcher am meisten Wörter enthält. Nun könnte man natürlich die Sortierreihenfolge anpassen, sodass der Artikel mit den meisten Wörtern in der letzten Zeile steht. Dazu kann man einfach den Parameter <code>-r</code> beim <code>sort</code>-Befehl weglassen.</p>
-<p>Eleganter ist es, die Ausgabe auf eine bestimmte Länge zu kürzen. Der <code>head</code>-Befehl nimmt beliebig viele Zeilen entgegen und gibt die per Parameter definierte Anzahl an Zeilen aus. Um die drei Artikel mit den meisten Wörtern zu ermitteln, kann man den Befehl <code>head -3</code> verwenden. Dieser Befehl wird wiederum über eine Pipe mit unserer Befehlszeile verbunden:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r <span class="kw">|</span> <span class="fu">head</span> -3</code></pre></div>
-<p>Die Ausgabe könnte dann folgendermassen aussehen:</p>
-<pre><code>9431 der-syrienkrieg.txt
-8943 jahresrückblick-2016.txt
-7131 tour-de-france_doping.txt</code></pre>
+<p>Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien und einfachen Programmen (<code>wc</code> und <code>sort</code>) effizienter lösen lässt als mit einer Textverarbeitung.</p>
+<h1 id="quellen">Quellen</h1>
+<ol style="list-style-type: decimal">
+<li><span id="1"><a href="http://officeopenxml.com/">Office Open XML</a></span></li>
+<li><span id="2"><a href="https://www.libreoffice.org/discover/writer/">LibreOffice Writer</a></span></li>
+<li><span id="3"><a href="http://opendocumentformat.org/">Open Document Format</a></span></li>
+<li><span id="4"><a href="http://pubs.opengroup.org/onlinepubs/009604499/utilities/wc.html">Der <code>wc</code>-Befehl</a></span></li>
+<li><span id="5"><a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html">Der <code>sort</code>-Befehl</a></span></li>
+</ol>
 </body>
 </html>

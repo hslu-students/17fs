@@ -38,12 +38,12 @@ h2.author {
     font-weight: normal;
 }
 
-h3 {
-    font-size: 100%;
-}
-
 h3.date {
     font-size: 100%;
     text-align: center;
     font-weight: normal;
+}
+
+sup a {
+    text-decoration: none;
 }
