@@ -1,8 +1,8 @@
 Windows- und Mac-User schreiben Texte meistens mit _Microsoft Word_. Als
-Dateiformat verwenden sie _Office Open XML_ (OOXML<sup>[1](#1)</sup>, `.docx`).
-Mit _Libre Office Writer_<sup>[2](#2)</sup> gibt es eine kostenlose Alternative
-zu _Microsoft Word_.  Diese Software verwendet ein eigenes Dateiformat:
-_OpenDocument Text_ (ODT<sup>[3](#3)</sup>, `.odt`).
+Dateiformat verwenden sie _Office Open XML_ (OOXML<sup>[1](#1)</sup>).  Mit
+_Libre Office Writer_<sup>[2](#2)</sup> gibt es eine kostenlose Alternative zu
+_Microsoft Word_.  Diese Software verwendet ein eigenes Dateiformat:
+_OpenDocument Text_ (ODT<sup>[3](#3)</sup>).
 
 Beide Programme (_Word_ und _Writer_) untersützen beide Formate (OOXML und ODT).
 Im Gegensatz zu _Word_ funktioniert aber _Writer_ auch auf Linux. Hartgesottene
@@ -32,10 +32,10 @@ Textdateien. Doch welche Vorteile bieten _Textströme_?
 
 # Anwendungsbeispiel: Wörter in mehreren Artikeln zählen
 
-Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (`.odt`) und
-einmal im Textformat (`.txt`). Nun wollen wir herausfinden, welcher Artikel in
-Wörtern gemessen der längste ist. Mit unseren ODT-Dateien verfahren wir
-folgendermassen:
+Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung:
+`.odt`) und einmal im Textformat (Endung: `.txt`). Nun wollen wir herausfinden,
+welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien
+verfahren wir folgendermassen:
 
 1. Wir öffnen den ersten Artikel mit _Writer_.
 2. Wir gehen auf das Menü _Tools_ und wählen den Eintrag _Word Count_.

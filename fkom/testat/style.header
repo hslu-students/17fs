@@ -1,3 +1,4 @@
+<style type="text/css">
 body {
     font-family: sans-serif;
     margin: 0 auto;
@@ -47,3 +48,4 @@ h3.date {
 sup a {
     text-decoration: none;
 }
+</style>

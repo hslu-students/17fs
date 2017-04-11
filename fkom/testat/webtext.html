@@ -43,7 +43,57 @@ code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Ann
 code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
-  <link rel="stylesheet" href="style.css" type="text/css" />
+  <style type="text/css">
+  body {
+      font-family: sans-serif;
+      margin: 0 auto;
+      padding: 1em;
+      max-width: 35em;
+      font-size: 16px;
+      line-height: 1.5;
+  }
+  
+  p {
+      text-align: justify;
+      hyphens: auto;
+  }
+  
+  pre {
+      font-size: 80%;
+  }
+  
+  h1 {
+      font-size: 150%;
+  }
+  
+  h1.title {
+      text-align: center;
+  }
+  
+  h1.subtitle {
+      text-align: center;
+      font-size: 120%;
+  }
+  
+  h2 {
+      font-size: 120%;
+  }
+  
+  h2.author {
+      text-align: center;
+      font-weight: normal;
+  }
+  
+  h3.date {
+      font-size: 100%;
+      text-align: center;
+      font-weight: normal;
+  }
+  
+  sup a {
+      text-decoration: none;
+  }
+  </style>
 </head>
 <body>
 <div id="header">
@@ -52,7 +102,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 class="author">Patrick Bucher</h2>
 <h3 class="date">11.04.2017</h3>
 </div>
-<p>Windows- und Mac-User schreiben Texte meistens mit <em>Microsoft Word</em>. Als Dateiformat verwenden sie <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>, <code>.docx</code>). Mit <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> gibt es eine kostenlose Alternative zu <em>Microsoft Word</em>. Diese Software verwendet ein eigenes Dateiformat: <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>, <code>.odt</code>).</p>
+<p>Windows- und Mac-User schreiben Texte meistens mit <em>Microsoft Word</em>. Als Dateiformat verwenden sie <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>). Mit <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> gibt es eine kostenlose Alternative zu <em>Microsoft Word</em>. Diese Software verwendet ein eigenes Dateiformat: <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>).</p>
 <p>Beide Programme (<em>Word</em> und <em>Writer</em>) untersützen beide Formate (OOXML und ODT). Im Gegensatz zu <em>Word</em> funktioniert aber <em>Writer</em> auch auf Linux. Hartgesottene Linux-User verwenden aber lieber einfache Textdateien zum Speichern und Bearbeiten ihrer Texte. Warum?</p>
 <h1 id="unterschiede-zwischen-textdateien-und-ooxmlodt">Unterschiede zwischen Textdateien und <em>OOXML/ODT</em></h1>
 <p>OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe von Zeichen. Dadurch ergeben sich einige Unterschiede in der Handhabung von OOXML/ODT-Dateien einerseits und Textdateien andererseits:</p>
@@ -64,7 +114,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Aus den ersten drei Punkten ergeben sich drei offensichtliche Vorteile für Textdateien. Doch welche Vorteile bieten <em>Textströme</em>?</p>
 <h1 id="anwendungsbeispiel-wörter-in-mehreren-artikeln-zählen">Anwendungsbeispiel: Wörter in mehreren Artikeln zählen</h1>
-<p>Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (<code>.odt</code>) und einmal im Textformat (<code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien verfahren wir folgendermassen:</p>
+<p>Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung: <code>.odt</code>) und einmal im Textformat (Endung: <code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien verfahren wir folgendermassen:</p>
 <ol style="list-style-type: decimal">
 <li>Wir öffnen den ersten Artikel mit <em>Writer</em>.</li>
 <li>Wir gehen auf das Menü <em>Tools</em> und wählen den Eintrag <em>Word Count</em>.</li>
