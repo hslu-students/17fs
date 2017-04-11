@@ -7,7 +7,7 @@ _OpenDocument Text_ (ODT<sup>[3](#3)</sup>).
 Beide Programme (_Word_ und _Writer_) untersützen beide Formate (OOXML und ODT).
 Im Gegensatz zu _Word_ funktioniert aber _Writer_ auch auf Linux. Hartgesottene
 Linux-User verwenden aber lieber einfache Textdateien zum Speichern und
-Bearbeiten ihrer Texte. Warum?
+Bearbeiten ihrer Texte. Warum ist das so?
 
 # Unterschiede zwischen Textdateien und _OOXML/ODT_
 
