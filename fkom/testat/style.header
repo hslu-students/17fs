@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0 auto;
     padding: 1em;
-    max-width: 35em;
+    max-width: 40em;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -13,8 +13,12 @@ p {
     hyphens: auto;
 }
 
+li {
+    hyphens: auto;
+}
+
 pre {
-    font-size: 80%;
+    font-size: 90%;
 }
 
 h1 {
