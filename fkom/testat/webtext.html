@@ -48,7 +48,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       font-family: sans-serif;
       margin: 0 auto;
       padding: 1em;
-      max-width: 40em;
+      max-width: 35em;
       font-size: 16px;
       line-height: 1.5;
   }
@@ -66,24 +66,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       font-size: 90%;
   }
   
-  h1 {
-      font-size: 150%;
-  }
-  
   h1.title {
+      font-size: 200%;
       text-align: center;
   }
   
   h1.subtitle {
+      font-size: 130%;
       text-align: center;
-      font-size: 120%;
-  }
-  
-  h2 {
-      font-size: 120%;
   }
   
   h2.author {
+      font-size: 100%;
       text-align: center;
       font-weight: normal;
   }
@@ -92,6 +86,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       font-size: 100%;
       text-align: center;
       font-weight: normal;
+  }
+  
+  h1 {
+      font-size: 130%;
   }
   
   sup a {
@@ -127,7 +125,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Wir wiederholen den Vorgang für den nächsten Artikel.</li>
 </ol>
 <p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit verändert worden sind.</p>
-<h2 id="der-wc-befehl">Der <code>wc</code>-Befehl</h2>
+<h1 id="der-wc-befehl">Der <code>wc</code>-Befehl</h1>
 <p>Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein <em>Terminal</em> und verwenden den <code>wc</code>-Befehl<sup><a href="#4">4</a></sup>:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt</code></pre></div>
 <ul>
@@ -140,7 +138,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 2220 eigenes-bier-brauen.txt
  893 im-stau.txt
 1231 neues-aquarium.txt</code></pre>
-<h2 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h2>
+<h1 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h1>
 <p>Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge – und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich den <code>sort</code>-Befehl<sup><a href="#5">5</a></sup>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r</code></pre></div>
 <ul>
@@ -155,7 +153,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 1231 neues-aquarium.txt
  893 im-stau.txt</code></pre>
 <p>Der Artikel mit den meisten Wörtern ist <code>eigenes-bier-brauen.txt</code>. Für vier Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit ODT-Dateien gewaltig. Die Lösung mit den Textdateien <em>skaliert</em> wesentlich besser.</p>
-<h2 id="und-jetzt">Und jetzt?</h2>
+<h1 id="und-jetzt">Und jetzt?</h1>
 <p>Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien, einfachen Programmen (<code>wc</code> und <code>sort</code>) und Textströmen effizienter lösen lässt als mit einer Textverarbeitung.</p>
 <p>Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den Vortrag <em>Power Use of UNIX</em><sup><a href="#6">6</a></sup> von Dan North.</p>
 <h1 id="quellen">Quellen</h1>

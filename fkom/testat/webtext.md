@@ -48,7 +48,7 @@ Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem
 späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit
 verändert worden sind.
 
-## Der `wc`-Befehl
+# Der `wc`-Befehl
 
 Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein _Terminal_ und
 verwenden den `wc`-Befehl<sup>[4](#4)</sup>:
@@ -70,7 +70,7 @@ Dadurch erhalten wir die folgende Ausgabe:
      893 im-stau.txt
     1231 neues-aquarium.txt
 
-## Die Ausgabe an `sort` weiterleiten
+# Die Ausgabe an `sort` weiterleiten
 
 Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht
 richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster `*.txt`
@@ -108,7 +108,7 @@ Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber
 dem manuellen Vorgehen mit ODT-Dateien gewaltig. Die Lösung mit den Textdateien
 _skaliert_ wesentlich besser.
 
-## Und jetzt?
+# Und jetzt?
 
 Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien,
 einfachen Programmen (`wc` und `sort`) und Textströmen effizienter lösen lässt

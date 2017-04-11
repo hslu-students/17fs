@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0 auto;
     padding: 1em;
-    max-width: 40em;
+    max-width: 35em;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -21,24 +21,18 @@ pre {
     font-size: 90%;
 }
 
-h1 {
-    font-size: 150%;
-}
-
 h1.title {
+    font-size: 200%;
     text-align: center;
 }
 
 h1.subtitle {
+    font-size: 130%;
     text-align: center;
-    font-size: 120%;
-}
-
-h2 {
-    font-size: 120%;
 }
 
 h2.author {
+    font-size: 100%;
     text-align: center;
     font-weight: normal;
 }
@@ -47,6 +41,10 @@ h3.date {
     font-size: 100%;
     text-align: center;
     font-weight: normal;
+}
+
+h1 {
+    font-size: 130%;
 }
 
 sup a {
