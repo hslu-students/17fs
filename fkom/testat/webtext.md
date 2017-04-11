@@ -1,13 +1,15 @@
-Windows- und Mac-User schreiben Texte meistens mit _Microsoft Word_. Als
-Dateiformat verwenden sie _Office Open XML_ (OOXML<sup>[1](#1)</sup>).  Mit
-_Libre Office Writer_<sup>[2](#2)</sup> gibt es eine kostenlose Alternative zu
-_Microsoft Word_.  Diese Software verwendet ein eigenes Dateiformat:
-_OpenDocument Text_ (ODT<sup>[3](#3)</sup>).
+**Windows- und Mac-User schreiben Texte meistens mit _Word_. Mit _Libre Office
+Writer_ gibt es eine kostenlose Alternative zu _Word_, die auch unter Linux
+läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum
+Schreiben ihrer Texte. Warum ist das so?**
 
-Beide Programme (_Word_ und _Writer_) untersützen beide Formate (OOXML und ODT).
-Im Gegensatz zu _Word_ funktioniert aber _Writer_ auch auf Linux. Hartgesottene
-Linux-User verwenden aber lieber einfache Textdateien zum Speichern und
-Bearbeiten ihrer Texte. Warum ist das so?
+Microsofts kostenpflichtige Textverarbeitung _Word_ aus der _Office_-Suite
+verwendet als Dateiformat _Office Open XML_ (OOXML<sup>[1](#1)</sup>). Die
+Open-Source-Textverarbeitung _Libre Office Writer_<sup>[2](#2)</sup> verwendet
+hingegen _OpenDocument Text_ (ODT<sup>[3](#3)</sup>) als Dateiformat. Beide
+Programme (_Word_ und _Writer_) untersützen beide Formate (OOXML und ODT).
+
+Texteditoren verwenden als Dateiformat einfache Textdateien.
 
 # Unterschiede zwischen Textdateien und _OOXML/ODT_
 
@@ -44,8 +46,8 @@ verfahren wir folgendermassen:
 5. Wir wiederholen den Vorgang für den nächsten Artikel.
 
 Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem
-späteren Zeitpunkt wiederholt werden, falls die Artikel in Zwischenzeit
-umgeschrieben wurden.
+späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit
+verändert wurden.
 
 Mit Textdateien funktioniert das einfacher. Man verwendet einfach folgende
 Befehlszeile, die untenstehende Ausgabe ergibt:
@@ -59,7 +61,7 @@ $ wc -w *.txt | sort -n -r
  893 im-stau.txt
 ```
 
-Doch was hat das ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:
+Doch was hat das Ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:
 
 ## Der `wc`-Befehl
 
@@ -92,8 +94,8 @@ und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum kommt jetzt
 
 - Zwischen den Befehlen steht das Zeichen `|`. Das ist eine sogenannte _Pipe_,
   zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen
-  und leitet sie als Eingabe zum nächsten Programm weiter. _Der Text «fliesst»
-  also wie ein Strom durch die Röhre._ (Textstrom)
+  und leitet sie als Eingabe zum nächsten Programm weiter. **Der Text «fliesst»
+  als _Textstrom_ durch die Röhre.**
 - Das nächste Programm ist `sort`, das Textzeilen in alphabetisch aufsteigender
   Reihenfolge sortiert.
 - Da wir keine alphabetische, sondern eine numerische Sortierung benötigen

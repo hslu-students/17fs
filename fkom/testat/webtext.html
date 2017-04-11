@@ -102,8 +102,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 class="author">Patrick Bucher</h2>
 <h3 class="date">11.04.2017</h3>
 </div>
-<p>Windows- und Mac-User schreiben Texte meistens mit <em>Microsoft Word</em>. Als Dateiformat verwenden sie <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>). Mit <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> gibt es eine kostenlose Alternative zu <em>Microsoft Word</em>. Diese Software verwendet ein eigenes Dateiformat: <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>).</p>
-<p>Beide Programme (<em>Word</em> und <em>Writer</em>) untersützen beide Formate (OOXML und ODT). Im Gegensatz zu <em>Word</em> funktioniert aber <em>Writer</em> auch auf Linux. Hartgesottene Linux-User verwenden aber lieber einfache Textdateien zum Speichern und Bearbeiten ihrer Texte. Warum ist das so?</p>
+<p><strong>Windows- und Mac-User schreiben Texte meistens mit <em>Word</em>. Mit <em>Libre Office Writer</em> gibt es eine kostenlose Alternative zu <em>Word</em>, die auch unter Linux läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum Schreiben ihrer Texte. Warum ist das so?</strong></p>
+<p>Microsofts kostenpflichtige Textverarbeitung <em>Word</em> aus der <em>Office</em>-Suite verwendet als Dateiformat <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>). Die Open-Source-Textverarbeitung <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> verwendet hingegen <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>) als Dateiformat. Beide Programme (<em>Word</em> und <em>Writer</em>) untersützen beide Formate (OOXML und ODT).</p>
+<p>Texteditoren verwenden als Dateiformat einfache Textdateien.</p>
 <h1 id="unterschiede-zwischen-textdateien-und-ooxmlodt">Unterschiede zwischen Textdateien und <em>OOXML/ODT</em></h1>
 <p>OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe von Zeichen. Dadurch ergeben sich einige Unterschiede in der Handhabung von OOXML/ODT-Dateien einerseits und Textdateien andererseits:</p>
 <ol style="list-style-type: decimal">
@@ -122,7 +123,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Wir schliessen den Artikel.</li>
 <li>Wir wiederholen den Vorgang für den nächsten Artikel.</li>
 </ol>
-<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Artikel in Zwischenzeit umgeschrieben wurden.</p>
+<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit verändert wurden.</p>
 <p>Mit Textdateien funktioniert das einfacher. Man verwendet einfach folgende Befehlszeile, die untenstehende Ausgabe ergibt:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r
 
@@ -130,7 +131,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="ex">1739</span> berlinreise.txt
 <span class="ex">1231</span> neues-aquarium.txt
  <span class="ex">893</span> im-stau.txt</code></pre></div>
-<p>Doch was hat das ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:</p>
+<p>Doch was hat das Ganze zu bedeuten? Schauen wir uns die Befehlszeile genauer an:</p>
 <h2 id="der-wc-befehl">Der <code>wc</code>-Befehl</h2>
 <ul>
 <li><code>wc</code><sup><a href="#4">4</a></sup> steht für «word count» und zählt die Wörter in einer Datei.</li>
@@ -148,7 +149,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h2>
 <p>Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge, und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum kommt jetzt <code>sort</code><sup><a href="#5">5</a></sup> zum Zug.</p>
 <ul>
-<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <em>Der Text «fliesst» also wie ein Strom durch die Röhre.</em> (Textstrom)</li>
+<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <strong>Der Text «fliesst» als <em>Textstrom</em> durch die Röhre.</strong></li>
 <li>Das nächste Programm ist <code>sort</code>, das Textzeilen in alphabetisch aufsteigender Reihenfolge sortiert.</li>
 <li>Da wir keine alphabetische, sondern eine numerische Sortierung benötigen («100» wäre gemäss alphabetischer Sortierung kleiner als «9»), geben wir den Parameter <code>-n</code> («numeric») an.</li>
 <li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl am Anfang) sondern absteigend (die grösste Zahl am Anfang) sein, was wir mit dem Parameter <code>-r</code> («reverse») machen.</li>
