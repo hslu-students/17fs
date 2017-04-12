@@ -34,19 +34,18 @@ welche Vorteile bietet ein _Textstrom_?
 
 # Beispiel: Wörter in Artikeln zählen
 
-Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung:
-`.odt`) und einmal im Textformat (Endung: `.txt`). Nun wollen wir herausfinden,
-welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien
-verfahren wir folgendermassen:
+Angenommen wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung
+`.odt`) und einmal im Textformat (Endung `.txt`). Nun wollen wir herausfinden,
+welcher Artikel am meisten Wörter enthält. Mit unseren ODT-Dateien verfahren wir
+folgendermassen:
 
 1. Wir öffnen den ersten Artikel mit _Writer_.
 2. Wir gehen auf das Menü _Tools_ und wählen den Eintrag _Word Count_.
-3. Wir notieren uns den Dateinamen und die Anzahl Wörter dazu.
+3. Wir notieren uns den Dateinamen und die Anzahl der Wörter dazu.
 4. Wir wiederholen den Vorgang für den nächsten Artikel.
 
-Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem
-späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit
-verändert worden sind.
+Dieses Vorgehen ist sehr aufwändig. Zudem muss der Vorgang später wiederholt
+werden, wenn die Artikel in der Zwischenzeit verändert worden sind.
 
 # Der `wc`-Befehl
 
@@ -88,12 +87,12 @@ $ wc -w *.txt | sort -n -r
   als _Textstrom_ durch die Röhre.**
 - Es folgt der `sort`-Aufruf, wodurch Textzeilen in alphabetisch aufsteigender
   Reihenfolge sortiert werden.
-- Da wir keine alphabetische, sondern eine numerische Sortierung benötigen
-  («100» wäre gemäss alphabetischer Sortierung kleiner als «9»), geben wir den
-  Parameter `-n` (für «numeric») an.
+- Da wir keine alphabetische, sondern eine numerische Sortierung brauchen («100»
+  wäre alphabetisch sortiert kleiner als «9»), geben wir den Parameter `-n` (für
+  «numeric») an.
 - Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl zuerst)
   sondern absteigend (die grösste Zahl zuerst) sein, was wir mit dem Parameter
-  `-r` (für «reverse») machen.
+  `-r` (für «reverse») erreichen.
 
 Die Ausgabe sieht nun so aus:
 
@@ -105,13 +104,13 @@ Die Ausgabe sieht nun so aus:
 Der Artikel mit den meisten Wörtern ist `eigenes-bier-brauen.txt`. Für vier
 Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von
 Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber
-dem manuellen Vorgehen mit ODT-Dateien gewaltig. Die Lösung mit den Textdateien
-_skaliert_ wesentlich besser.
+dem manuellen Vorgehen mit ODT-Dateien gewaltig. **Die Lösung mit den
+Textdateien _skaliert_ wesentlich besser.**
 
 # Und jetzt?
 
 Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien,
-einfachen Programmen (`wc` und `sort`) und Textströmen effizienter lösen lässt
+einfachen Programmen (wie `wc` und `sort`) und Textströmen effizienter lösen lässt
 als mit einer Textverarbeitung.
 
 Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den

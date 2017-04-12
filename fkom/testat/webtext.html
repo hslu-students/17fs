@@ -102,7 +102,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Linux und Textdateien</h1>
 <h1 class="subtitle">Effizient arbeiten mit einfachen Mitteln</h1>
 <h2 class="author">Patrick Bucher</h2>
-<h3 class="date">11.04.2017</h3>
+<h3 class="date">12.04.2017</h3>
 </div>
 <p><strong>Windows- und Mac-User schreiben Texte meistens mit <em>Word</em>. Mit <em>Libre Office Writer</em> gibt es eine kostenlose Alternative zu <em>Word</em>, die auch unter Linux läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum Schreiben ihrer Texte. Warum ist das so?</strong></p>
 <p>Microsofts kostenpflichtige Textverarbeitung <em>Word</em> aus der <em>Office</em>-Suite verwendet als Dateiformat <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>). Die Open-Source-Textverarbeitung <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> verwendet hingegen <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>) als Dateiformat. Beide Programme (<em>Word</em> und <em>Writer</em>) unterstützen beide Formate (OOXML und ODT).</p>
@@ -117,14 +117,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Die ersten drei Punkte sprechen klar <em>für</em> den Einsatz von Textdateien. Doch welche Vorteile bietet ein <em>Textstrom</em>?</p>
 <h1 id="beispiel-wörter-in-artikeln-zählen">Beispiel: Wörter in Artikeln zählen</h1>
-<p>Angenommen, wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung: <code>.odt</code>) und einmal im Textformat (Endung: <code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel in Wörtern gemessen der längste ist. Mit unseren ODT-Dateien verfahren wir folgendermassen:</p>
+<p>Angenommen wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung <code>.odt</code>) und einmal im Textformat (Endung <code>.txt</code>). Nun wollen wir herausfinden, welcher Artikel am meisten Wörter enthält. Mit unseren ODT-Dateien verfahren wir folgendermassen:</p>
 <ol style="list-style-type: decimal">
 <li>Wir öffnen den ersten Artikel mit <em>Writer</em>.</li>
 <li>Wir gehen auf das Menü <em>Tools</em> und wählen den Eintrag <em>Word Count</em>.</li>
-<li>Wir notieren uns den Dateinamen und die Anzahl Wörter dazu.</li>
+<li>Wir notieren uns den Dateinamen und die Anzahl der Wörter dazu.</li>
 <li>Wir wiederholen den Vorgang für den nächsten Artikel.</li>
 </ol>
-<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der ganze Vorgang zu einem späteren Zeitpunkt wiederholt werden, falls die Artikel in der Zwischenzeit verändert worden sind.</p>
+<p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der Vorgang später wiederholt werden, wenn die Artikel in der Zwischenzeit verändert worden sind.</p>
 <h1 id="der-wc-befehl">Der <code>wc</code>-Befehl</h1>
 <p>Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein <em>Terminal</em> und verwenden den <code>wc</code>-Befehl<sup><a href="#4">4</a></sup>:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt</code></pre></div>
@@ -144,17 +144,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <strong>Der Text «fliesst» als <em>Textstrom</em> durch die Röhre.</strong></li>
 <li>Es folgt der <code>sort</code>-Aufruf, wodurch Textzeilen in alphabetisch aufsteigender Reihenfolge sortiert werden.</li>
-<li>Da wir keine alphabetische, sondern eine numerische Sortierung benötigen («100» wäre gemäss alphabetischer Sortierung kleiner als «9»), geben wir den Parameter <code>-n</code> (für «numeric») an.</li>
-<li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl zuerst) sondern absteigend (die grösste Zahl zuerst) sein, was wir mit dem Parameter <code>-r</code> (für «reverse») machen.</li>
+<li>Da wir keine alphabetische, sondern eine numerische Sortierung brauchen («100» wäre alphabetisch sortiert kleiner als «9»), geben wir den Parameter <code>-n</code> (für «numeric») an.</li>
+<li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl zuerst) sondern absteigend (die grösste Zahl zuerst) sein, was wir mit dem Parameter <code>-r</code> (für «reverse») erreichen.</li>
 </ul>
 <p>Die Ausgabe sieht nun so aus:</p>
 <pre><code>2220 eigenes-bier-brauen.txt
 1739 berlinreise.txt
 1231 neues-aquarium.txt
  893 im-stau.txt</code></pre>
-<p>Der Artikel mit den meisten Wörtern ist <code>eigenes-bier-brauen.txt</code>. Für vier Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit ODT-Dateien gewaltig. Die Lösung mit den Textdateien <em>skaliert</em> wesentlich besser.</p>
+<p>Der Artikel mit den meisten Wörtern ist <code>eigenes-bier-brauen.txt</code>. Für vier Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit ODT-Dateien gewaltig. <strong>Die Lösung mit den Textdateien <em>skaliert</em> wesentlich besser.</strong></p>
 <h1 id="und-jetzt">Und jetzt?</h1>
-<p>Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien, einfachen Programmen (<code>wc</code> und <code>sort</code>) und Textströmen effizienter lösen lässt als mit einer Textverarbeitung.</p>
+<p>Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien, einfachen Programmen (wie <code>wc</code> und <code>sort</code>) und Textströmen effizienter lösen lässt als mit einer Textverarbeitung.</p>
 <p>Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den Vortrag <em>Power Use of UNIX</em><sup><a href="#6">6</a></sup> von Dan North.</p>
 <h1 id="quellen">Quellen</h1>
 <ol style="list-style-type: decimal">
