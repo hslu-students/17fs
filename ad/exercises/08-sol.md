@@ -44,3 +44,29 @@ Aus der JavaDoc:
 ## f)
 
 Welches UML-Klassendiagramm von d?
+
+# 2 Entscheidungsbaum
+
+## a)
+
+![Entscheidungsbaum](08-tree.png)
+
+# 3 Aus instabil mach stabil
+
+TODO
+
+# 4 Direktes Einfügen
+
+TODO
+
+# 5 Direktes Auswählen
+
+TODO
+
+# 6 Direktes Austauschen
+
+TODO
+
+# 7 Optional: Shellsort
+
+TODO
