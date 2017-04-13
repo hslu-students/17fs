@@ -51,7 +51,29 @@ Welches UML-Klassendiagramm von d?
 
 ![Entscheidungsbaum](08-tree.png)
 
+## b)
+
+Anzahl Blätter: `B = n! = 3! = 6`
+Höhe: `h >= log2(6)+1 = 2.58 + 1 = 3.58`
+
+Der Baum hat die Höhe `4 >= 3.58`. Die Formel stimmt für diesen Baum.
+
+## c)
+
+Es sind mindestens drei Vergleiche notwendig, um _jede_ Ausgangssituation
+differenzieren zu können.
+
 # 3 Aus instabil mach stabil
+
+## a)
+
+Mehrfach auftretende Werte müssten in einem Vorlauf indiziert werden. Nach der
+Abarbeitung dieses Algorithmus müssten dann die indizierten Werte noch einmal
+nachsortiert werden.
+
+TODO: genauer umschreiben
+
+## b)
 
 TODO
 
