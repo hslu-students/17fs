@@ -102,17 +102,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Linux und Textdateien</h1>
 <h1 class="subtitle">Effizient arbeiten mit einfachen Mitteln</h1>
 <h2 class="author">Patrick Bucher</h2>
-<h3 class="date">12.04.2017</h3>
+<h3 class="date">13.04.2017</h3>
 </div>
-<p><strong>Windows- und Mac-User schreiben Texte meistens mit <em>Word</em>. Mit <em>Libre Office Writer</em> gibt es eine kostenlose Alternative zu <em>Word</em>, die auch unter Linux läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum Schreiben ihrer Texte. Warum ist das so?</strong></p>
-<p>Microsofts kostenpflichtige Textverarbeitung <em>Word</em> aus der <em>Office</em>-Suite verwendet als Dateiformat <em>Office Open XML</em> (OOXML<sup><a href="#1">1</a></sup>). Die Open-Source-Textverarbeitung <em>Libre Office Writer</em><sup><a href="#2">2</a></sup> verwendet hingegen <em>OpenDocument Text</em> (ODT<sup><a href="#3">3</a></sup>) als Dateiformat. Beide Programme (<em>Word</em> und <em>Writer</em>) unterstützen beide Formate (OOXML und ODT).</p>
+<p><strong>Windows- und Mac-User schreiben Texte meistens mit <em>Word</em>. Mit <em>LibreOffice Writer</em> gibt es eine kostenlose Alternative zu <em>Word</em>, die auch unter Linux läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum Schreiben ihrer Texte. Warum ist das so?</strong></p>
+<p>Microsofts kostenpflichtige Textverarbeitung <em>Word</em> aus der <em>Office</em>-Suite verwendet als Dateiformat <a href="http://officeopenxml.com/"><em>Office Open XML</em></a> (OOXML). Die Open-Source-Textverarbeitung <a href="https://www.libreoffice.org/discover/writer/"><em>LibreOffice Writer</em></a> verwendet hingegen <a href="http://opendocumentformat.org/"><em>OpenDocument Text</em></a> (ODT) als Dateiformat. Beide Programme (<em>Word</em> und <em>Writer</em>) unterstützen beide Formate (OOXML und ODT).</p>
 <p>Texteditoren verwenden als Dateiformat einfache Textdateien.</p>
 <h1 id="unterschiede-zwischen-textdateien-und-ooxmlodt">Unterschiede zwischen Textdateien und <em>OOXML/ODT</em></h1>
 <p>OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe von Zeichen. Dadurch ergeben sich einige Unterschiede in der Handhabung von OOXML/ODT-Dateien einerseits und Textdateien andererseits:</p>
 <ol style="list-style-type: decimal">
 <li>OOXML/ODT-Dateien lassen sich nur mit <em>Word</em> und <em>Writer</em> zuverlässig bearbeiten. Textdateien lassen sich mit einem beliebigen Texteditor bearbeiten.</li>
 <li>OOXML/ODT-Dateien enthalten viele Zusatzinformationen für Formatierung, Struktur und zusätzliche Einstellungen. Textdateien haben diesen <em>Overhead</em> nicht, da sie nur die eigentlichen Nutzdaten enthalten.</li>
-<li>OOXML/ODT-Dateien können nur so lange gelesen werden, wie die enstprechenden Programme dazu verfügbar sind. Textdateien, die nur aus einer Reihe von Zeichen bestehen, können immer gelesen werden.</li>
+<li>OOXML/ODT-Dateien können nur so lange gelesen werden, wie die entsprechenden Programme dazu verfügbar sind. Textdateien, die nur aus einer Reihe von Zeichen bestehen, können immer gelesen werden.</li>
 <li>OOXML/ODT-Dateien lassen sich nur im «WYSIWYG»-Modus («what you see is what you get») bearbeiten. Textdateien lassen sich auch als <em>Textstrom</em> bearbeiten.</li>
 </ol>
 <p>Die ersten drei Punkte sprechen klar <em>für</em> den Einsatz von Textdateien. Doch welche Vorteile bietet ein <em>Textstrom</em>?</p>
@@ -126,7 +126,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Dieses Vorgehen ist sehr aufwändig. Zudem muss der Vorgang später wiederholt werden, wenn die Artikel in der Zwischenzeit verändert worden sind.</p>
 <h1 id="der-wc-befehl">Der <code>wc</code>-Befehl</h1>
-<p>Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein <em>Terminal</em> und verwenden den <code>wc</code>-Befehl<sup><a href="#4">4</a></sup>:</p>
+<p>Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein <em>Terminal</em> und verwenden den <a href="http://pubs.opengroup.org/onlinepubs/009604499/utilities/wc.html"><code>wc</code>-Befehl</a>:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt</code></pre></div>
 <ul>
 <li><code>wc</code> steht für «word count» und zählt die Wörter in einer Datei.</li>
@@ -139,7 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
  893 im-stau.txt
 1231 neues-aquarium.txt</code></pre>
 <h1 id="die-ausgabe-an-sort-weiterleiten">Die Ausgabe an <code>sort</code> weiterleiten</h1>
-<p>Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge – und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich den <code>sort</code>-Befehl<sup><a href="#5">5</a></sup>.</p>
+<p>Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge – und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich den <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html"><code>sort</code>-Befehl</a>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r</code></pre></div>
 <ul>
 <li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <strong>Der Text «fliesst» als <em>Textstrom</em> durch die Röhre.</strong></li>
@@ -155,15 +155,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Der Artikel mit den meisten Wörtern ist <code>eigenes-bier-brauen.txt</code>. Für vier Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit ODT-Dateien gewaltig. <strong>Die Lösung mit den Textdateien <em>skaliert</em> wesentlich besser.</strong></p>
 <h1 id="und-jetzt">Und jetzt?</h1>
 <p>Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien, einfachen Programmen (wie <code>wc</code> und <code>sort</code>) und Textströmen effizienter lösen lässt als mit einer Textverarbeitung.</p>
-<p>Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den Vortrag <em>Power Use of UNIX</em><sup><a href="#6">6</a></sup> von Dan North.</p>
-<h1 id="quellen">Quellen</h1>
-<ol style="list-style-type: decimal">
-<li><span id="1"><a href="http://officeopenxml.com/">Office Open XML</a></span></li>
-<li><span id="2"><a href="https://www.libreoffice.org/discover/writer/">LibreOffice Writer</a></span></li>
-<li><span id="3"><a href="http://opendocumentformat.org/">Open Document Format</a></span></li>
-<li><span id="4"><a href="http://pubs.opengroup.org/onlinepubs/009604499/utilities/wc.html">Der <code>wc</code>-Befehl</a></span></li>
-<li><span id="5"><a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html">Der <code>sort</code>-Befehl</a></span></li>
-<li><span id="6"><a href="https://www.youtube.com/watch?v=7uwW20odwEk">Power Use of Unix</a></span></li>
-</ol>
+<p>Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den Vortrag <a href="https://www.youtube.com/watch?v=7uwW20odwEk"><em>Power Use of UNIX</em></a> von Dan North.</p>
 </body>
 </html>

@@ -1,13 +1,15 @@
-**Windows- und Mac-User schreiben Texte meistens mit _Word_. Mit _Libre Office
+**Windows- und Mac-User schreiben Texte meistens mit _Word_. Mit _LibreOffice
 Writer_ gibt es eine kostenlose Alternative zu _Word_, die auch unter Linux
 läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum
 Schreiben ihrer Texte. Warum ist das so?**
 
 Microsofts kostenpflichtige Textverarbeitung _Word_ aus der _Office_-Suite
-verwendet als Dateiformat _Office Open XML_ (OOXML<sup>[1](#1)</sup>). Die
-Open-Source-Textverarbeitung _Libre Office Writer_<sup>[2](#2)</sup> verwendet
-hingegen _OpenDocument Text_ (ODT<sup>[3](#3)</sup>) als Dateiformat. Beide
-Programme (_Word_ und _Writer_) unterstützen beide Formate (OOXML und ODT).
+verwendet als Dateiformat [_Office Open XML_](http://officeopenxml.com/)
+(OOXML). Die Open-Source-Textverarbeitung [_LibreOffice
+Writer_](https://www.libreoffice.org/discover/writer/) verwendet hingegen
+[_OpenDocument Text_](http://opendocumentformat.org/) (ODT) als Dateiformat.
+Beide Programme (_Word_ und _Writer_) unterstützen beide Formate (OOXML und
+ODT).
 
 Texteditoren verwenden als Dateiformat einfache Textdateien.
 
@@ -23,7 +25,7 @@ bearbeiten. Textdateien lassen sich mit einem beliebigen Texteditor bearbeiten.
 2. OOXML/ODT-Dateien enthalten viele Zusatzinformationen für Formatierung,
 Struktur und zusätzliche Einstellungen. Textdateien haben diesen _Overhead_
 nicht, da sie nur die eigentlichen Nutzdaten enthalten.
-3. OOXML/ODT-Dateien können nur so lange gelesen werden, wie die enstprechenden
+3. OOXML/ODT-Dateien können nur so lange gelesen werden, wie die entsprechenden
 Programme dazu verfügbar sind. Textdateien, die nur aus einer Reihe von Zeichen
 bestehen, können immer gelesen werden.
 4. OOXML/ODT-Dateien lassen sich nur im «WYSIWYG»-Modus («what you see is what
@@ -50,7 +52,8 @@ werden, wenn die Artikel in der Zwischenzeit verändert worden sind.
 # Der `wc`-Befehl
 
 Mit Textdateien sieht das Vorgehen anders aus. Wir öffnen ein _Terminal_ und
-verwenden den `wc`-Befehl<sup>[4](#4)</sup>:
+verwenden den
+[`wc`-Befehl](http://pubs.opengroup.org/onlinepubs/009604499/utilities/wc.html):
 
 ```bash
 $ wc -w *.txt
@@ -74,8 +77,8 @@ Dadurch erhalten wir die folgende Ausgabe:
 Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht
 richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster `*.txt`
 erhält `wc` die Dateien in alphabetischer Reihenfolge – und gibt sie auch in
-alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich
-den `sort`-Befehl<sup>[5](#5)</sup>.
+alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich den
+[`sort`-Befehl](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html).
 
 ```bash
 $ wc -w *.txt | sort -n -r
@@ -114,13 +117,5 @@ einfachen Programmen (wie `wc` und `sort`) und Textströmen effizienter lösen l
 als mit einer Textverarbeitung.
 
 Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den
-Vortrag _Power Use of UNIX_<sup>[6](#6)</sup> von Dan North.
-
-# Quellen
-
-1. <span id="1">[Office Open XML](http://officeopenxml.com/)</span>
-2. <span id="2">[LibreOffice Writer](https://www.libreoffice.org/discover/writer/)</span>
-3. <span id="3">[Open Document Format](http://opendocumentformat.org/)</span>
-4. <span id="4">[Der `wc`-Befehl](http://pubs.opengroup.org/onlinepubs/009604499/utilities/wc.html)</span>
-5. <span id="5">[Der `sort`-Befehl](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html)</span>
-6. <span id="6">[Power Use of Unix](https://www.youtube.com/watch?v=7uwW20odwEk)</span>
+Vortrag [_Power Use of UNIX_](https://www.youtube.com/watch?v=7uwW20odwEk) von
+Dan North.
