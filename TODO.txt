@@ -2,7 +2,7 @@ TODO
 ----
 
 + 2017-04-18    AD      Aufgaben Woche 8
-! 2017-04-XX    DMATH   Aufgaben zu Rekursionsbeziehungen
-! SW13          ISF     DRM-Vortrag (TODO: planen!)
+! 2017-04-27    DMATH   Aufgaben zu "Advanced Counting"
+! SW13          ISF     DRM-Vortrag über _Encrypted Media Extension_
 
 Symbole: ! (testatpflichtig), + (wichtig), = (normal), - (optional)
