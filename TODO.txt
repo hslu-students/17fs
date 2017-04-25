@@ -1,11 +1,11 @@
 TODO
 ----
 
-+ 2017-04-18    AD      Aufgaben Woche 8
 - 2017-04-28    ISF     Aufgaben (siehe Folie 3)
-= 2017-05-01    ITEO    Kapitel 4 lesen
+! 2017-04-02    AD      Aufgaben Woche 9 (präsentieren)
+= 2017-05-01    ITEO    Kapitel 4 (teilweise) lesen
+! 2017-05-01    ITEO    SLA & Budget: abgeben
 ! 2017-05-04    DMATH   Aufgaben
 ! SW13          ISF     DRM-Vortrag über _Encrypted Media Extension_
-
 
 Symbole: ! (testatpflichtig), + (wichtig), = (normal), - (optional)
