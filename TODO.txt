@@ -2,7 +2,10 @@ TODO
 ----
 
 + 2017-04-18    AD      Aufgaben Woche 8
-! 2017-04-27    DMATH   Aufgaben zu "Advanced Counting"
+- 2017-04-28    ISF     Aufgaben (siehe Folie 3)
+= 2017-05-01    ITEO    Kapitel 4 lesen
+! 2017-05-04    DMATH   Aufgaben
 ! SW13          ISF     DRM-Vortrag über _Encrypted Media Extension_
+
 
 Symbole: ! (testatpflichtig), + (wichtig), = (normal), - (optional)
