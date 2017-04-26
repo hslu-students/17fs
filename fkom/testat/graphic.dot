@@ -7,5 +7,5 @@ digraph T {
     "sort -n -r" [shape=box];
     "*.txt" -> "wc -w";
     "wc -w" -> "sort -n -r" [label="Pipe"];
-    "sort -n -r" -> "[...]";
+    "sort -n -r" -> "[Ausgabe]";
 }

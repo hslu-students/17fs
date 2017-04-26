@@ -11,3 +11,16 @@ pandoc -s -S webtext.md \
     -V subtitle="$subtitle" \
     -V lang=de \
     -o webtext.html
+
+pandoc -S -s \
+    --variable title="$title" \
+    --variable subtitle="$subtitle" \
+    --variable author="Patrick Bucher" \
+    --variable date=`date +%d.%m.%Y` \
+    --variable papersize=a4 \
+    --variable documentclass=scrartcl \
+    --variable classoption=11pt \
+    --variable fontfamily='times' \
+    --variable lang=de \
+    --variable urlcolor=blue \
+    webtext.md -o webtext.pdf

@@ -106,14 +106,24 @@ Die Ausgabe sieht nun so aus:
 
 Der Artikel mit den meisten Wörtern ist `eigenes-bier-brauen.txt`. Für vier
 Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von
-Dateien, wäre das Vorgehen genau gleich – doch die Zeitersparnis gegenüber
-dem manuellen Vorgehen mit ODT-Dateien gewaltig. **Die Lösung mit den
-Textdateien _skaliert_ wesentlich besser.**
+Dateien, müssten wir zwar die Ausgabe kürzen, ansonsten wäre aber das Vorgehen
+genau gleich. Doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit
+ODT-Dateien gewaltig. **Die Lösung mit den Textdateien _skaliert_ wesentlich
+besser.**
+
+Das ist der Grund, warum viele Linux-User Textdateien und die Kommandozeile mit
+ihren Befehlen grossen Softwarelösungen gegenüber bevorzugen. **Ein Problem muss
+nur einmal gelöst werden. Die Lösung kann immer wieder auf ähnliche Probleme
+angewandt werden.**
+
+Abbildung 1 veranschaulicht die Befehlszeile und den Ablauf:
+
+![Die Befehlszeile veranschaulicht](graphic.png)
 
 # Und jetzt?
 
 Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien,
-einfachen Programmen (wie `wc` und `sort`) und Textströmen effizienter lösen lässt
+einfachen Befehlen (wie `wc` und `sort`) und Textströmen effizienter lösen lässt
 als mit einer Textverarbeitung.
 
 Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den
