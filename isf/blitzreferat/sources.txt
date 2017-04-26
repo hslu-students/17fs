@@ -1,1 +1,0 @@
-eme-overview.svg: https://www.w3.org/TR/encrypted-media/stack_overview.svg
