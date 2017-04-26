@@ -140,4 +140,84 @@ Das Laufzeitverhalten scheint eher `O(n²)` zu entsprechen (eine Verdoppelung de
 Elemente führt zu einer Verfierfachung der Laufzeit; eine Verzehnfachung der
 Elemente erhöht die Laufzeit ca. um Faktor 90).
 
+# 3 Quick-Insertion-Sort
+
+## a)
+
+Zur eigentlichen Methode, die zusätzlich einen Parameter `m` hat (Schwellenwert,
+unter dem der Insertion-Sort verwendet werden soll), implementiere ich wiederum
+eine Hilfsmethode.
+
+```java
+public static void quickInsertionSort(Character[] data, int m) {
+    quickInsertionSort(data, 0, data.length - 1, m);
+}
+
+static void quickInsertionSort(Character[] data, int l, int r, int m) {
+    // bestehender Algorithmus
+    // ...
+    // veränderte Rekursionsanweisung
+    if (left < up - 1) {
+        int from = left;
+        int to = up - 1;
+        if (to - from > m) {
+            quickInsertionSort(data, from, to, m);
+        } else {
+            SimpleSorting.insertionSort(data, from, to);
+        }
+    }
+    if (right > up + 1) {
+        int from = up + 1;
+        int to = right;
+        if (to - from > m) {
+            quickInsertionSort(data, from, to, m);
+        } else {
+            SimpleSorting.insertionSort(data, from, to);
+        }
+    }
+}
+```
+
+## b)
+
+Ich sortiere eine Million Zeichen mit verschiedenen `m`-Werten. Dabei erhalte
+ich folgende Laufzeiten:
+
+    m     Zeit (ms)
+-----    ----------
+    5       9420
+   10       9278
+   15       9259
+   20       9361
+   25       9269
+   30       9258
+   40       9267
+   50       9263
+   75       9267
+  100       9289
+  125       9265
+  150       9260
+  200       9300
+  250       9259
+  500       9255
+ 1000       9410
+
+Bei einer Datenmenge von einer Million Zeichen scheinen sinnvolle `m`-Werte von
+10 bis 500 zu liegen.
+
+## c)
+
+Mit `m = 25` kann ich beim Quick-Insertion-Sort (QIS) gegenüber dem Quick-Sort
+(QS) keinen Laufzeitvorteil feststellen:
+
+       n    QS (ms)   QIS (ms)
+-------- ---------- ----------
+    1000          2          2
+    5000          6          6
+   10000          4         15
+   50000         35         33
+  100000        134        126
+  500000       3080       3043
+ 1000000      11866      12101
+ 2000000      47465      48360
 
