@@ -6,6 +6,7 @@ TODO
 = 2017-05-01    ITEO    Kapitel 4 (teilweise) lesen (siehe Folien)
 ! 2017-05-01    ITEO    SLA & Budget: abgeben
 ! 2017-05-04    DMATH   Aufgaben
+! 2017-05-04    FKOM    Webtext abgeben
 ! 2017-05-24    ISF     Paper zum DRM-Vortrag abgeben
 ! 2017-05-26    ISF     DRM-Vortrag über _Encrypted Media Extension_ halten
 

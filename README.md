@@ -39,4 +39,3 @@ stimmt die alphabetische Ordnung der Kürzel mit meinen Prioritäten perfekt
 - IT-System Engineering & Operation (iteo): ergänzende Zusammenfassung (der
   ersten Kapitel), evtl. Aufgaben
 - Modellierung Grundlagen (mod): evtl. Aufgaben
-- Project Management Basics (pmb): evtl. Aufgaben
