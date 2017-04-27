@@ -87,7 +87,8 @@ $ wc -w *.txt | sort -n -r
 - Zwischen den Befehlen steht das Zeichen `|`. Das ist eine sogenannte _Pipe_,
   zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen
   und leitet sie als Eingabe zum nächsten Programm weiter. **Der Text «fliesst»
-  als _Textstrom_ durch die Röhre.**
+  als _Textstrom_ durch die Röhre.** Der Vorteil eines Textstroms ist, dass sich
+  damit beliebige Befehle kombinieren lassen.
 - Es folgt der `sort`-Aufruf, wodurch Textzeilen in alphabetisch aufsteigender
   Reihenfolge sortiert werden.
 - Da wir keine alphabetische, sondern eine numerische Sortierung brauchen («100»
@@ -111,10 +112,10 @@ genau gleich. Doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit
 ODT-Dateien gewaltig. **Die Lösung mit den Textdateien _skaliert_ wesentlich
 besser.**
 
-Das ist der Grund, warum viele Linux-User Textdateien und die Kommandozeile mit
-ihren Befehlen grossen Softwarelösungen gegenüber bevorzugen. **Ein Problem muss
-nur einmal gelöst werden. Die Lösung kann immer wieder auf ähnliche Probleme
-angewandt werden.**
+Das ist der Grund, warum viele Linux-User lieber einen Texteditor, Textdateien
+und die Kommandozeile mit ihren Befehlen verwenden als eine Textverarbeitung.
+**Ein Problem muss nur einmal gelöst werden. Die Lösung kann immer wieder auf
+ähnliche Probleme angewandt werden.**
 
 Abbildung 1 veranschaulicht die Befehlszeile und den Ablauf:
 

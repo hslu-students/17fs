@@ -102,7 +102,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 class="title">Linux und Textdateien</h1>
 <h1 class="subtitle">Effizient arbeiten mit einfachen Mitteln</h1>
 <h2 class="author">Patrick Bucher</h2>
-<h3 class="date">26.04.2017</h3>
+<h3 class="date">27.04.2017</h3>
 </div>
 <p><strong>Windows- und Mac-User schreiben Texte meistens mit <em>Word</em>. Mit <em>LibreOffice Writer</em> gibt es eine kostenlose Alternative zu <em>Word</em>, die auch unter Linux läuft. Hartgesottene Linux-User verwenden aber lieber einen Texteditor zum Schreiben ihrer Texte. Warum ist das so?</strong></p>
 <p>Microsofts kostenpflichtige Textverarbeitung <em>Word</em> aus der <em>Office</em>-Suite verwendet als Dateiformat <a href="http://officeopenxml.com/"><em>Office Open XML</em></a> (OOXML). Die Open-Source-Textverarbeitung <a href="https://www.libreoffice.org/discover/writer/"><em>LibreOffice Writer</em></a> verwendet hingegen <a href="http://opendocumentformat.org/"><em>OpenDocument Text</em></a> (ODT) als Dateiformat. Beide Programme (<em>Word</em> und <em>Writer</em>) unterstützen beide Formate (OOXML und ODT).</p>
@@ -142,7 +142,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Wir sehen die Anzahl Wörter in der ersten Spalte, doch die Zeilen sind nicht richtig, d.h. nach der Anzahl der Wörter sortiert. Über das Muster <code>*.txt</code> erhält <code>wc</code> die Dateien in alphabetischer Reihenfolge – und gibt sie auch in alphabetischer Reihenfolge wieder aus. Darum verwenden wir zusätzlich den <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sort.html"><code>sort</code>-Befehl</a>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">wc</span> -w *.txt <span class="kw">|</span> <span class="fu">sort</span> -n -r</code></pre></div>
 <ul>
-<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <strong>Der Text «fliesst» als <em>Textstrom</em> durch die Röhre.</strong></li>
+<li>Zwischen den Befehlen steht das Zeichen <code>|</code>. Das ist eine sogenannte <em>Pipe</em>, zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen und leitet sie als Eingabe zum nächsten Programm weiter. <strong>Der Text «fliesst» als <em>Textstrom</em> durch die Röhre.</strong> Der Vorteil eines Textstroms ist, dass sich damit beliebige Befehle kombinieren lassen.</li>
 <li>Es folgt der <code>sort</code>-Aufruf, wodurch Textzeilen in alphabetisch aufsteigender Reihenfolge sortiert werden.</li>
 <li>Da wir keine alphabetische, sondern eine numerische Sortierung brauchen («100» wäre alphabetisch sortiert kleiner als «9»), geben wir den Parameter <code>-n</code> (für «numeric») an.</li>
 <li>Zudem soll die Reihenfolge nicht aufsteigend (die kleinste Zahl zuerst) sondern absteigend (die grösste Zahl zuerst) sein, was wir mit dem Parameter <code>-r</code> (für «reverse») erreichen.</li>
@@ -153,7 +153,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 1231 neues-aquarium.txt
  893 im-stau.txt</code></pre>
 <p>Der Artikel mit den meisten Wörtern ist <code>eigenes-bier-brauen.txt</code>. Für vier Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von Dateien, müssten wir zwar die Ausgabe kürzen, ansonsten wäre aber das Vorgehen genau gleich. Doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit ODT-Dateien gewaltig. <strong>Die Lösung mit den Textdateien <em>skaliert</em> wesentlich besser.</strong></p>
-<p>Das ist der Grund, warum viele Linux-User Textdateien und die Kommandozeile mit ihren Befehlen grossen Softwarelösungen gegenüber bevorzugen. <strong>Ein Problem muss nur einmal gelöst werden. Die Lösung kann immer wieder auf ähnliche Probleme angewandt werden.</strong></p>
+<p>Das ist der Grund, warum viele Linux-User lieber einen Texteditor, Textdateien und die Kommandozeile mit ihren Befehlen verwenden als eine Textverarbeitung. <strong>Ein Problem muss nur einmal gelöst werden. Die Lösung kann immer wieder auf ähnliche Probleme angewandt werden.</strong></p>
 <p>Abbildung 1 veranschaulicht die Befehlszeile und den Ablauf:</p>
 <div class="figure">
 <img src="graphic.png" alt="Die Befehlszeile veranschaulicht" />
