@@ -388,17 +388,19 @@ public static <T extends Comparable<T>> void heapSort(T items[]) {
 }
 ```
 
-## f)
-
--
-
 # 5 Übersicht Sortieralgorithmen
 
-## a)
+## a) und b)
 
-## b)
-
-siehe a)
+Algorithmus                          O avg        O worst     O best         stabil  parallel  Merkmale
+------------                         -----------  ----------  -------------  ------- --------- ---------
+Direktes Einfügen (Insertion Sort)   O(n²)        O(n²)       O(n)           ja      nein      sortierter/unsortierter Teil; benachbartes Vertauschen
+Direktes Auswählen (Selection Sort)  O(n²)        O(n²)       O(n²)          nein    nein      sortierter/unsortierter Teil; Vertauschen über weite Entfernungen
+Direktes Austauschen (Bubble Sort)   O(n²)        O(n²)       O(n)           ja      nein      Vergleich von jedem Element mit jedem
+Shellsort                            O(n*log²n)   O(n*log²n)  O(n*log n)     nein    nein      Insertion Sort mit verschiedenen Schrittweiten
+Quicksort (Arrays.sort())            O(n*log n)   O(n²)       O(n*log n)     ja      ja        Divide & Conquer; Sortierung um Teilerelement
+Mergesort (Collections.sort())       O(n*log n)   O(n*log n)  O(n*log n)     nein    ja        Divide & Conquer; Reissverschlussprinzip
+Heapsort                             O(n*log n)   O(n*log n)  O(n*log n)     ja      nein      basiert auf Heap-Datenstruktur
 
 # 6  Optional: Quicksort ‒ generisch programmiert
 
@@ -409,8 +411,7 @@ public static <T extends Comparable<T>> void quickSort(T[] data) {
     quickSort(data, 0, data.length - 1);
 }
 
-public static <T extends Comparable<T>> void quickSort(T[] data,
-    int left, int right) {
+public static <T extends Comparable<T>> void quickSort(T[] data, int left, int right) {
     if (right - left == 0) {
         return;
     }
@@ -467,9 +468,7 @@ Dieser Testfall testet Heapsort, Quicksort und Median-of-Three-Quicksort:
 ```java
 public class GenericSortBenchmark {
 
-    private static final int TEST_SIZES[] = new int[] {
-        100_000, 200_000, 500_000,
-        1_000_000, 2_000_000, 5_000_000, };
+    private static final int TEST_SIZES[] = new int[] { 100_000, 200_000, 500_000, 1_000_000, 2_000_000, 5_000_000, };
 
     private Random random;
 
@@ -502,8 +501,7 @@ public class GenericSortBenchmark {
             long qEndMo3 = System.currentTimeMillis();
             Assert.assertTrue(sorted(qItemsMo3));
 
-            System.out.printf("%8d %5d %5d %7d\n", testSize,
-                hEnd - hStart, qEnd - qStart, qEndMo3 - qStartMo3);
+            System.out.printf("%8d %5d %5d %7d\n", testSize, hEnd - hStart, qEnd - qStart, qEndMo3 - qStartMo3);
         }
     }
 
