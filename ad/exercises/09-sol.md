@@ -223,87 +223,75 @@ Mit `m = 25` kann ich beim Quick-Insertion-Sort (QIS) gegenüber dem Quick-Sort
 
 # 4 Datenstruktur Heap
 
+Ich habe den Heap gleich generisch und mit dynamischer Grösse implementiert.
+
 ## a)
 
 ![Heap nach dem Auffüllen und nach dem Entfernen](09-heaps.png)
 
 ## b)
 
+Das Interface `GenericHeap`:
+
 ```java
-public interface IntegerHeap {
-    public int getMax();
-    public void insert(int number);
+public interface GenericHeap<T extends Comparable<T>> {
+    public T getMax();
+    public void insert(T element);
     public int getSize();
-    public boolean isFull();
 }
 ```
 ## c)
 
-Die Klasse `FixedSizeHeap`:
+Die Klasse `Heap`:
 
 ```java
-public class FixedSizeHeap implements IntegerHeap {
+package ch.hslu.ad.sw09.generic;
 
-    private final int capacity;
+import java.util.ArrayList;
+import java.util.List;
 
-    private final int heap[];
+public class Heap<T extends Comparable<T>> implements GenericHeap<T> {
 
-    private int size = 0;
-
-    public FixedSizeHeap(int capacity) {
-        this.capacity = capacity;
-        this.heap = new int[capacity];
-    }
+    private final List<T> heap = new ArrayList<>();
 
     @Override
-    public int getMax() {
-        if (size <= 0) {
+    public T getMax() {
+        if (heap.isEmpty()) {
             throw new IllegalStateException("Heap is empty.");
         }
-        int max = heap[0];
-        size--;
-        heap[0] = heap[size];
-        heap[size] = -1;
+        T max = heap.get(0);
+        heap.set(0, heap.get(heap.size() - 1));
+        heap.remove(heap.size() - 1);
         sink();
         return max;
     }
 
     @Override
-    public void insert(int number) {
-        if (size == capacity) {
-            throw new IllegalStateException("Heap is full.");
-        }
-        heap[size] = number;
-        size++;
-        int newElementIndex = size - 1;
+    public void insert(T element) {
+        heap.add(element);
+        int newElementIndex = heap.size() - 1;
         raise(newElementIndex);
     }
 
+    @Override
     public int getSize() {
-        return size;
-    }
-
-    public boolean isFull() {
-        return size == capacity;
-    }
-
-    public int[] getRawHeap() {
-        return heap;
+        return heap.size();
     }
 
     private void sink() {
+        final int size = heap.size();
         boolean sunk = false;
-        int l = 1, c = 0, r = 2;
-        while (!sunk) {
-            if (heap[c] < heap[l] || heap[c] < heap[r]) {
-                int biggerChildIndex = heap[l] > heap[r] ? l : r;
-                swap(c, biggerChildIndex);
-                c = biggerChildIndex;
-                l = (2 * c) + 1;
-                r = 2 * (c + 1);
-                if (l > size - 1 && r > size - 1) {
-                    sunk = true;
-                }
+        int l = 1, f = 0, r = 2;
+        while (!sunk && (l < size || r < size)) {
+            T father = heap.get(f);
+            T left = l < size ? heap.get(l) : father;
+            T right = r < size ? heap.get(r) : father;
+            if (father.compareTo(left) < 0 || father.compareTo(right) < 0) {
+                int biggerChildIndex = left.compareTo(right) > 0 ? l : r;
+                swap(f, biggerChildIndex);
+                f = biggerChildIndex;
+                l = (2 * f) + 1;
+                r = 2 * (f + 1);
             } else {
                 sunk = true;
             }
@@ -314,7 +302,7 @@ public class FixedSizeHeap implements IntegerHeap {
         boolean risen = false;
         while (!risen) {
             int father = (i - 1) / 2;
-            if (heap[i] > heap[father]) {
+            if (heap.get(i).compareTo(heap.get(father)) > 0) {
                 swap(i, father);
                 i = father;
                 if (i == 0) {
@@ -327,117 +315,75 @@ public class FixedSizeHeap implements IntegerHeap {
     }
 
     private void swap(int a, int b) {
-        int tmp = heap[a];
-        heap[a] = heap[b];
-        heap[b] = tmp;
+        T tmp = heap.get(a);
+        heap.set(a, heap.get(b));
+        heap.set(b, tmp);
     }
 }
 ```
 
 ## d)
 
-Aus der Testklasse `FixedSizeHeapTest`:
+Aus der Testklasse `GenericSortTest`:
 
 ```java
-@Test
-public void testInitialization() {
-    FixedSizeHeap heap = new FixedSizeHeap(10);
-    Assert.assertFalse(heap.isFull());
-    Assert.assertEquals(0, heap.getSize());
-}
+private static final int TEST_SIZE = 100;
+private static final int STRING_LENGTH = 30;
 
-@Test
-public void testHeapValidation() {
-    int validHeap[] = new int[] { 100, 99, 98, 97, 96, 95, 94 };
-    Assert.assertTrue(isValidHeap(validHeap, validHeap.length - 1));
-    int invalidHeap[] = new int[] { 100, 97, 98, 99, 96, 95, 94 };
-    Assert.assertFalse(isValidHeap(invalidHeap, invalidHeap.length - 1));
-}
+private Integer integers[] = new Integer[TEST_SIZE];
+private Double doubles[] = new Double[TEST_SIZE];
+private String strings[] = new String[TEST_SIZE];
 
-@Test
-public void testInsertThreeElements() {
-    FixedSizeHeap heap = new FixedSizeHeap(3);
-    heap.insert(3);
-    heap.insert(2);
-    heap.insert(1);
-    Assert.assertTrue(heap.isFull());
-    Assert.assertTrue(isValidHeap(heap.getRawHeap(),
-        heap.getRawHeap().length - 1));
-}
-
-@Test
-public void testInsertThreeElementsReverse() {
-    FixedSizeHeap heap = new FixedSizeHeap(3);
-    heap.insert(1);
-    heap.insert(2);
-    heap.insert(3);
-    Assert.assertTrue(heap.isFull());
-    Assert.assertTrue(isValidHeap(heap.getRawHeap(),
-        heap.getRawHeap().length - 1));
-}
-
-@Test
-public void testGetMaxValueOrderedNumbers() {
-    final int capacity = 1_000_000;
-    IntegerHeap heap = new FixedSizeHeap(capacity);
-    for (int i = 0; i < capacity; i++) {
-        heap.insert(i + 1);
-    }
-    for (int expected = capacity; heap.getSize() > 0; expected--) {
-        Assert.assertEquals(expected, heap.getMax());
-    }
-}
-
-@Test
-public void testGetMaxValueRandomNumbers() {
-    final int capacity = 1_000_000;
+@Before
+public void initializeRandomArray() {
     Random random = new Random(System.currentTimeMillis());
-    IntegerHeap heap = new FixedSizeHeap(capacity);
-    for (int i = 0; i < capacity; i++) {
-        heap.insert(random.nextInt(Integer.MAX_VALUE));
-    }
-    int current = Integer.MAX_VALUE, last;
-    while (heap.getSize() > 0) {
-        last = current;
-        current = heap.getMax();
-        Assert.assertTrue(last >= current);
+    for (int i = 0; i < TEST_SIZE; i++) {
+        integers[i] = random.nextInt();
+        doubles[i] = random.nextDouble();
+        strings[i] = randomString(random);
     }
 }
 
-// valid heap: fathers are bigger than their children
-private boolean isValidHeap(int heap[], int lastIndex) {
-    for (int i = 0; i <= lastIndex; i++) {
-        int leftChild = (2 * i) + 1;
-        int rightChild = 2 * (i + 1);
-        if (leftChild > lastIndex) {
-            break;
-        }
-        if (heap[leftChild] > heap[i]) {
-            return false;
-        }
-        if (rightChild > lastIndex) {
-            break;
-        }
-        if (heap[rightChild] > heap[i]) {
-            return false;
-        }
+@Test
+public void testIntegerHeapSort() {
+    GenericSort.heapSort(integers);
+    SortingUtils.isSorted(Arrays.asList(integers), true);
+}
+
+@Test
+public void testDoubleHeapSort() {
+    GenericSort.heapSort(doubles);
+    SortingUtils.isSorted(Arrays.asList(doubles), true);
+}
+
+@Test
+public void testStringHeapSort() {
+    GenericSort.heapSort(strings);
+    SortingUtils.isSorted(Arrays.asList(strings), true);
+}
+
+private String randomString(Random random) {
+    StringBuilder randomString = new StringBuilder();
+    for (int i = 0; i < STRING_LENGTH; i++) {
+        randomString.append((char) (random.nextInt('Z' - 'A' + 1) + 'A'));
     }
-    return true;
+    return randomString.toString();
 }
 ```
 
 ## e)
 
-Ich habe der `Sort`-Klasse folgende Methode als API für den Heap hinzugefügt:
+Ich habe der `GenericSort`-Klasse folgende Methode (für eine _aufsteigende_
+Sortierung) als API für den Heap hinzugefügt:
 
 ```java
-public static void heapSort(int[] array) {
-    IntegerHeap heap = new FixedSizeHeap(array.length);
-    for (int i = 0; i < array.length; i++) {
-        heap.insert(array[i]);
+public static <T extends Comparable<T>> void heapSort(T items[]) {
+    GenericHeap<T> heap = new Heap<>();
+    for (int i = 0; i < items.length; i++) {
+        heap.insert(items[i]);
     }
-    for (int i = 0; i < array.length; i++) {
-        array[i] = heap.getMax();
+    for (int i = items.length - 1; i >= 0; i--) {
+        items[i] = heap.getMax();
     }
 }
 ```
@@ -445,3 +391,152 @@ public static void heapSort(int[] array) {
 ## f)
 
 -
+
+# 5 Übersicht Sortieralgorithmen
+
+## a)
+
+## b)
+
+siehe a)
+
+# 6  Optional: Quicksort ‒ generisch programmiert
+
+## a) und b)
+
+```java
+public static <T extends Comparable<T>> void quickSort(T[] data) {
+    quickSort(data, 0, data.length - 1);
+}
+
+public static <T extends Comparable<T>> void quickSort(T[] data,
+    int left, int right) {
+    if (right - left == 0) {
+        return;
+    }
+    int up = left;
+    int down = right - 1;
+    T t = data[right];
+    do {
+        while (data[up].compareTo(t) < 0) {
+            up++;
+        }
+        while (data[down].compareTo(t) >= 0 && down > up) {
+            down--;
+        }
+        if (up >= down) {
+            break;
+        }
+        swap(data, up, down);
+    } while (true);
+    swap(data, up, right);
+    if (left < up - 1) {
+        quickSort(data, left, up - 1);
+    }
+    if (right > up + 1) {
+        quickSort(data, up + 1, right);
+    }
+}
+```
+
+## c) und d)
+
+Der ergänzende Code, um das _Median of Three_-Verfahren umzusetzen:
+
+```java
+int middle = left + ((right - left) / 2);
+T l = data[left];
+T m = data[middle];
+T r = data[right];
+T t = r;
+int tIndex = right;
+if (l.compareTo(r) > 0 && l.compareTo(m) > 0) {
+    t = l;
+    tIndex = left;
+} else if (r.compareTo(l) > 0 && r.compareTo(m) > 0) {
+    t = m;
+    tIndex = middle;
+}
+swap(data, tIndex, right);
+```
+
+Das ermittelte Vergleichselement wird nach rechts verschoben (letzte Zeile).
+
+Dieser Testfall testet Heapsort, Quicksort und Median-of-Three-Quicksort:
+
+```java
+public class GenericSortBenchmark {
+
+    private static final int TEST_SIZES[] = new int[] {
+        100_000, 200_000, 500_000,
+        1_000_000, 2_000_000, 5_000_000, };
+
+    private Random random;
+
+    @Before
+    public void initialize() {
+        random = new Random(System.currentTimeMillis());
+    }
+
+    @Test
+    public void benchmarkHeapVsQuickSort() {
+        System.out.println("   Items    HS    QS  QS Mo3");
+        System.out.println("-------- ----- ----- -------");
+        for (int testSize : TEST_SIZES) {
+            Integer hItems[] = randomIntegerArray(testSize);
+            Integer qItems[] = hItems.clone();
+            Integer qItemsMo3[] = hItems.clone();
+
+            long hStart = System.currentTimeMillis();
+            GenericSort.heapSort(hItems);
+            long hEnd = System.currentTimeMillis();
+            Assert.assertTrue(sorted(hItems));
+
+            long qStart = System.currentTimeMillis();
+            GenericSort.quickSort(qItems);
+            long qEnd = System.currentTimeMillis();
+            Assert.assertTrue(sorted(qItems));
+
+            long qStartMo3 = System.currentTimeMillis();
+            GenericSort.quickSortMedianOfThree(qItemsMo3);
+            long qEndMo3 = System.currentTimeMillis();
+            Assert.assertTrue(sorted(qItemsMo3));
+
+            System.out.printf("%8d %5d %5d %7d\n", testSize,
+                hEnd - hStart, qEnd - qStart, qEndMo3 - qStartMo3);
+        }
+    }
+
+    private <T extends Comparable<T>> boolean sorted(T items[]) {
+        T last = items[0], current;
+        for (int i = 1; i < items.length; i++) {
+            current = items[i];
+            if (current.compareTo(last) < 0) {
+                return false;
+            }
+            last = current;
+        }
+        return true;
+    }
+
+    private Integer[] randomIntegerArray(int size) {
+        Integer integers[] = new Integer[size];
+        for (int i = 0; i < size; i++) {
+            integers[i] = random.nextInt(Integer.MAX_VALUE);
+        }
+        return integers;
+    }
+}
+```
+
+Die ermittelten Laufzeiten (in Millisekunden):
+
+   Items    HS    QS  QS Mo3
+-------- ----- ----- -------
+  100000   117    55      76
+  200000   114    76      42
+  500000   308   115     114
+ 1000000   620   265     273
+ 2000000  1383   563     571
+ 5000000  4261  1580    1634
+
