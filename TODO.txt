@@ -2,12 +2,11 @@ TODO
 ----
 
 - Fr, 2017-04-28    ISF     Aufgaben (siehe Folie 3)
-! Mo, 2017-05-01    ITEO    SLA & Budget: abgeben
 = Mo, 2017-05-01    ITEO    Kapitel 4 (teilweise) lesen (siehe Folien)
 ! Di, 2017-05-02    AD      Aufgaben Woche 9 (präsentieren)
 ! Do, 2017-05-04    DMATH   Aufgaben
 ! Do, 2017-05-04    FKOM    Webtext abgeben
-! Mi, 2017-05-24    ISF     Paper zum DRM-Vortrag abgeben
-! Fr, 2017-05-26    ISF     DRM-Vortrag über _Encrypted Media Extension_ halten
+! Mi, 2017-05-31    ISF     Paper zum DRM-Vortrag abgeben
+! Fr, 2017-06-02    ISF     DRM-Vortrag über _Encrypted Media Extension_ halten
 
 Symbole: ! (testatpflichtig), + (wichtig), = (normal), - (optional)
