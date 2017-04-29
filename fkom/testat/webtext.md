@@ -13,7 +13,7 @@ ODT).
 
 Texteditoren verwenden als Dateiformat einfache Textdateien.
 
-# Unterschiede zwischen Textdateien und _OOXML/ODT_
+# Unterschiede zwischen Textdateien und OOXML/ODT
 
 OOXML und ODT speichern Texte in einer komprimierten XML-Struktur ab. Einfache
 Textdateien haben keine solche Struktur, sondern bestehen nur aus einer Reihe
@@ -38,12 +38,12 @@ welche Vorteile bietet ein _Textstrom_?
 
 Angenommen wir haben eine Reihe von Artikeln; einmal im ODT-Format (Endung
 `.odt`) und einmal im Textformat (Endung `.txt`). Nun wollen wir herausfinden,
-welcher Artikel am meisten Wörter enthält. Mit unseren ODT-Dateien verfahren wir
-folgendermassen:
+welcher Artikel am meisten Wörter enthält. Mit unseren ODT-Dateien machen wir
+folgendes:
 
 1. Wir öffnen den ersten Artikel mit _Writer_.
 2. Wir gehen auf das Menü _Tools_ und wählen den Eintrag _Word Count_.
-3. Wir notieren uns den Dateinamen und die Anzahl der Wörter dazu.
+3. Wir notieren uns den Dateinamen und die Anzahl Wörter.
 4. Wir wiederholen den Vorgang für den nächsten Artikel.
 
 Dieses Vorgehen ist sehr aufwändig. Zudem muss der Vorgang später wiederholt
@@ -88,7 +88,7 @@ $ wc -w *.txt | sort -n -r
   zu Deutsch etwa «Röhre». Eine Pipe nimmt die Ausgabe eines Programmes entgegen
   und leitet sie als Eingabe zum nächsten Programm weiter. **Der Text «fliesst»
   als _Textstrom_ durch die Röhre.** Der Vorteil eines Textstroms ist, dass sich
-  damit beliebige Befehle kombinieren lassen.
+  damit Befehle kombinieren lassen.
 - Es folgt der `sort`-Aufruf, wodurch Textzeilen in alphabetisch aufsteigender
   Reihenfolge sortiert werden.
 - Da wir keine alphabetische, sondern eine numerische Sortierung brauchen («100»
@@ -109,7 +109,7 @@ Der Artikel mit den meisten Wörtern ist `eigenes-bier-brauen.txt`. Für vier
 Dateien mag das nicht besonders beeindruckend sein. Hätten wir tausende von
 Dateien, müssten wir zwar die Ausgabe kürzen, ansonsten wäre aber das Vorgehen
 genau gleich. Doch die Zeitersparnis gegenüber dem manuellen Vorgehen mit
-ODT-Dateien gewaltig. **Die Lösung mit den Textdateien _skaliert_ wesentlich
+ODT-Dateien ist gewaltig. **Die Lösung mit den Textdateien _skaliert_ wesentlich
 besser.**
 
 Das ist der Grund, warum viele Linux-User lieber einen Texteditor, Textdateien
@@ -117,14 +117,14 @@ und die Kommandozeile mit ihren Befehlen verwenden als eine Textverarbeitung.
 **Ein Problem muss nur einmal gelöst werden. Die Lösung kann immer wieder auf
 ähnliche Probleme angewandt werden.**
 
-Abbildung 1 veranschaulicht die Befehlszeile und den Ablauf:
+Abbildung 1 veranschaulicht die Befehlszeile:
 
 ![Die Befehlszeile veranschaulicht](graphic.png)
 
 # Und jetzt?
 
 Wir haben gesehen, dass sich ein alltägliches Problem mithilfe von Textdateien,
-einfachen Befehlen (wie `wc` und `sort`) und Textströmen effizienter lösen lässt
+einfachen Befehlen (`wc` und `sort`) und Textströmen effizienter lösen lässt
 als mit einer Textverarbeitung.
 
 Wer noch weitere solche Techniken kennenlernen möchte, dem empfehle ich den
