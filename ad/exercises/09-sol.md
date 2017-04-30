@@ -567,3 +567,30 @@ eine Laufzeitkomplexität von `O(n²)` als `O(n*log n)` hin.
 
 Konstante Faktoren mögen für sehr grosse `n` nicht relevant sein. In der Praxis
 hat man es aber auch oft mit eher kleinen `n` zu tun.
+
+## Benchmark
+
+Zum Schluss noch eine Übersicht über die Laufzeiten der verschiedenen
+Sortieralgorithmen.
+
+Einfache Sortieralgorithmen:
+
+ Items    BS    IS    SS
+------ ----- ----- -----
+  1000     6    14     1
+  2000    15    19     3
+  5000    71    32    19
+ 10000   300   124    65
+ 20000  1265   504   283
+ 50000  8812  3688  2088
+
+Höhere Sortieralgorithmen:
+
+  Items    HS    QS
+------- ----- -----
+ 100000    39   111
+ 200000    88    42
+ 500000   275   116
+1000000   659   252
+2000000  1480   544
+5000000  6128  1545

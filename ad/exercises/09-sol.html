@@ -723,5 +723,98 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2 id="ordnung-vs.performance">Ordnung vs. Performance</h2>
 <p>Die theoretische Laufzeitkomplexität und die gemessene Performance unterschieden sich teils deutlich. So arbeitete der Selection-Sort bei mir wesentlich schneller als der Insertion-Sort. Bei Quick-Sort deuten meine Messungen eher auf eine Laufzeitkomplexität von <code>O(n²)</code> als <code>O(n*log n)</code> hin.</p>
 <p>Konstante Faktoren mögen für sehr grosse <code>n</code> nicht relevant sein. In der Praxis hat man es aber auch oft mit eher kleinen <code>n</code> zu tun.</p>
+<h2 id="benchmark">Benchmark</h2>
+<p>Zum Schluss noch eine Übersicht über die Laufzeiten der verschiedenen Sortieralgorithmen.</p>
+<p>Einfache Sortieralgorithmen:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">BS</th>
+<th style="text-align: right;">IS</th>
+<th style="text-align: right;">SS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5000</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10000</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20000</td>
+<td style="text-align: right;">1265</td>
+<td style="text-align: right;">504</td>
+<td style="text-align: right;">283</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">8812</td>
+<td style="text-align: right;">3688</td>
+<td style="text-align: right;">2088</td>
+</tr>
+</tbody>
+</table>
+<p>Höhere Sortieralgorithmen:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Items</th>
+<th style="text-align: right;">HS</th>
+<th style="text-align: right;">QS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100000</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">111</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">200000</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">500000</td>
+<td style="text-align: right;">275</td>
+<td style="text-align: right;">116</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1000000</td>
+<td style="text-align: right;">659</td>
+<td style="text-align: right;">252</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2000000</td>
+<td style="text-align: right;">1480</td>
+<td style="text-align: right;">544</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5000000</td>
+<td style="text-align: right;">6128</td>
+<td style="text-align: right;">1545</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
