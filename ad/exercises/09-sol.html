@@ -54,11 +54,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p class="author">Patrick Bucher</p>
 <p class="date">30.04.2017</p>
 </header>
-<h1 id="todo">TODO</h1>
-<ul>
-<li>aktualisierte Testfälle (Code) nachtragen</li>
-<li>Methode <code>medianOfThree()</code> erläutern</li>
-</ul>
 <h1 id="quicksort-theoretisch-durchgespielt">1 Quicksort ‒ theoretisch durchgespielt</h1>
 <h2 id="a">a)</h2>
 <p>Erster Durchgang:</p>
@@ -350,12 +345,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }</code></pre></div>
 <h2 id="c-3">c)</h2>
 <p>Die Klasse <code>Heap</code>:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> ch.hslu.ad.sw09.generic;</span>
-
-<span class="kw">import</span><span class="im"> java.util.ArrayList;</span>
-<span class="kw">import</span><span class="im"> java.util.List;</span>
-
-<span class="kw">public</span> <span class="kw">class</span> Heap&lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="kw">implements</span> GenericHeap&lt;T&gt; {
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Heap&lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="kw">implements</span> GenericHeap&lt;T&gt; {
 
     <span class="kw">private</span> <span class="dt">final</span> <span class="bu">List</span>&lt;T&gt; heap = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;&gt;();
 
@@ -447,19 +437,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="at">@Test</span>
 <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testIntegerHeapSort</span>() {
     GenericSort.<span class="fu">heapSort</span>(integers);
-    SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(integers), <span class="kw">true</span>);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(integers), <span class="kw">true</span>));
 }
 
 <span class="at">@Test</span>
 <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testDoubleHeapSort</span>() {
     GenericSort.<span class="fu">heapSort</span>(doubles);
-    SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(doubles), <span class="kw">true</span>);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(doubles), <span class="kw">true</span>));
 }
 
 <span class="at">@Test</span>
 <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testStringHeapSort</span>() {
     GenericSort.<span class="fu">heapSort</span>(strings);
-    SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(strings), <span class="kw">true</span>);
+    Assert.<span class="fu">assertTrue</span>(SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(strings), <span class="kw">true</span>));
 }
 
 <span class="kw">private</span> <span class="bu">String</span> <span class="fu">randomString</span>(<span class="bu">Random</span> random) {
@@ -594,22 +584,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     }
 }</code></pre></div>
 <h2 id="c-und-d">c) und d)</h2>
-<p>Der ergänzende Code, um das <em>Median of Three</em>-Verfahren umzusetzen:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> middle = left + ((right - left) / <span class="dv">2</span>);
-T l = data[left];
-T m = data[middle];
-T r = data[right];
-T t = r;
-<span class="dt">int</span> tIndex = right;
-<span class="kw">if</span> (l.<span class="fu">compareTo</span>(r) &gt; <span class="dv">0</span> &amp;&amp; l.<span class="fu">compareTo</span>(m) &gt; <span class="dv">0</span>) {
-    t = l;
-    tIndex = left;
-} <span class="kw">else</span> <span class="kw">if</span> (r.<span class="fu">compareTo</span>(l) &gt; <span class="dv">0</span> &amp;&amp; r.<span class="fu">compareTo</span>(m) &gt; <span class="dv">0</span>) {
-    t = m;
-    tIndex = middle;
-}
+<p>Die Methode <code>medianOfThree()</code> ermittelt das mittlere Element im angegebenen Bereich:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;T <span class="kw">extends</span> <span class="bu">Comparable</span>&lt;T&gt;&gt; <span class="dt">int</span> <span class="fu">medianOfThree</span>(T items[], <span class="dt">int</span> left, <span class="dt">int</span> right) {
+    <span class="dt">int</span> middle = left + ((right - left) / <span class="dv">2</span>);
+    T l = items[left];
+    T m = items[middle];
+    T r = items[right];
+    <span class="kw">if</span> (l.<span class="fu">compareTo</span>(r) &gt; <span class="dv">0</span> &amp;&amp; l.<span class="fu">compareTo</span>(m) &lt; <span class="dv">0</span> || l.<span class="fu">compareTo</span>(r) &lt; <span class="dv">0</span> &amp;&amp; l.<span class="fu">compareTo</span>(m) &gt; <span class="dv">0</span>) {
+        <span class="kw">return</span> left;
+    } <span class="kw">else</span> <span class="kw">if</span> (m.<span class="fu">compareTo</span>(r) &gt; <span class="dv">0</span> &amp;&amp; m.<span class="fu">compareTo</span>(l) &lt; <span class="dv">0</span> || m.<span class="fu">compareTo</span>(r) &lt; <span class="dv">0</span> &amp;&amp; m.<span class="fu">compareTo</span>(l) &gt; <span class="dv">0</span>) {
+        <span class="kw">return</span> middle;
+    } <span class="kw">else</span> {
+        <span class="kw">return</span> right;
+    }
+}</code></pre></div>
+<p>Das ermittelte Element muss dann ans rechte Ende des zu sortierenden Bereiches verschoben werden:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> tIndex = <span class="fu">medianOfThree</span>(data, left, right);
 <span class="fu">swap</span>(data, tIndex, right);</code></pre></div>
-<p>Das ermittelte Vergleichselement wird nach rechts verschoben (letzte Zeile).</p>
 <p>Dieser Testfall testet Heapsort, Quicksort und Median-of-Three-Quicksort:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> GenericSortBenchmark {
 
@@ -719,5 +710,18 @@ T t = r;
 </tr>
 </tbody>
 </table>
+<h1 id="fazit">Fazit</h1>
+<h2 id="optimierungen">Optimierungen</h2>
+<p>Für Quicksort wurden folgende beiden Optimierungen vorgenommen:</p>
+<ol type="1">
+<li>Sortierung mittels Insertion-Sort für kleine Teillisten</li>
+<li>Ermittlung eines Teilerelements mittels <em>median of three</em>-Verfahren</li>
+</ol>
+<p>Keine der beiden Optimierungen hatte für <code>n &gt;= 1'000'000</code> einen messbaren Performancegewinn zur Folge. Die Optimierungen mögen für (sehr) grosse <code>n</code> durchaus angebracht sein; für “kleine” <code>n</code> scheinen sie aber eher nachteilig, da der Code komplizierter wird. Dadurch liefen die Sortierungen tendenziell sogar langsamer.</p>
+<h2 id="heap">Heap</h2>
+<p>Der Heap liess sich erstaunlich einfach iterativ implementieren. Diese Datenstruktur kapselt das Heap-Sort-Verfahren; die Datenstruktur beinhaltet quasi den Sortieralgorithmus.</p>
+<h2 id="ordnung-vs.performance">Ordnung vs. Performance</h2>
+<p>Die theoretische Laufzeitkomplexität und die gemessene Performance unterschieden sich teils deutlich. So arbeitete der Selection-Sort bei mir wesentlich schneller als der Insertion-Sort. Bei Quick-Sort deuten meine Messungen eher auf eine Laufzeitkomplexität von <code>O(n²)</code> als <code>O(n*log n)</code> hin.</p>
+<p>Konstante Faktoren mögen für sehr grosse <code>n</code> nicht relevant sein. In der Praxis hat man es aber auch oft mit eher kleinen <code>n</code> zu tun.</p>
 </body>
 </html>

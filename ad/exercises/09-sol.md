@@ -1,8 +1,3 @@
-# TODO
-
-- aktualisierte Testfälle (Code) nachtragen
-- Methode `medianOfThree()` erläutern
-
 # 1 Quicksort ‒ theoretisch durchgespielt
 
 ## a)
@@ -250,11 +245,6 @@ public interface GenericHeap<T extends Comparable<T>> {
 Die Klasse `Heap`:
 
 ```java
-package ch.hslu.ad.sw09.generic;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Heap<T extends Comparable<T>> implements GenericHeap<T> {
 
     private final List<T> heap = new ArrayList<>();
@@ -352,19 +342,19 @@ public void initializeRandomArray() {
 @Test
 public void testIntegerHeapSort() {
     GenericSort.heapSort(integers);
-    SortingUtils.isSorted(Arrays.asList(integers), true);
+    Assert.assertTrue(SortingUtils.isSorted(Arrays.asList(integers), true));
 }
 
 @Test
 public void testDoubleHeapSort() {
     GenericSort.heapSort(doubles);
-    SortingUtils.isSorted(Arrays.asList(doubles), true);
+    Assert.assertTrue(SortingUtils.isSorted(Arrays.asList(doubles), true));
 }
 
 @Test
 public void testStringHeapSort() {
     GenericSort.heapSort(strings);
-    SortingUtils.isSorted(Arrays.asList(strings), true);
+    Assert.assertTrue(SortingUtils.isSorted(Arrays.asList(strings), true));
 }
 
 private String randomString(Random random) {
@@ -447,26 +437,30 @@ public static <T extends Comparable<T>> void quickSort(T[] data, int left, int r
 
 ## c) und d)
 
-Der ergänzende Code, um das _Median of Three_-Verfahren umzusetzen:
+Die Methode `medianOfThree()` ermittelt das mittlere Element im angegebenen Bereich:
 
 ```java
-int middle = left + ((right - left) / 2);
-T l = data[left];
-T m = data[middle];
-T r = data[right];
-T t = r;
-int tIndex = right;
-if (l.compareTo(r) > 0 && l.compareTo(m) > 0) {
-    t = l;
-    tIndex = left;
-} else if (r.compareTo(l) > 0 && r.compareTo(m) > 0) {
-    t = m;
-    tIndex = middle;
+public static <T extends Comparable<T>> int medianOfThree(T items[], int left, int right) {
+    int middle = left + ((right - left) / 2);
+    T l = items[left];
+    T m = items[middle];
+    T r = items[right];
+    if (l.compareTo(r) > 0 && l.compareTo(m) < 0 || l.compareTo(r) < 0 && l.compareTo(m) > 0) {
+        return left;
+    } else if (m.compareTo(r) > 0 && m.compareTo(l) < 0 || m.compareTo(r) < 0 && m.compareTo(l) > 0) {
+        return middle;
+    } else {
+        return right;
+    }
 }
-swap(data, tIndex, right);
 ```
 
-Das ermittelte Vergleichselement wird nach rechts verschoben (letzte Zeile).
+Das ermittelte Element muss dann ans rechte Ende des zu sortierenden Bereiches verschoben werden:
+
+```java
+int tIndex = medianOfThree(data, left, right);
+swap(data, tIndex, right);
+```
 
 Dieser Testfall testet Heapsort, Quicksort und Median-of-Three-Quicksort:
 
@@ -543,3 +537,33 @@ Die ermittelten Laufzeiten (in Millisekunden):
  2000000  1383   563     571
  5000000  4261  1580    1634
 
+# Fazit
+
+## Optimierungen
+
+Für Quicksort wurden folgende beiden Optimierungen vorgenommen:
+
+1. Sortierung mittels Insertion-Sort für kleine Teillisten
+2. Ermittlung eines Teilerelements mittels _median of three_-Verfahren
+
+Keine der beiden Optimierungen hatte für `n >= 1'000'000` einen messbaren
+Performancegewinn zur Folge. Die Optimierungen mögen für (sehr) grosse `n`
+durchaus angebracht sein; für "kleine" `n` scheinen sie aber eher nachteilig, da
+der Code komplizierter wird. Dadurch liefen die Sortierungen tendenziell sogar
+langsamer.
+
+## Heap
+
+Der Heap liess sich erstaunlich einfach iterativ implementieren. Diese
+Datenstruktur kapselt das Heap-Sort-Verfahren; die Datenstruktur beinhaltet
+quasi den Sortieralgorithmus.
+
+## Ordnung vs. Performance
+
+Die theoretische Laufzeitkomplexität und die gemessene Performance unterschieden
+sich teils deutlich. So arbeitete der Selection-Sort bei mir wesentlich
+schneller als der Insertion-Sort. Bei Quick-Sort deuten meine Messungen eher auf
+eine Laufzeitkomplexität von `O(n²)` als `O(n*log n)` hin.
+
+Konstante Faktoren mögen für sehr grosse `n` nicht relevant sein. In der Praxis
+hat man es aber auch oft mit eher kleinen `n` zu tun.
