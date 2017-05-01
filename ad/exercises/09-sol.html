@@ -184,7 +184,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
         <span class="dt">int</span> from = left;
         <span class="dt">int</span> to = up - <span class="dv">1</span>;
-        <span class="kw">if</span> (to - from &gt; m) {
+        <span class="kw">if</span> (to - from + <span class="dv">1</span> &gt; m) {
             <span class="fu">quickInsertionSort</span>(data, from, to, m);
         } <span class="kw">else</span> {
             SimpleSorting.<span class="fu">insertionSort</span>(data, from, to);
@@ -193,7 +193,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="kw">if</span> (right &gt; up + <span class="dv">1</span>) {
         <span class="dt">int</span> from = up + <span class="dv">1</span>;
         <span class="dt">int</span> to = right;
-        <span class="kw">if</span> (to - from &gt; m) {
+        <span class="kw">if</span> (to - from + <span class="dv">1</span> &gt; m) {
             <span class="fu">quickInsertionSort</span>(data, from, to, m);
         } <span class="kw">else</span> {
             SimpleSorting.<span class="fu">insertionSort</span>(data, from, to);
@@ -737,81 +737,105 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1000</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">11</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2000</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5000</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">32</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">29</td>
 <td style="text-align: right;">19</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10000</td>
-<td style="text-align: right;">300</td>
-<td style="text-align: right;">124</td>
+<td style="text-align: right;">281</td>
+<td style="text-align: right;">120</td>
 <td style="text-align: right;">65</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">20000</td>
 <td style="text-align: right;">1265</td>
-<td style="text-align: right;">504</td>
-<td style="text-align: right;">283</td>
+<td style="text-align: right;">514</td>
+<td style="text-align: right;">284</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">50000</td>
-<td style="text-align: right;">8812</td>
-<td style="text-align: right;">3688</td>
-<td style="text-align: right;">2088</td>
+<td style="text-align: right;">8754</td>
+<td style="text-align: right;">3507</td>
+<td style="text-align: right;">2000</td>
 </tr>
 </tbody>
 </table>
-<p>Höhere Sortieralgorithmen:</p>
 <table>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Items</th>
 <th style="text-align: right;">HS</th>
 <th style="text-align: right;">QS</th>
+<th style="text-align: right;">QS Mo3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">100000</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">111</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">70</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">200000</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">42</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">38</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">500000</td>
-<td style="text-align: right;">275</td>
-<td style="text-align: right;">116</td>
+<td style="text-align: right;">265</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">112</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1000000</td>
-<td style="text-align: right;">659</td>
-<td style="text-align: right;">252</td>
+<td style="text-align: right;">636</td>
+<td style="text-align: right;">238</td>
+<td style="text-align: right;">256</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2000000</td>
-<td style="text-align: right;">1480</td>
-<td style="text-align: right;">544</td>
+<td style="text-align: right;">1493</td>
+<td style="text-align: right;">538</td>
+<td style="text-align: right;">551</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">5000000</td>
-<td style="text-align: right;">6128</td>
-<td style="text-align: right;">1545</td>
+<td style="text-align: right;">4440</td>
+<td style="text-align: right;">1523</td>
+<td style="text-align: right;">1576</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10000000</td>
+<td style="text-align: right;">10381</td>
+<td style="text-align: right;">3366</td>
+<td style="text-align: right;">3489</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20000000</td>
+<td style="text-align: right;">22464</td>
+<td style="text-align: right;">7952</td>
+<td style="text-align: right;">7691</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50000000</td>
+<td style="text-align: right;">60103</td>
+<td style="text-align: right;">20816</td>
+<td style="text-align: right;">20477</td>
 </tr>
 </tbody>
 </table>

@@ -162,7 +162,7 @@ static void quickInsertionSort(Character[] data, int l, int r, int m) {
     if (left < up - 1) {
         int from = left;
         int to = up - 1;
-        if (to - from > m) {
+        if (to - from + 1 > m) {
             quickInsertionSort(data, from, to, m);
         } else {
             SimpleSorting.insertionSort(data, from, to);
@@ -171,7 +171,7 @@ static void quickInsertionSort(Character[] data, int l, int r, int m) {
     if (right > up + 1) {
         int from = up + 1;
         int to = right;
-        if (to - from > m) {
+        if (to - from + 1 > m) {
             quickInsertionSort(data, from, to, m);
         } else {
             SimpleSorting.insertionSort(data, from, to);
@@ -578,20 +578,21 @@ Einfache Sortieralgorithmen:
 
  Items    BS    IS    SS
 ------ ----- ----- -----
-  1000     6    14     1
-  2000    15    19     3
-  5000    71    32    19
- 10000   300   124    65
- 20000  1265   504   283
- 50000  8812  3688  2088
+  1000     5    11     1
+  2000    13    22     4
+  5000    66    29    19
+ 10000   281   120    65
+ 20000  1265   514   284
+ 50000  8754  3507  2000
 
-Höhere Sortieralgorithmen:
-
-  Items    HS    QS
-------- ----- -----
- 100000    39   111
- 200000    88    42
- 500000   275   116
-1000000   659   252
-2000000  1480   544
-5000000  6128  1545
+   Items      HS      QS  QS Mo3
+-------- ------- ------- -------
+  100000      36      58      70
+  200000      90      70      38
+  500000     265     106     112
+ 1000000     636     238     256
+ 2000000    1493     538     551
+ 5000000    4440    1523    1576
+10000000   10381    3366    3489
+20000000   22464    7952    7691
+50000000   60103   20816   20477
