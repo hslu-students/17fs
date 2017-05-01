@@ -1,7 +1,6 @@
 TODO
 ----
 
-- Fr, 2017-04-28    ISF     Aufgaben (siehe Folie 3)
 = Mo, 2017-05-01    ITEO    Kapitel 4 (teilweise) lesen (siehe Folien)
 ! Di, 2017-05-02    AD      Aufgaben Woche 9 (präsentieren)
 ! Do, 2017-05-04    DMATH   Aufgaben
