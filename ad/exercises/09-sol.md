@@ -63,11 +63,10 @@ public static void quickSort(Character[] data, int left, int right) {
         while (data[down] >= t && down > up) {
             down--;
         }
-        if (up >= down) {
-            break;
+        if (up < down) {
+            swap(data, up, down);
         }
-        swap(data, up, down);
-    } while (true);
+    } while (up < down);
     swap(data, up, right);
     if (left < up - 1) {
         quickSort(data, left, up - 1);
@@ -90,6 +89,9 @@ public void testQuickSort() {
     Assert.assertTrue(sorted);
 }
 ```
+
+Für grössere `n` ist es wichtig die Stackgrösse zu erhöhen. Dies erreicht man
+mit dem JVM-Parameter `-Xss10M` (stellt die Stackgrösse auf 10 Megabyte).
 
 ## b)
 
@@ -156,7 +158,7 @@ public static void quickInsertionSort(Character[] data, int m) {
 static void quickInsertionSort(Character[] data, int l, int r, int m) {
     // bestehender Algorithmus
     // ...
-    // veränderte Rekursionsanweisung
+    // veränderte Rekursionsanweisungen:
     if (left < up - 1) {
         int from = left;
         int to = up - 1;

@@ -52,7 +52,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <h1 class="title">Übungen Woche 9</h1>
 <p class="author">Patrick Bucher</p>
-<p class="date">30.04.2017</p>
+<p class="date">01.05.2017</p>
 </header>
 <h1 id="quicksort-theoretisch-durchgespielt">1 Quicksort ‒ theoretisch durchgespielt</h1>
 <h2 id="a">a)</h2>
@@ -89,11 +89,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         <span class="kw">while</span> (data[down] &gt;= t &amp;&amp; down &gt; up) {
             down--;
         }
-        <span class="kw">if</span> (up &gt;= down) {
-            <span class="kw">break</span>;
+        <span class="kw">if</span> (up &lt; down) {
+            <span class="fu">swap</span>(data, up, down);
         }
-        <span class="fu">swap</span>(data, up, down);
-    } <span class="kw">while</span> (<span class="kw">true</span>);
+    } <span class="kw">while</span> (up &lt; down);
     <span class="fu">swap</span>(data, up, right);
     <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
         <span class="fu">quickSort</span>(data, left, up - <span class="dv">1</span>);
@@ -111,6 +110,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="dt">boolean</span> sorted = SortingUtils.<span class="fu">isSorted</span>(<span class="bu">Arrays</span>.<span class="fu">asList</span>(data), <span class="kw">true</span>);
     Assert.<span class="fu">assertTrue</span>(sorted);
 }</code></pre></div>
+<p>Für grössere <code>n</code> ist es wichtig die Stackgrösse zu erhöhen. Dies erreicht man mit dem JVM-Parameter <code>-Xss10M</code> (stellt die Stackgrösse auf 10 Megabyte).</p>
 <h2 id="b-1">b)</h2>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickSort</span>(<span class="bu">Character</span>[] data) {
     <span class="fu">quickSort</span>(data, <span class="dv">0</span>, data.<span class="fu">length</span> - <span class="dv">1</span>);
@@ -180,7 +180,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="dt">static</span> <span class="dt">void</span> <span class="fu">quickInsertionSort</span>(<span class="bu">Character</span>[] data, <span class="dt">int</span> l, <span class="dt">int</span> r, <span class="dt">int</span> m) {
     <span class="co">// bestehender Algorithmus</span>
     <span class="co">// ...</span>
-    <span class="co">// veränderte Rekursionsanweisung</span>
+    <span class="co">// veränderte Rekursionsanweisungen:</span>
     <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
         <span class="dt">int</span> from = left;
         <span class="dt">int</span> to = up - <span class="dv">1</span>;
