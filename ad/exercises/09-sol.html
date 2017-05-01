@@ -570,11 +570,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         <span class="kw">while</span> (data[down].<span class="fu">compareTo</span>(t) &gt;= <span class="dv">0</span> &amp;&amp; down &gt; up) {
             down--;
         }
-        <span class="kw">if</span> (up &gt;= down) {
-            <span class="kw">break</span>;
+        <span class="kw">if</span> (up &lt; down) {
+            <span class="fu">swap</span>(data, up, down);
         }
-        <span class="fu">swap</span>(data, up, down);
-    } <span class="kw">while</span> (<span class="kw">true</span>);
+    } <span class="kw">while</span> (up &lt; down);
     <span class="fu">swap</span>(data, up, right);
     <span class="kw">if</span> (left &lt; up - <span class="dv">1</span>) {
         <span class="fu">quickSort</span>(data, left, up - <span class="dv">1</span>);

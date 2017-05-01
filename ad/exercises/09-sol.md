@@ -422,11 +422,10 @@ public static <T extends Comparable<T>> void quickSort(T[] data, int left, int r
         while (data[down].compareTo(t) >= 0 && down > up) {
             down--;
         }
-        if (up >= down) {
-            break;
+        if (up < down) {
+            swap(data, up, down);
         }
-        swap(data, up, down);
-    } while (true);
+    } while (up < down);
     swap(data, up, right);
     if (left < up - 1) {
         quickSort(data, left, up - 1);
