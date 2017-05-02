@@ -618,8 +618,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;-------- ----- ----- -------&quot;</span>);
         <span class="kw">for</span> (<span class="dt">int</span> testSize : TEST_SIZES) {
             <span class="bu">Integer</span> hItems[] = <span class="fu">randomIntegerArray</span>(testSize);
-            <span class="bu">Integer</span> qItems[] = hItems.<span class="fu">clone</span>();
-            <span class="bu">Integer</span> qItemsMo3[] = hItems.<span class="fu">clone</span>();
+            <span class="bu">Integer</span> qItems[] = <span class="bu">Arrays</span>.<span class="fu">copyOf</span>(hItems, hItems.<span class="fu">length</span>);
+            <span class="bu">Integer</span> qItemsMo3[] = <span class="bu">Arrays</span>.<span class="fu">copyOf</span>(hItems, hItems.<span class="fu">length</span>);
 
             <span class="dt">long</span> hStart = <span class="bu">System</span>.<span class="fu">currentTimeMillis</span>();
             GenericSort.<span class="fu">heapSort</span>(hItems);

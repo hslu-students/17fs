@@ -483,8 +483,8 @@ public class GenericSortBenchmark {
         System.out.println("-------- ----- ----- -------");
         for (int testSize : TEST_SIZES) {
             Integer hItems[] = randomIntegerArray(testSize);
-            Integer qItems[] = hItems.clone();
-            Integer qItemsMo3[] = hItems.clone();
+            Integer qItems[] = Arrays.copyOf(hItems, hItems.length);
+            Integer qItemsMo3[] = Arrays.copyOf(hItems, hItems.length);
 
             long hStart = System.currentTimeMillis();
             GenericSort.heapSort(hItems);
