@@ -22,7 +22,7 @@ h1.title {
 }
 
 h1.subtitle {
-    font-size: 130%;
+    font-size: 140%;
     text-align: center;
 }
 
@@ -39,13 +39,17 @@ p.date {
 }
 
 h1 {
-    font-size: 130%;
+    font-size: 140%;
 }
 
 h2 {
-    font-size: 110%;
+    font-size: 120%;
 }
 
-td {
+th,tr.even {
+    background-color: #eee;
+}
+
+th,td {
     padding: 5px;
 }
