@@ -46,6 +46,10 @@ h2 {
     font-size: 120%;
 }
 
+table {
+    font-family: mono;
+}
+
 th,tr.even {
     background-color: #eee;
 }
