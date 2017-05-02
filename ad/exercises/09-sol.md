@@ -559,7 +559,7 @@ Der Heap liess sich erstaunlich einfach iterativ implementieren. Diese
 Datenstruktur kapselt das Heap-Sort-Verfahren; die Datenstruktur beinhaltet
 quasi den Sortieralgorithmus.
 
-## Ordnung vs. Performance
+## Laufzeitkomplexität vs. Performancemessung
 
 Die theoretische Laufzeitkomplexität und die gemessene Performance unterschieden
 sich teils deutlich. So arbeitete der Selection-Sort bei mir wesentlich
@@ -578,12 +578,12 @@ Einfache Sortieralgorithmen:
 
  Items    BS    IS    SS
 ------ ----- ----- -----
-  1000     5    14     2
-  2000    13    17     3
-  5000    67    34    21
- 10000   289   126    85
- 20000  1390   572   347
- 50000  9393  4004  2410
+  1000    21     9    11
+  2000    11     7     2
+  5000    64    36    25
+ 10000   300   127    65
+ 20000  1226   558   294
+ 50000  8768  3652  1996
 
 Höhere Sortieralgorithmen:
 
