@@ -1,7 +1,8 @@
 TODO
 ----
 
-! Do, 2017-05-04    DMATH   Aufgaben
+! Do, 2017-05-04    DMATH   Aufgaben Woche 9
+! Mo, 2017-05-08    ITEO    SLA-Testat: Budget-Excel nachliefern
 ! Mi, 2017-05-31    ISF     Paper zum DRM-Vortrag abgeben
 ! Fr, 2017-06-02    ISF     DRM-Vortrag über _Encrypted Media Extension_ halten
 
